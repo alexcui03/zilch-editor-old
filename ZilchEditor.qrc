@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/splash">
+        <file>bin/asset/splash.png</file>
+    </qresource>
+    <qresource prefix="/icon"/>
+    <qresource prefix="/style">
+        <file>bin/style/Default.qss</file>
+    </qresource>
+    <qresource prefix="/stylesheet">
+        <file>bin/asset/app.qss</file>
+    </qresource>
+</RCC>

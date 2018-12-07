@@ -1,0 +1,90 @@
+* {
+    font-family: 'microsoft yahei';
+}
+
+#MainWindow {
+    background-color: #FFFFFF;
+}
+
+#Menu {
+    background-color: #4C97FF;
+}
+
+#StageArea {
+    background-color: #FFFFFF;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #E0E0E0;
+}
+
+#StageArea_StageView {
+    background-color: #FFFFFF;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #E0E0E0;
+}
+
+#StageArea_ButtonStart {
+    background-color: #90EE90;
+}
+
+#StageArea_ButtonStart:hover {
+    background-color: #609E60;
+}
+
+#StageArea_ButtonStop {
+    background-color: #FF0000;
+}
+
+#StageArea_ButtonStop:hover {
+    background-color: #AA0000;
+}
+
+#SpriteArea {
+    background-color: #FF7F50;
+}
+
+#EditArea {
+    background-color: #FFFFFF;
+}
+
+#EditArea_TabWidget_TabBar::tab {
+    background-color: #F2F2F2;
+	border-color: #E0E0E0;
+}
+
+#EditArea_TabWidget_TabBar::tab:hover {
+    background-color: #F8F8F8;
+}
+
+#EditArea_TabWidget_TabBar::tab:selected {
+    background-color: #FFFFFF;
+}
+
+#EditArea_ScriptPart, #EditArea_CostumePart {
+    background-color: #F9F9F9;
+}
+/*
+#EditArea_ScriptPart_BlockTabItem_LabelText {
+    color: #000000;
+}
+
+#EditArea_ScriptPart_BlockTabItem_LabelText-Select {
+    color: #FFFFFF;
+}
+
+#EditArea_ScriptPart_BlockTabItem_LabelText-Hover {
+    color: #4C97FF;
+}
+*/
+#EditArea_ScriptPart_ScriptEdit {
+    background-color: #E0E0E0;
+	border-color: #CCCCCC;
+}
+
+#BlockItem > QLabel {
+    color: #FFFFFF;
+}
+
+
+

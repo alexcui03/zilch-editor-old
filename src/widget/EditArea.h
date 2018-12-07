@@ -1,0 +1,21 @@
+#ifndef EDITAREA_H
+#define EDITAREA_H
+
+#include <QWidget>
+#include <QTabWidget>
+
+#include "Widget.h"
+#include "ScriptPart.h"
+#include "CostumePart.h"
+
+class EditArea : public Widget {
+public:
+	explicit EditArea(QWidget *parent = nullptr);
+	void resizeEvent(QResizeEvent *size);
+public:
+	QTabWidget *TabWidget;
+	ScriptPart *ScriptPart;
+	CostumePart *CostumePart;
+};
+
+#endif // EDITAREA_H

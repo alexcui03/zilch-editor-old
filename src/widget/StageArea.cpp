@@ -1,0 +1,18 @@
+#include "StageArea.h"
+
+StageArea::StageArea(QWidget *parent):Widget(parent) {
+	StageView = new ::StageView(this);
+	StageView->setObjectName("StageArea_StageView");
+	StageView->move(0, 35);
+	StageView->resize(480, 360);
+
+	ButtonStart = new QPushButton(this);
+	ButtonStart->setObjectName("StageArea_ButtonStart");
+	ButtonStart->move(410, 7);
+	ButtonStart->resize(21, 21);
+
+	ButtonStop = new QPushButton(this);
+	ButtonStop->setObjectName("StageArea_ButtonStop");
+	ButtonStop->move(440, 7);
+	ButtonStop->resize(21, 21);
+}
