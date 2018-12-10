@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Log path
+
+# Build path
+build/*
+

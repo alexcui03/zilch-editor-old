@@ -24,6 +24,13 @@ DEFINES += QT_DEPRECATED_WARNINGS _CRT_SECURE_NO_WARNINGS
 
 CONFIG += c++17
 
+# For MSVC++ Compiler(cl.exe):
+# Output assembly file with source code.(Only in DEBUG mode)
+CONFIG(debug, debug|release) {
+    QMAKE_CXXFLAGS += /FAs
+    QMAKE_CFLAGS += /FAs
+}
+
 SOURCES += \
     src/Main.cpp \
     src/stylesheet/StyleSheet.cpp \
@@ -42,7 +49,9 @@ SOURCES += \
     src/scratch/ScratchBlock.cpp \
     src/scratch/ScratchBlockCategory.cpp \
     src/widget/BlockTabItem.cpp \
-    src/util/Util.cpp
+    src/util/Util.cpp \
+    src/scratch/ScratchSprite.cpp \
+    src/scratch/ScratchStage.cpp
 
 HEADERS += \
     src/stylesheet/StyleSheet.h \
@@ -62,7 +71,9 @@ HEADERS += \
     src/scratch/ScratchBlock.h \
     src/scratch/ScratchBlockCategory.h \
     src/widget/BlockTabItem.h \
-    src/util/Util.h
+    src/util/Util.h \
+    src/scratch/ScratchSprite.h \
+    src/scratch/ScratchStage.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

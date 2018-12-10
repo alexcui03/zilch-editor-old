@@ -2,6 +2,7 @@
 #define SCRATCHBLOCK_H
 
 #include <string>
+#include <functional>
 
 class ScratchBlockCategory;
 
@@ -16,11 +17,12 @@ enum class ScratchBlockType {
 
 class ScratchBlock {
 public:
-	ScratchBlock(ScratchBlockCategory *Category, std::string Name, ScratchBlockType Type);
+	ScratchBlock(ScratchBlockCategory *Category, std::string Name, ScratchBlockType Type, std::function<void()> Function);
 public:
 	ScratchBlockCategory *Category;
 	ScratchBlockType Type;
 	std::string Name;
+	std::function<void()> Function;
 };
 
 #endif // SCRATCHBLOCK_H

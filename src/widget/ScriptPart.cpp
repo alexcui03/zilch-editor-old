@@ -1,6 +1,7 @@
 #include "ScriptPart.h"
 #include "../scratch/Scratch.h"
 #include "../logger/Logger.h"
+#include <QDebug>
 
 ScriptPart_BlockTab::ScriptPart_BlockTab(QWidget *parent):Widget(parent) {
 	LastClicked = nullptr;

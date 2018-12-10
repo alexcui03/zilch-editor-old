@@ -13,7 +13,6 @@
 #include "ScriptPart.h"
 #include "../scratch/ScratchBlockCategory.h"
 #include "../util/Util.h"
-#include <QDebug>
 
 BlockItem::BlockItem(ScratchBlock *Block, BlockItem *LastBlock, BlockItem *NextBlock, QWidget *parent):Widget(parent) {
 	this->BlockData = Block;
