@@ -13,6 +13,7 @@
 #include "ScriptPart.h"
 #include "../scratch/ScratchBlockCategory.h"
 #include "../util/Util.h"
+#include <QDebug>
 
 BlockItem::BlockItem(ScratchBlock *Block, BlockItem *LastBlock, BlockItem *NextBlock, QWidget *parent):Widget(parent) {
 	this->BlockData = Block;
@@ -141,7 +142,6 @@ void BlockItem::mousePressEvent(QMouseEvent *e) {
 void BlockItem::mouseMoveEvent(QMouseEvent *e) {
 	if (e->buttons() & Qt::LeftButton) {
 		if (isViewingBlock) {
-			//emit copy(AppWindow->mapFromGlobal(e->globalPos()) - pos());
 			BlockItem *NewItem = new BlockItem(this->BlockData, nullptr, nullptr, parentWidget());
 			dynamic_cast<ScriptPart_BlockView*>(parentWidget())->Block[ViewerIndex] = NewItem;
 			NewItem->isViewingBlock = true;
@@ -157,12 +157,26 @@ void BlockItem::mouseMoveEvent(QMouseEvent *e) {
 		else {
 			if (isDragging) {
 				move(AppWindow->mapFromGlobal(e->globalPos()) - MovVector);
+				auto LastTemp = this;
+				for (auto Temp = NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
+					Temp->move(LastTemp->x(), LastTemp->y() + LastTemp->height() - 3);
+				}
 			}
 			else {
-				setParent(AppWindow);
+				if (LastBlock != nullptr) {
+					LastBlock->NextBlock = nullptr;
+					LastBlock = nullptr;
+				}
 				MovVector = e->pos();
 				move(AppWindow->mapFromGlobal(e->globalPos()) - MovVector);
+				setParent(AppWindow);
 				show();
+				auto LastTemp = this;
+				for (auto Temp = NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
+					Temp->setParent(AppWindow);
+					Temp->move(LastTemp->x(), LastTemp->y() + LastTemp->height() - 3);
+					Temp->show();
+				}
 				isDragging = true;
 			}
 		}
@@ -177,22 +191,30 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 				delete this;
 			}
 			else {
-				setParent(Edit);
-				move(Edit->mapFromGlobal(e->globalPos()) - MovVector);
-				show();
+				BlockItem *Nearest = SearchNearest(Edit->mapFromGlobal(e->globalPos()) - MovVector);
 				isDragging = false;
-				BlockItem *Nearest = SearchNearest();
+				setParent(Edit);
 				if (Nearest != nullptr) {
 					Nearest->NextBlock = this;
 					LastBlock = Nearest;
-					move(Nearest->pos().x(), Nearest->rect().bottom() - 3);
+					move(Nearest->pos().x(), Nearest->pos().y() + Nearest->height() - 4);
+				}
+				else {
+					move(Edit->mapFromGlobal(e->globalPos()) - MovVector);
+				}
+				show();
+				auto TempLast = this;
+				for (auto Temp = NextBlock; Temp != nullptr; TempLast = Temp, Temp = Temp->NextBlock) {
+					Temp->setParent(Edit);
+					Temp->move(TempLast->x(), TempLast->y() + TempLast->height() - 3);
+					Temp->show();
 				}
 			}
 		}
 	}
 }
 
-BlockItem *BlockItem::SearchNearest() const {
+BlockItem *BlockItem::SearchNearest(const QPoint &Pos) const {
 	auto &BlockList = AppWindow->EditArea->ScriptPart->ScriptEdit->children();
 	if (BlockList.empty()) {
 		return nullptr;
@@ -201,10 +223,10 @@ BlockItem *BlockItem::SearchNearest() const {
 	int DistanceX = 30;
 	int DistanceY = 30;
 	for (const auto &c : BlockList) {
-		if (std::abs(dynamic_cast<QWidget*>(c)->rect().bottom() - rect().bottom()) < DistanceY &&
-			std::abs(dynamic_cast<QWidget*>(c)->rect().left() - rect().right()) < DistanceX) {
-			DistanceX = std::abs(dynamic_cast<QWidget*>(c)->rect().left() - rect().right());
-			DistanceY = std::abs(dynamic_cast<QWidget*>(c)->rect().bottom() - rect().bottom());
+		if (std::abs(Pos.y() - (dynamic_cast<QWidget*>(c)->y() + dynamic_cast<QWidget*>(c)->height())) < DistanceY &&
+			std::abs(Pos.x() - dynamic_cast<QWidget*>(c)->x()) < DistanceX) {
+			DistanceX = std::abs(Pos.y() - (dynamic_cast<QWidget*>(c)->y() + dynamic_cast<QWidget*>(c)->height()));
+			DistanceY = std::abs(Pos.x() - dynamic_cast<QWidget*>(c)->x());
 			Nearest = dynamic_cast<QWidget*>(c);
 			break;
 		}

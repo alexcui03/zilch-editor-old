@@ -12,7 +12,7 @@ class BlockItem : public Widget {
 	Q_OBJECT
 public:
 	BlockItem(ScratchBlock *Block, BlockItem *LastBlock, BlockItem *NextBlock, QWidget *parent = nullptr);
-	BlockItem *SearchNearest() const;
+	BlockItem *SearchNearest(const QPoint &Pos) const;
 public slots:
 	void Copy(const QPoint &Pos);
 	void paintEvent(QPaintEvent *e) override;
