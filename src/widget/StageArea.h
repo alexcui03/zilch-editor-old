@@ -7,8 +7,11 @@
 #include "StageView.h"
 
 class StageArea : public Widget {
+	Q_OBJECT
 public:
 	explicit StageArea(QWidget *parent = nullptr);
+public slots:
+	void RunProgram();
 public:
 	QPushButton *ButtonStart;
 	QPushButton *ButtonStop;

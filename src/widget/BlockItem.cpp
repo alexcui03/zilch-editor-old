@@ -113,6 +113,14 @@ BlockItem::BlockItem(ScratchBlock *Block, BlockItem *LastBlock, BlockItem *NextB
 	}
 
 	connect(this, SIGNAL(copy(const QPoint &)), SLOT(Copy(const QPoint &)));
+	connect(this, SIGNAL(run()), SLOT(RunFunction()));
+}
+
+void BlockItem::RunFunction() {
+	BlockData->Function();
+	if (NextBlock != nullptr) {
+		NextBlock->RunFunction();
+	}
 }
 
 void BlockItem::paintEvent(QPaintEvent *) {

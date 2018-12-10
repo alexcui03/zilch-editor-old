@@ -15,6 +15,7 @@ public:
 	BlockItem *SearchNearest(const QPoint &Pos) const;
 public slots:
 	void Copy(const QPoint &Pos);
+	void RunFunction();
 	void paintEvent(QPaintEvent *e) override;
 	//void leaveEvent(QEvent *e) override;
 	void mousePressEvent(QMouseEvent *e) override;
@@ -22,6 +23,7 @@ public slots:
 	void mouseReleaseEvent(QMouseEvent *e) override;
 signals:
 	void copy(const QPoint &Pos);
+	void run();
 public:
 	bool isViewingBlock;
 	BlockItem *LastBlock;

@@ -48,7 +48,7 @@ void ScriptPart_BlockView::Reload(ScratchBlockCategory *Category) {
 			Item->move(10, 10 + 35 * static_cast<int>(i));
 		}
 		else {
-			Item->move(10, (*Block.rbegin())->rect().bottom() + 20);
+			Item->move(10, (*Block.rbegin())->y() + (*Block.rbegin())->height() + 10);
 		}
 		Item->show();
 		Block.push_back(Item);

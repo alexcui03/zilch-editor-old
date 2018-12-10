@@ -1,4 +1,5 @@
 #include "StageArea.h"
+#include "../scratch/Scratch.h"
 
 StageArea::StageArea(QWidget *parent):Widget(parent) {
 	StageView = new ::StageView(this);
@@ -15,4 +16,11 @@ StageArea::StageArea(QWidget *parent):Widget(parent) {
 	ButtonStop->setObjectName("StageArea_ButtonStop");
 	ButtonStop->move(440, 7);
 	ButtonStop->resize(21, 21);
+
+	connect(ButtonStart, SIGNAL(clicked()), this, SLOT(RunProgram()));
 }
+
+void StageArea::RunProgram() {
+	ScratchMain.ProgramRun();
+}
+
