@@ -148,7 +148,9 @@ void BlockItem::mousePressEvent(QMouseEvent *e) {
 
 void BlockItem::mouseMoveEvent(QMouseEvent *e) {
 	if (e->buttons() & Qt::LeftButton) {
+		// If the block is in view.
 		if (isViewingBlock) {
+			// Copy a new block for viewing, and make current block for edit.
 			BlockItem *NewItem = new BlockItem(this->BlockData, nullptr, nullptr, parentWidget());
 			dynamic_cast<ScriptPart_BlockView*>(parentWidget())->Block[ViewerIndex] = NewItem;
 			NewItem->isViewingBlock = true;
@@ -193,23 +195,35 @@ void BlockItem::mouseMoveEvent(QMouseEvent *e) {
 void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 	static auto Edit = AppWindow->EditArea->ScriptPart->ScriptEdit;
 	if (e->button() == Qt::LeftButton) {
+		// If the block is on dragging and for edit.
 		if (isDragging && !isViewingBlock) {
+			// If the block is not in edit area.
 			if (!Edit->rect().contains(Edit->mapFromGlobal(e->globalPos()))) {
-				delete this;
+				// Delete all block below.
+				BlockItem *Temp = this;
+				for (BlockItem *Item = NextBlock; Temp != nullptr; Temp = Item, Item = Item->NextBlock) {
+					delete Temp;
+				}
 			}
 			else {
+				// Search for the nearest block that can be connect to.
 				BlockItem *Nearest = SearchNearest(Edit->mapFromGlobal(e->globalPos()) - MovVector);
+				// End dragging.
 				isDragging = false;
 				setParent(Edit);
 				if (Nearest != nullptr) {
+					// Insert as next for the nearest block.
+					NextBlock = Nearest->NextBlock;
 					Nearest->NextBlock = this;
 					LastBlock = Nearest;
 					move(Nearest->pos().x(), Nearest->pos().y() + Nearest->height() - 4);
 				}
 				else {
+					// No search for the nearest block.
 					move(Edit->mapFromGlobal(e->globalPos()) - MovVector);
 				}
 				show();
+				// Remove all blocks below.
 				auto TempLast = this;
 				for (auto Temp = NextBlock; Temp != nullptr; TempLast = Temp, Temp = Temp->NextBlock) {
 					Temp->setParent(Edit);
@@ -223,29 +237,25 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 
 BlockItem *BlockItem::SearchNearest(const QPoint &Pos) const {
 	auto &BlockList = AppWindow->EditArea->ScriptPart->ScriptEdit->children();
+	// If there is no block in block list than return.
 	if (BlockList.empty()) {
 		return nullptr;
 	}
 	QWidget *Nearest = nullptr;
-	int DistanceX = 30;
-	int DistanceY = 30;
+	// The max distance between current block and nearest block.
+	int DistanceX = 15;
+	int DistanceY = 15;
 	for (const auto &c : BlockList) {
 		if (std::abs(Pos.y() - (dynamic_cast<QWidget*>(c)->y() + dynamic_cast<QWidget*>(c)->height())) < DistanceY &&
 			std::abs(Pos.x() - dynamic_cast<QWidget*>(c)->x()) < DistanceX) {
 			DistanceX = std::abs(Pos.y() - (dynamic_cast<QWidget*>(c)->y() + dynamic_cast<QWidget*>(c)->height()));
 			DistanceY = std::abs(Pos.x() - dynamic_cast<QWidget*>(c)->x());
 			Nearest = dynamic_cast<QWidget*>(c);
-			break;
 		}
 	}
 	return dynamic_cast<BlockItem*>(Nearest);
 }
 
-void BlockItem::Copy(const QPoint &Pos) {
-	BlockItem *NewItem = new BlockItem(this->BlockData, nullptr, nullptr, AppWindow);
-	NewItem->isViewingBlock = false;
-	NewItem->isDragging = true;
-	NewItem->MovVector = pos();
-	NewItem->move(Pos);
-	NewItem->show();
+void BlockItem::Copy(const QPoint &) {
+	// NO USE
 }

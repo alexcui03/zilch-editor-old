@@ -21,15 +21,14 @@ DEFINES += QT_DEPRECATED_WARNINGS _CRT_SECURE_NO_WARNINGS
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+DEFINES += PLATFORM_X86_64
+DEFINES += PLATFORM_WINDOWS
+
+VERSION = 0.1.301
+
+LIBS += -ldbghelp
 
 CONFIG += c++17
-
-# For MSVC++ Compiler(cl.exe):
-# Output assembly file with source code.(Only in DEBUG mode)
-CONFIG(debug, debug|release) {
-    QMAKE_CXXFLAGS += /FAs
-    QMAKE_CFLAGS += /FAs
-}
 
 SOURCES += \
     src/Main.cpp \
@@ -50,8 +49,28 @@ SOURCES += \
     src/scratch/ScratchBlockCategory.cpp \
     src/widget/BlockTabItem.cpp \
     src/util/Util.cpp \
+    src/logger/CLogger.cpp \
+    src/logger/Logger.cpp \
+    src/scratch/Scratch.cpp \
+    src/scratch/ScratchBlock.cpp \
+    src/scratch/ScratchBlockCategory.cpp \
     src/scratch/ScratchSprite.cpp \
-    src/scratch/ScratchStage.cpp
+    src/scratch/ScratchStage.cpp \
+    src/stylesheet/stylesheet.cpp \
+    src/translator/Translator.cpp \
+    src/util/Util.cpp \
+    src/widget/BlockItem.cpp \
+    src/widget/BlockTabItem.cpp \
+    src/widget/CostumePart.cpp \
+    src/widget/EditArea.cpp \
+    src/widget/MainWindow.cpp \
+    src/widget/ScriptPart.cpp \
+    src/widget/SpriteArea.cpp \
+    src/widget/StageArea.cpp \
+    src/widget/StageView.cpp \
+    src/widget/Widget.cpp \
+    src/Main.cpp \
+    src/util/Crash.c
 
 HEADERS += \
     src/stylesheet/StyleSheet.h \
@@ -72,8 +91,28 @@ HEADERS += \
     src/scratch/ScratchBlockCategory.h \
     src/widget/BlockTabItem.h \
     src/util/Util.h \
+    src/logger/CLogger.h \
+    src/logger/Logger.h \
+    src/scratch/Scratch.h \
+    src/scratch/ScratchBlock.h \
+    src/scratch/ScratchBlockCategory.h \
     src/scratch/ScratchSprite.h \
-    src/scratch/ScratchStage.h
+    src/scratch/ScratchStage.h \
+    src/stylesheet/stylesheet.h \
+    src/translator/Translator.h \
+    src/util/Crash.h \
+    src/util/Util.h \
+    src/widget/BlockItem.h \
+    src/widget/BlockTabItem.h \
+    src/widget/CostumePart.h \
+    src/widget/EditArea.h \
+    src/widget/MainWindow.h \
+    src/widget/ScriptPart.h \
+    src/widget/SpriteArea.h \
+    src/widget/StageArea.h \
+    src/widget/StageView.h \
+    src/widget/Widget.h \
+    src/Define.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

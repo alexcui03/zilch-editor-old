@@ -6,12 +6,15 @@
 #include <QSplashScreen>
 #include <QPixmap>
 #include <QElapsedTimer>
+#include <QMessageBox>
+#include <QTime>
 
 #include "widget/MainWindow.h"
 #include "logger/Logger.h"
 #include "stylesheet/stylesheet.h"
 #include "scratch/Scratch.h"
 #include "translator/Translator.h"
+#include "util/Crash.h"
 
 Logger AppLogger;
 Translator AppTranslator;
@@ -23,6 +26,8 @@ int main(int argc, char *argv[]) {
 	auto TitleList = GetTitleList();
 
 	QApplication App(argc, argv);
+
+	BindCrashHandler();
 
 	QSplashScreen Splash(QPixmap("./asset/splash.png"));
 	AppLogger.InitLogger(&Splash);
