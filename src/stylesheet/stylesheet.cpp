@@ -10,6 +10,12 @@
 
 namespace fs = std::experimental::filesystem;
 
+/**
+ * @brief LoadStyleSheetString - Loading style sheet from file(function for repeating).
+ * @param {QSplashScreen*} Splash - Splash screen for showing information.
+ * @param {std::string} Path - File path for loading.
+ * @return {QString} - Style sheet string.
+ */
 QString LoadStyleSheetString(QSplashScreen *Splash, std::string Path) {
 	QString StyleSheetString = "";
 	for(auto &c : fs::directory_iterator(Path)) {
@@ -28,6 +34,11 @@ QString LoadStyleSheetString(QSplashScreen *Splash, std::string Path) {
 	return StyleSheetString;
 }
 
+/**
+ * @brief LoadStyleSheet - Load stylesheet from file.
+ * @param {QSplashScreen*} Splash - Splash screen for showing information.
+ * @param {std::string} Path - File path for loading.
+ */
 void LoadStyleSheet(QSplashScreen *Splash, std::string Path) {
 	QFile StyleFile("./asset/app.qss");
 	StyleFile.open(QFile::ReadOnly);

@@ -1,10 +1,42 @@
 #StageArea {
-    border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
+    border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
 }
 
-#StageArea_ButtonStart, #StageArea_ButtonStop {
-    border-radius: 10px;
+#StageArea_ButtonStart,
+#StageArea_ButtonStop {
+    border-radius: 8px;
+}
+
+#SpriteArea {
+    border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	border-style: solid;
+	border-width: 1px;
+}
+
+#SpriteArea_Sprite {
+    border-left-style: solid;
+	border-left-width: 1px;
+}
+
+#SpriteArea_SpriteArea_TopBar {
+    border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+
+#SpriteArea_SpriteArea_TopBar_TextSprite,
+#SpriteArea_SpriteArea_TopBar_TextNewSprite {
+    font-size: 15px;
+}
+
+#SpriteArea_SpriteArea_TopBar_ButtonNewSprite,
+#SpriteArea_SpriteArea_ButtonBack {
+    border-radius: 8px;
+}
+
+#SpriteListItem_Text {
+    font-size: 12px;
 }
 
 #EditArea_TabWidget_TabBar::tab {

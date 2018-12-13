@@ -1,14 +1,14 @@
 #ifndef SCRATCHSTAGE_H
 #define SCRATCHSTAGE_H
 
-#include <list>
+#include <vector>
 #include "ScratchSprite.h"
 
 class ScratchStage {
 public:
 	ScratchStage();
 public:
-	std::list<ScratchSprite> Sprite;
+	std::vector<ScratchSprite*> Sprite;
 };
 
 #endif // SCRATCHSTAGE_H

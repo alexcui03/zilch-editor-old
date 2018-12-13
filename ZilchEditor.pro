@@ -21,14 +21,22 @@ DEFINES += QT_DEPRECATED_WARNINGS _CRT_SECURE_NO_WARNINGS
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+
+# Compiling environment.
+# PLATFORM_X86_64/PLATFORM_X86
+#DEFINES += PLATFORM_X86
 DEFINES += PLATFORM_X86_64
+# PLATFORM_WINDOWS/PLATFORM_LINUX
+#DEFINES += PLATFORM_LINUX
 DEFINES += PLATFORM_WINDOWS
 
-VERSION = 0.1.301
+CONFIG += c++17
+
+# The program version
+# {Marjor}.{Minor}.{Revision}.{Build}
+VERSION = 0.1.0.301
 
 LIBS += -ldbghelp
-
-CONFIG += c++17
 
 SOURCES += \
     src/Main.cpp \
@@ -70,7 +78,9 @@ SOURCES += \
     src/widget/StageView.cpp \
     src/widget/Widget.cpp \
     src/Main.cpp \
-    src/util/Crash.c
+    src/util/Crash.c \
+    src/widget/SpriteItem.cpp \
+    src/widget/SpriteListItem.cpp
 
 HEADERS += \
     src/stylesheet/StyleSheet.h \
@@ -112,7 +122,9 @@ HEADERS += \
     src/widget/StageArea.h \
     src/widget/StageView.h \
     src/widget/Widget.h \
-    src/Define.h
+    src/Define.h \
+    src/widget/SpriteItem.h \
+    src/widget/SpriteListItem.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

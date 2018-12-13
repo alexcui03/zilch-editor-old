@@ -42,17 +42,57 @@ void Translator::LoadTranslation(std::string Path) {
 		else {
 			AppLogger.AddSplashLog("Translator", "Loading translation: " + Temp.path().string());
 			std::ifstream File(Temp);
-			std::string FileName = Temp.path().filename().string();
-			FileName = FileName.substr(0, FileName.find('.'));
+			std::string CurruentLanguage = "en";
 			char *Buffer = new char[BUFSIZE];
 			std::string String;
 			while (!File.eof()) {
 				File.getline(Buffer, BUFSIZE);
 				String = Buffer;
-				auto Index = String.find('=');
-				TranslationString[FileName][String.substr(0, Index)] = String.substr(Index + 1);
+				if (String.empty() || String[0] == '#') { // No word in string.
+					continue;
+				}
+
+				String.erase(0, String.find_first_not_of(" ")); // Delete space before word.
+				String.erase(String.find_last_not_of(" ") + 1); // Delete space after word.
+				if (String.empty()) { // No word in string.
+					continue;
+				}
+
+				auto Index = String.find(':');
+				if (Index == std::string::npos) { // No found for ':'.
+					continue;
+				}
+
+				auto Key = String.substr(0, Index);
+				Key.erase(Key.find_last_not_of(" ") + 1); // Delete space after word.
+				auto Word = String.substr(Index + 1);
+				Word.erase(0, Word.find_first_not_of(" ")); // Delete space before word.
+
+				if (Key == "current_lang") {
+					CurruentLanguage = Word;
+				}
+				else {
+					if (CurruentLanguage == "lang") {
+						Key = Key.substr(5);
+						LanguageMap[Key] = Word; // Add language type.
+					}
+					else {
+						TranslationString[CurruentLanguage][Key] = Word; // Add translation to map.
+					}
+				}
 			}
 			File.close();
+		}
+	}
+	AppLogger.AddLog("Debug", "Language List");
+	for (auto &c : LanguageMap) {
+		AppLogger.AddLog("Debug", c.first + ":" + c.second);
+	}
+	AppLogger.AddLog("Debug", "Key List");
+	for (auto &c : TranslationString) {
+		AppLogger.AddLog("Debug", c.first);
+		for (auto &d : c.second) {
+			AppLogger.AddLog("Debug", "  " + d.first + ":" + d.second);
 		}
 	}
 }

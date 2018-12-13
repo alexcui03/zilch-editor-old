@@ -9,12 +9,12 @@ StageArea::StageArea(QWidget *parent):Widget(parent) {
 
 	ButtonStart = new QPushButton(this);
 	ButtonStart->setObjectName("StageArea_ButtonStart");
-	ButtonStart->move(410, 7);
+	ButtonStart->move(415, 7);
 	ButtonStart->resize(21, 21);
 
 	ButtonStop = new QPushButton(this);
 	ButtonStop->setObjectName("StageArea_ButtonStop");
-	ButtonStop->move(440, 7);
+	ButtonStop->move(445, 7);
 	ButtonStop->resize(21, 21);
 
 	connect(ButtonStart, SIGNAL(clicked()), this, SLOT(RunProgram()));

@@ -40,8 +40,26 @@
     background-color: #AA0000;
 }
 
-#SpriteArea {
-    background-color: #FF7F50;
+#SpriteArea,
+#SpriteArea_Sprite,
+#SpriteArea_SpriteArea_TopBar {
+    border-color: #E0E0E0;
+}
+
+#SpriteArea_SpriteArea_TopBar_ButtonNewSprite {
+    background-color: #FFB11B;
+}
+
+#SpriteArea_SpriteArea_TopBar_ButtonNewSprite:hover {
+    background-color: #AA7612;
+}
+
+#SpriteArea_SpriteArea_ButtonBack {
+    background-color: #FFB11B;
+}
+
+#SpriteArea_SpriteArea_ButtonBack:hover {
+    background-color: #AA7612;
 }
 
 #EditArea {
@@ -61,7 +79,8 @@
     background-color: #FFFFFF;
 }
 
-#EditArea_ScriptPart, #EditArea_CostumePart {
+#EditArea_ScriptPart,
+#EditArea_CostumePart {
     background-color: #F9F9F9;
 }
 /*

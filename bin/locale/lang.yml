@@ -1,0 +1,71 @@
+current_lang: lang
+
+lang_ar: العربية
+lang_af: Afrikaans
+lang_am: አማርኛ
+lang_az: azərbaycanca
+lang_be: беларуская
+lang_bg: български
+lang_bn: বাংলা
+lang_ca: catalá
+lang_cs: čeština
+lang_da: Dansk
+lang_de: Deutsch
+lang_el: ελληνικά
+lang_en: English
+lang_es: Español
+lang_et: eesti
+lang_eu: Euskara
+lang_fa: فارسی
+lang_fi: Suomi
+lang_fr: Français
+lang_gl: Galego
+lang_he: עברית
+lang_hi: हिंदी
+lang_hr: hrvatski
+lang_hu: Magyar
+lang_hy: Հայերէն
+lang_is: íslenska
+lang_it: Italiano
+lang_ja: 日本語
+lang_ka: ქართული
+lang_kk: қазақ тілі
+lang_km: ខ្មែរ
+lang_kn: ಕನ್ನಡ
+lang_ko: 한국의
+lang_ky: кыргыз тили
+lang_lo: ລາວ
+lang_lt: Lietuvių
+lang_lv: latviešu
+lang_mk: македонски јазик
+lang_ml: മലയാളം
+lang_mn: Монгол
+lang_mr: मराठी
+lang_ms: Bahasa Melayu
+lang_my: ဗမာ
+lang_nb: Norsk bokmal
+lang_ne: नेपाली
+lang_nl: Nederlands
+lang_pl: Polski
+lang_pt: Protuguês
+lang_rm: Rumantsch
+lang_ro: româna
+lang_ru: Русский
+lang_si: සිංහල
+lang_sk: Slovenčina
+lang_sl: Slovenščina
+lang_sr: српски
+lang_sv: Svenska
+lang_sw: Kiswahili
+lang_ta: தமிழ்
+lang_te: తెలుగు
+lang_th: ไทย
+lang_tl: Tagalog
+lang_tr: Türkçe
+lang_uk: українська
+lang_ur: اردو
+lang_uz: Ўзбек тили
+lang_vi: tiếng việt
+lang_zh-CN: 中文(简体)
+lang_zh-TW: 中文(繁体)
+lang_zu: isiZulu

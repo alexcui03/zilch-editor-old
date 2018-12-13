@@ -1,0 +1,11 @@
+current_lang: en
+
+window_menubar_file: File
+window_menubar_file_openfile: Open File
+window_menubar_file_save: Save
+window_menubar_file_saveas: Save as
+window_menubar_file_exit: Exit
+window_menubar_option: Option
+window_menubar_option_settings: Settings
+spritearea_sprite_topbar_sprites: Sprites
+spritearea_sprite_topbar_newsprite: New Sprite:

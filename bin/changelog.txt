@@ -53,3 +53,32 @@ Bugfixes:
   - Fixed the position of the block in block view with index greater than 2 error.(bug#11)
 Source:
   - Now output assembly file for debugging.(Only MSVC++ Compiler(cl.exe))
+---------------------------------------------------------------------------------------------------
+Version: alpha-bd313
+Date: 2018.12.11
+Features:
+  - Insert block between two blocks.
+  - Added dump file making if program crashed.
+  - Added function for catching unhandled exception.
+  - Print logs to log file if the program crashed, including calling stack, source file.
+Source:
+  - Added defines PLATFORM_X86_64, PLATFORM_X86 for compiling.
+  - Added defines PLATFORM_WINDOWS, PLATFORM_LINUX for compiling.
+  - Added VERSION for executable file information.
+  - Deleted assembly file output for msvc++ compiler to make building project faster.
+---------------------------------------------------------------------------------------------------
+Version: alpha-bd346
+Date: 2018.12.13
+Features:
+  - Changed StageArea top-left and top-right bold radius into 8px.
+  - Changed bold radius of start button and stop button into 8px.
+  - Changed calling resize function of some widgets into resizeEvent function.
+  - Changed translation file into YAML file.
+  - Changed title of ¡°Zilsh¡± into ¡°Zilch¡±.
+  - Each translation file must have key ¡°current_lang¡± to show that what language is.
+  - Added translation file for language type.
+  - Added translation enable option file.
+  - Added StagePart and SpritePart to StageArea.
+  - Added ui of SpritePart_Topbar.
+Source:
+  - Added jsdoc for some funtions.

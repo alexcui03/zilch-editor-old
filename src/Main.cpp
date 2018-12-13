@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
 	AppTranslator.LoadTranslation("./locale/");
 	AppTranslator.SetLanguage();
 
-	AppWindow = new MainWindow("Zilsh Editor: " + TitleList[static_cast<size_t>(rand()) % TitleList.size()]);
+	AppWindow = new MainWindow("Zilch Editor: " + TitleList[static_cast<size_t>(rand()) % TitleList.size()]);
 	AppWindow->show();
 	Splash.finish(AppWindow);
 

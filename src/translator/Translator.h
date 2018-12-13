@@ -15,6 +15,7 @@ public:
 	//const char *operator[](const char *LocalisedString);
 public:
 	std::map<std::string, std::map<std::string, std::string>> TranslationString;
+	std::map<std::string, std::string> LanguageMap;
 };
 
 extern Translator AppTranslator;
