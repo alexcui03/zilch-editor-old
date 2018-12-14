@@ -66,6 +66,10 @@
     background-color: #FFFFFF;
 }
 
+#EditArea_TabWidget::pane {
+    border-color: #E0E0E0;
+}
+
 #EditArea_TabWidget_TabBar::tab {
     background-color: #F2F2F2;
 	border-color: #E0E0E0;

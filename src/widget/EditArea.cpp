@@ -19,5 +19,5 @@ EditArea::EditArea(QWidget *parent):Widget(parent) {
 }
 
 void EditArea::resizeEvent(QResizeEvent *) {
-	TabWidget->resize(this->width() + 1, this->height() + 1);
+	TabWidget->resize(this->width(), this->height());
 }

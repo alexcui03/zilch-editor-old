@@ -80,7 +80,9 @@ SOURCES += \
     src/Main.cpp \
     src/util/Crash.c \
     src/widget/SpriteItem.cpp \
-    src/widget/SpriteListItem.cpp
+    src/widget/SpriteListItem.cpp \
+    src/scratch/ScratchResourse.cpp \
+    src/util/Resourse.cpp
 
 HEADERS += \
     src/stylesheet/StyleSheet.h \
@@ -124,7 +126,9 @@ HEADERS += \
     src/widget/Widget.h \
     src/Define.h \
     src/widget/SpriteItem.h \
-    src/widget/SpriteListItem.h
+    src/widget/SpriteListItem.h \
+    src/scratch/ScratchResourse.h \
+    src/util/Resourse.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

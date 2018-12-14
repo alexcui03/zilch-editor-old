@@ -8,6 +8,7 @@
 #include <QElapsedTimer>
 #include <QMessageBox>
 #include <QTime>
+#include <QStyleFactory>
 
 #include "widget/MainWindow.h"
 #include "logger/Logger.h"
@@ -15,6 +16,8 @@
 #include "scratch/Scratch.h"
 #include "translator/Translator.h"
 #include "util/Crash.h"
+
+#include <QDebug>
 
 Logger AppLogger;
 Translator AppTranslator;
@@ -26,7 +29,7 @@ int main(int argc, char *argv[]) {
 	auto TitleList = GetTitleList();
 
 	QApplication App(argc, argv);
-
+	QApplication::setStyle(QStyleFactory::create("Fusion"));
 	BindCrashHandler();
 
 	QSplashScreen Splash(QPixmap("./asset/splash.png"));

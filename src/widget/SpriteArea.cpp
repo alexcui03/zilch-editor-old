@@ -46,10 +46,48 @@ SpriteArea_SpriteArea::SpriteArea_SpriteArea(QWidget *parent) : Widget(parent) {
 	TopBar->move(0, 0);
 	//TopBar->resize(width(), 20);
 
+	// Sprite information
 	ButtonBack = new QPushButton(this);
 	ButtonBack->setObjectName("SpriteArea_SpriteArea_ButtonBack");
 	ButtonBack->move(5, 35);
 	ButtonBack->resize(20, 20);
+
+	View = new QLabel(this);
+	View->setObjectName("SpriteArea_SpriteArea_View");
+	View->move(30, 35);
+	View->resize(64, 64);
+	//Test:
+	View->setAutoFillBackground(true);
+	View->setPalette(QPalette(QColor(0xFFB11B)));
+
+	Name = new QLineEdit(this);
+	Name->setObjectName("SpriteArea_SpriteArea_LineEdit");
+	Name->move(100, 35);
+	Name->resize(200, 25);
+
+	Position = new QLabel(this);
+	Position->setObjectName("SpriteArea_SpriteArea_Position");
+	Position->move(100, 65);
+	Position->resize(200, 25);
+	Position->setText("X:0 Y:0");
+
+	Direction = new QLabel(this);
+	Direction->setObjectName("SpriteArea_SpriteArea_Direction");
+	Direction->move(100, 95);
+	Direction->resize(200, 25);
+	Direction->setText("Direction: 90°");
+
+	Draggable = new QCheckBox(this);
+	Draggable->setObjectName("SpriteArea_SpriteArea_Draggable");
+	Draggable->move(100, 125);
+	Draggable->resize(200, 25);
+	Draggable->setText("Draggable:");
+
+	Show = new QCheckBox(this);
+	Show->setObjectName("SpriteArea_SpriteArea_Show");
+	Show->move(100, 155);
+	Show->resize(200, 25);
+	Show->setText("Show:");
 
 	for (auto &c : ScratchMain.Stage.Sprite) {
 		SpriteListItem *Item = new SpriteListItem(c, this);
@@ -67,6 +105,12 @@ SpriteArea_SpriteArea::SpriteArea_SpriteArea(QWidget *parent) : Widget(parent) {
 void SpriteArea_SpriteArea::RefreshList() {
 	if (ShowIndex == -1) {
 		ButtonBack->hide();
+		View->hide();
+		Name->hide();
+		Position->hide();
+		Direction->hide();
+		Draggable->hide();
+		Show->hide();
 		for (size_t i = 0; i < SpriteList.size(); i++) {
 			SpriteList[i]->move((static_cast<int>(i) % 5) * 79 + 4, (static_cast<int>(i) / 5) * 79 + 34);
 			SpriteList[i]->show();
@@ -77,7 +121,13 @@ void SpriteArea_SpriteArea::RefreshList() {
 			SpriteList[i]->hide();
 		}
 		ButtonBack->show();
-		///TODO: Show sprite info.
+		View->show();
+		Name->setText(SpriteList[static_cast<size_t>(ShowIndex)]->Sprite->Name.c_str());
+		Name->show();
+		Position->show();
+		Direction->show();
+		Draggable->show();
+		Show->show();
 	}
 }
 

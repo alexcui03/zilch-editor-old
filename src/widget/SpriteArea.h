@@ -5,6 +5,8 @@
 #include <QWidget>
 #include <QLabel>
 #include <QPushButton>
+#include <QLineEdit>
+#include <QCheckBox>
 #include <vector>
 #include "SpriteListItem.h"
 
@@ -43,7 +45,14 @@ public:
 	SpriteArea_SpriteArea_TopBar *TopBar;
 	std::vector<SpriteListItem*> SpriteList;
 	int ShowIndex;
+	// Sprite information
 	QPushButton *ButtonBack;
+	QLabel *View;
+	QLineEdit *Name;
+	QLabel *Position;
+	QLabel *Direction;
+	QCheckBox *Draggable;
+	QCheckBox *Show;
 };
 
 class SpriteArea_SpriteArea_TopBar : public Widget {
