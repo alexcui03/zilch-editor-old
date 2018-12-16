@@ -11,23 +11,23 @@ Scratch::Scratch() {
 	BlockCategory.push_back(new ScratchBlockCategory("Motion", 0x4C97FF));
 	BlockCategory.push_back(new ScratchBlockCategory("Event", 0xFDD200));
 
-	Block.push_back(new ScratchBlock(BlockCategory[0], "add 10 to x", ScratchBlockType::BODY_BLOCK, []()->void {
+	Block.push_back(new ScratchBlockPrototype(BlockCategory[0], "add 10 to x", ScratchBlockType::BODY_BLOCK, []()->void {
 		auto &Sprite = AppWindow->StageArea->StageView->TestSprite;
 		Sprite->move(Sprite->x() + 10, Sprite->y());
 	}));
-	Block.push_back(new ScratchBlock(BlockCategory[0], "add 10 to y", ScratchBlockType::BODY_BLOCK, []()->void {
+	Block.push_back(new ScratchBlockPrototype(BlockCategory[0], "add 10 to y", ScratchBlockType::BODY_BLOCK, []()->void {
 		auto &Sprite = AppWindow->StageArea->StageView->TestSprite;
 		Sprite->move(Sprite->x(), Sprite->y() + 10);
 	}));
-	Block.push_back(new ScratchBlock(BlockCategory[0], "sub 10 to x", ScratchBlockType::BODY_BLOCK, []()->void {
+	Block.push_back(new ScratchBlockPrototype(BlockCategory[0], "sub 10 to x", ScratchBlockType::BODY_BLOCK, []()->void {
 		auto &Sprite = AppWindow->StageArea->StageView->TestSprite;
 		Sprite->move(Sprite->x() - 10, Sprite->y());
 	}));
-	Block.push_back(new ScratchBlock(BlockCategory[0], "sub 10 to y", ScratchBlockType::BODY_BLOCK, []()->void {
+	Block.push_back(new ScratchBlockPrototype(BlockCategory[0], "sub 10 to y", ScratchBlockType::BODY_BLOCK, []()->void {
 		auto &Sprite = AppWindow->StageArea->StageView->TestSprite;
 		Sprite->move(Sprite->x(), Sprite->y() - 10);
 	}));
-	Block.push_back(new ScratchBlock(BlockCategory[1], "When program start", ScratchBlockType::HEAD_BLOCK, []()->void {
+	Block.push_back(new ScratchBlockPrototype(BlockCategory[1], "When program start", ScratchBlockType::HEAD_BLOCK, []()->void {
 
 	}));
 
@@ -40,7 +40,7 @@ Scratch::Scratch() {
 void Scratch::ProgramRun() {
 	ScriptPart_ScriptEdit *&Edit = AppWindow->EditArea->ScriptPart->ScriptEdit;
 	for (const auto &c : Edit->children()) {
-		if (dynamic_cast<BlockItem*>(c)->BlockData->Name == "When program start") {
+		if (dynamic_cast<BlockItem*>(c)->BlockData->Block->Name == "When program start") {
 			// TODO: multiprocess
 			emit dynamic_cast<BlockItem*>(c)->run();
 		}

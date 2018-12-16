@@ -53,14 +53,12 @@ SOURCES += \
     src/widget/ScriptPart.cpp \
     src/widget/CostumePart.cpp \
     src/widget/BlockItem.cpp \
-    src/scratch/ScratchBlock.cpp \
     src/scratch/ScratchBlockCategory.cpp \
     src/widget/BlockTabItem.cpp \
     src/util/Util.cpp \
     src/logger/CLogger.cpp \
     src/logger/Logger.cpp \
     src/scratch/Scratch.cpp \
-    src/scratch/ScratchBlock.cpp \
     src/scratch/ScratchBlockCategory.cpp \
     src/scratch/ScratchSprite.cpp \
     src/scratch/ScratchStage.cpp \
@@ -81,8 +79,12 @@ SOURCES += \
     src/util/Crash.c \
     src/widget/SpriteItem.cpp \
     src/widget/SpriteListItem.cpp \
-    src/scratch/ScratchResourse.cpp \
-    src/util/Resourse.cpp
+    src/scratch/ScratchCostume.cpp \
+    src/scratch/ScratchBlockPrototype.cpp \
+    src/scratch/ScratchBlock.cpp \
+    src/scratch/ScratchObject.cpp \
+    src/scratch/ScratchResource.cpp \
+    src/util/Resource.cpp
 
 HEADERS += \
     src/stylesheet/StyleSheet.h \
@@ -99,14 +101,12 @@ HEADERS += \
     src/widget/ScriptPart.h \
     src/widget/CostumePart.h \
     src/widget/BlockItem.h \
-    src/scratch/ScratchBlock.h \
     src/scratch/ScratchBlockCategory.h \
     src/widget/BlockTabItem.h \
     src/util/Util.h \
     src/logger/CLogger.h \
     src/logger/Logger.h \
     src/scratch/Scratch.h \
-    src/scratch/ScratchBlock.h \
     src/scratch/ScratchBlockCategory.h \
     src/scratch/ScratchSprite.h \
     src/scratch/ScratchStage.h \
@@ -127,8 +127,12 @@ HEADERS += \
     src/Define.h \
     src/widget/SpriteItem.h \
     src/widget/SpriteListItem.h \
-    src/scratch/ScratchResourse.h \
-    src/util/Resourse.h
+    src/scratch/ScratchCostume.h \
+    src/scratch/ScratchBlockPrototype.h \
+    src/scratch/ScratchBlock.h \
+    src/scratch/ScratchObject.h \
+    src/scratch/ScratchResource.h \
+    src/util/Resource.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -14,26 +14,26 @@
 #include "../scratch/ScratchBlockCategory.h"
 #include "../util/Util.h"
 
-BlockItem::BlockItem(ScratchBlock *Block, BlockItem *LastBlock, BlockItem *NextBlock, QWidget *parent):Widget(parent) {
+BlockItem::BlockItem(ScratchBlock *Block, ScratchBlock *LastBlock, ScratchBlock *NextBlock, QWidget *parent):Widget(parent) {
 	this->BlockData = Block;
-	this->LastBlock = LastBlock;
-	this->NextBlock = NextBlock;
+	this->BlockData->LastBlock = LastBlock;
+	this->BlockData->NextBlock = NextBlock;
 	this->isDragging = false;
 	this->isViewingBlock = false;
-	this->FillColor = BlockData->Category->Color;
-	this->FrameColor = QColor(BlockData->Category->Color) * 0.9;
+	this->FillColor = BlockData->Block->Category->Color;
+	this->FrameColor = QColor(BlockData->Block->Category->Color) * 0.9;
 	this->ViewerIndex = 0;
 
 	setObjectName("BlockItem");
 
 	TextLabel = new QLabel(this);
-	TextLabel->setText(BlockData->Name.c_str());
+	TextLabel->setText(BlockData->Block->Name.c_str());
 	TextLabel->setAlignment(Qt::AlignLeft);
 	TextLabel->move(5, 3);
 	TextLabel->adjustSize();
 
 
-	switch(this->BlockData->Type) {
+	switch(this->BlockData->Block->Type) {
 	case ScratchBlockType::HEAD_BLOCK: {
 		TextLabel->move(5, 13);
 		adjustSize();
@@ -117,9 +117,9 @@ BlockItem::BlockItem(ScratchBlock *Block, BlockItem *LastBlock, BlockItem *NextB
 }
 
 void BlockItem::RunFunction() {
-	BlockData->Function();
-	if (NextBlock != nullptr) {
-		NextBlock->RunFunction();
+	BlockData->Block->Function();
+	if (BlockData->NextBlock != nullptr) {
+		BlockData->NextBlock->Item->RunFunction();
 	}
 }
 
@@ -166,22 +166,22 @@ void BlockItem::mouseMoveEvent(QMouseEvent *e) {
 		else {
 			if (isDragging) {
 				move(AppWindow->mapFromGlobal(e->globalPos()) - MovVector);
-				auto LastTemp = this;
-				for (auto Temp = NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
+				BlockItem *LastTemp = this;
+				for (BlockItem *Temp = BlockData->NextBlock->Item; Temp != nullptr; LastTemp = Temp, Temp = Temp->BlockData->NextBlock->Item) {
 					Temp->move(LastTemp->x(), LastTemp->y() + LastTemp->height() - 3);
 				}
 			}
 			else {
-				if (LastBlock != nullptr) {
-					LastBlock->NextBlock = nullptr;
-					LastBlock = nullptr;
+				if (BlockData->LastBlock != nullptr) {
+					BlockData->LastBlock->NextBlock = nullptr;
+					BlockData->LastBlock = nullptr;
 				}
 				MovVector = e->pos();
 				move(AppWindow->mapFromGlobal(e->globalPos()) - MovVector);
 				setParent(AppWindow);
 				show();
-				auto LastTemp = this;
-				for (auto Temp = NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
+				BlockItem *LastTemp = this;
+				for (BlockItem *Temp = BlockData->NextBlock->Item; Temp != nullptr; LastTemp = Temp, Temp = Temp->BlockData->NextBlock->Item) {
 					Temp->setParent(AppWindow);
 					Temp->move(LastTemp->x(), LastTemp->y() + LastTemp->height() - 3);
 					Temp->show();
@@ -201,7 +201,7 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 			if (!Edit->rect().contains(Edit->mapFromGlobal(e->globalPos()))) {
 				// Delete all block below.
 				BlockItem *Temp = this;
-				for (BlockItem *Item = NextBlock; Temp != nullptr; Temp = Item, Item = Item->NextBlock) {
+				for (BlockItem *Item = BlockData->NextBlock->Item; Temp != nullptr; Temp = Item, Item = Item->BlockData->NextBlock->Item) {
 					delete Temp;
 				}
 			}
@@ -213,9 +213,9 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 				setParent(Edit);
 				if (Nearest != nullptr) {
 					// Insert as next for the nearest block.
-					NextBlock = Nearest->NextBlock;
-					Nearest->NextBlock = this;
-					LastBlock = Nearest;
+					BlockData->NextBlock = Nearest->BlockData->NextBlock;
+					Nearest->BlockData->NextBlock = BlockData;
+					BlockData->LastBlock = Nearest->BlockData;
 					move(Nearest->pos().x(), Nearest->pos().y() + Nearest->height() - 4);
 				}
 				else {
@@ -224,10 +224,10 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 				}
 				show();
 				// Remove all blocks below.
-				auto TempLast = this;
-				for (auto Temp = NextBlock; Temp != nullptr; TempLast = Temp, Temp = Temp->NextBlock) {
+				BlockItem *LastTemp = this;
+				for (BlockItem *Temp = BlockData->NextBlock->Item; Temp != nullptr; LastTemp = Temp, Temp = Temp->BlockData->NextBlock->Item) {
 					Temp->setParent(Edit);
-					Temp->move(TempLast->x(), TempLast->y() + TempLast->height() - 3);
+					Temp->move(LastTemp->x(), LastTemp->y() + LastTemp->height() - 3);
 					Temp->show();
 				}
 			}

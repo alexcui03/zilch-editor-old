@@ -4,13 +4,13 @@
 #include <string>
 #include <vector>
 
-#include "ScratchBlock.h"
+#include "ScratchBlockPrototype.h"
 
 class ScratchBlockCategory {
 public:
 	ScratchBlockCategory(std::string Name, unsigned int Color);
 public:
-	std::vector<ScratchBlock*> Block;
+	std::vector<ScratchBlockPrototype*> Block;
 	std::string Name;
 	unsigned int Color;
 };

@@ -1,28 +1,21 @@
 #ifndef SCRATCHBLOCK_H
 #define SCRATCHBLOCK_H
 
-#include <string>
-#include <functional>
+#include "ScratchBlockPrototype.h"
 
-class ScratchBlockCategory;
-
-enum class ScratchBlockType {
-	HEAD_BLOCK,
-	BODY_BLOCK,
-	TAIL_BLOCK,
-	BOOL_BLOCK,
-	NUMB_BLOCK,
-	NULL_BLOCK
-};
+class BlockItem;
 
 class ScratchBlock {
 public:
-	ScratchBlock(ScratchBlockCategory *Category, std::string Name, ScratchBlockType Type, std::function<void()> Function);
+	ScratchBlock(ScratchBlockPrototype *Block, ScratchBlock *LastBlock = nullptr, ScratchBlock *NextBlock = nullptr);
+	bool isHead();
 public:
-	ScratchBlockCategory *Category;
-	ScratchBlockType Type;
-	std::string Name;
-	std::function<void()> Function;
+	ScratchBlockPrototype *Block;
+	ScratchBlock *LastBlock;
+	ScratchBlock *NextBlock;
+	BlockItem *Item;
+	int X;
+	int Y;
 };
 
 #endif // SCRATCHBLOCK_H

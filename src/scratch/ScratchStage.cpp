@@ -1,5 +1,5 @@
 #include "ScratchStage.h"
 
-ScratchStage::ScratchStage() {
+ScratchStage::ScratchStage() : ScratchObject ("Stage") {
 
 }

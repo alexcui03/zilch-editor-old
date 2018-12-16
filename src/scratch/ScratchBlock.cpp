@@ -1,11 +1,12 @@
 #include "ScratchBlock.h"
-#include "ScratchBlockCategory.h"
 
-ScratchBlock::ScratchBlock(ScratchBlockCategory *Category, std::string Name, ScratchBlockType Type, std::function<void()> Function) {
-	this->Name = Name;
-	this->Category = Category;
-	this->Type = Type;
-	this->Function = Function;
+ScratchBlock::ScratchBlock(ScratchBlockPrototype *Block, ScratchBlock *LastBlock, ScratchBlock *NextBlock) {
+	this->Block = Block;
+	this->LastBlock = LastBlock;
+	this->NextBlock = NextBlock;
+	this->X = this->Y = 0;
+}
 
-	Category->Block.push_back(this);
+bool ScratchBlock::isHead() {
+	return this->LastBlock == nullptr;
 }

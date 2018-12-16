@@ -2,9 +2,10 @@
 #define SCRATCHSTAGE_H
 
 #include <vector>
+#include "ScratchObject.h"
 #include "ScratchSprite.h"
 
-class ScratchStage {
+class ScratchStage : public ScratchObject {
 public:
 	ScratchStage();
 public:
