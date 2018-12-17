@@ -11,6 +11,7 @@
 #include "Widget.h"
 #include "BlockItem.h"
 #include "BlockTabItem.h"
+#include "../scratch/ScratchObject.h"
 
 class ScriptPart_BlockTab : public Widget {
 	Q_OBJECT
@@ -30,17 +31,24 @@ class ScriptPart_BlockView : public Widget {
 	Q_OBJECT
 public:
 	ScriptPart_BlockView(QWidget *parent = nullptr);
-public:
-	std::vector<BlockItem*> Block;
 public slots:
 	void Reload(ScratchBlockCategory *Category);
 signals:
 	void reload(ScratchBlockCategory*);
+public:
+	std::vector<BlockItem*> Block;
 };
 
 class ScriptPart_ScriptEdit : public Widget {
+	Q_OBJECT
 public:
 	ScriptPart_ScriptEdit(QWidget *parent = nullptr);
+public slots:
+	void Reload();
+signals:
+	void reload();
+public:
+	ScratchObject *Object;
 };
 
 class ScriptPart : public Widget {

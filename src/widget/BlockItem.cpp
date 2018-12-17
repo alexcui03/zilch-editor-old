@@ -124,17 +124,7 @@ void BlockItem::RunFunction() {
 }
 
 void BlockItem::paintEvent(QPaintEvent *) {
-/*	QRect Rect = this->rect();
-	QPixmap Pixmap(Rect.size());
-	Pixmap.fill(this, Rect.topLeft());
-	QPainter Painter(&Pixmap);
-	Painter.setBrush(QBrush(FillColor));
-	Painter.setPen(QPen(FrameColor));
-	Painter.drawPolygon(Polygon);
-	Painter.end();
-	QPainter Device(this);
-	Device.drawPixmap(Rect.topLeft(), Pixmap);
-*/	QPainter Painter(this);
+	QPainter Painter(this);
 	Painter.setBrush(QBrush(FillColor));
 	Painter.setPen(QPen(FrameColor));
 	Painter.drawPolygon(Polygon);
@@ -166,9 +156,9 @@ void BlockItem::mouseMoveEvent(QMouseEvent *e) {
 		else {
 			if (isDragging) {
 				move(AppWindow->mapFromGlobal(e->globalPos()) - MovVector);
-				BlockItem *LastTemp = this;
-				for (BlockItem *Temp = BlockData->NextBlock->Item; Temp != nullptr; LastTemp = Temp, Temp = Temp->BlockData->NextBlock->Item) {
-					Temp->move(LastTemp->x(), LastTemp->y() + LastTemp->height() - 3);
+				ScratchBlock *LastTemp = this->BlockData;
+				for (ScratchBlock *Temp = BlockData->NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
+					Temp->Item->move(LastTemp->Item->x(), LastTemp->Item->y() + LastTemp->Item->height() - 3);
 				}
 			}
 			else {
@@ -180,11 +170,11 @@ void BlockItem::mouseMoveEvent(QMouseEvent *e) {
 				move(AppWindow->mapFromGlobal(e->globalPos()) - MovVector);
 				setParent(AppWindow);
 				show();
-				BlockItem *LastTemp = this;
-				for (BlockItem *Temp = BlockData->NextBlock->Item; Temp != nullptr; LastTemp = Temp, Temp = Temp->BlockData->NextBlock->Item) {
-					Temp->setParent(AppWindow);
-					Temp->move(LastTemp->x(), LastTemp->y() + LastTemp->height() - 3);
-					Temp->show();
+				ScratchBlock *LastTemp = this->BlockData;
+				for (ScratchBlock *Temp = BlockData->NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
+					Temp->Item->setParent(AppWindow);
+					Temp->Item->move(LastTemp->Item->x(), LastTemp->Item->y() + LastTemp->Item->height() - 3);
+					Temp->Item->show();
 				}
 				isDragging = true;
 			}
@@ -200,8 +190,8 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 			// If the block is not in edit area.
 			if (!Edit->rect().contains(Edit->mapFromGlobal(e->globalPos()))) {
 				// Delete all block below.
-				BlockItem *Temp = this;
-				for (BlockItem *Item = BlockData->NextBlock->Item; Temp != nullptr; Temp = Item, Item = Item->BlockData->NextBlock->Item) {
+				ScratchBlock *LastTemp = this->BlockData;
+				for (ScratchBlock *Temp = BlockData->NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
 					delete Temp;
 				}
 			}
@@ -224,11 +214,11 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 				}
 				show();
 				// Remove all blocks below.
-				BlockItem *LastTemp = this;
-				for (BlockItem *Temp = BlockData->NextBlock->Item; Temp != nullptr; LastTemp = Temp, Temp = Temp->BlockData->NextBlock->Item) {
-					Temp->setParent(Edit);
-					Temp->move(LastTemp->x(), LastTemp->y() + LastTemp->height() - 3);
-					Temp->show();
+				ScratchBlock *LastTemp = this->BlockData;
+				for (ScratchBlock *Temp = BlockData->NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
+					Temp->Item->setParent(Edit);
+					Temp->Item->move(LastTemp->Item->x(), LastTemp->Item->y() + LastTemp->Item->height() - 3);
+					Temp->Item->show();
 				}
 			}
 		}

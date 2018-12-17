@@ -22,7 +22,7 @@ std::string Translator::operator[](std::string LocalisedString) {
 		return StringMap[LocalisedString];
 	}
 }
-/*
+/* for const char*
 const char *Translator::operator[](const char *LocalisedString) {
 	auto &StringMap = TranslationString[UsingLanguage];
 	if (StringMap.find(LocalisedString) == StringMap.end()) {
@@ -84,6 +84,7 @@ void Translator::LoadTranslation(std::string Path) {
 			File.close();
 		}
 	}
+	/* Output languages
 	AppLogger.AddLog("Debug", "Language List");
 	for (auto &c : LanguageMap) {
 		AppLogger.AddLog("Debug", c.first + ":" + c.second);
@@ -95,6 +96,7 @@ void Translator::LoadTranslation(std::string Path) {
 			AppLogger.AddLog("Debug", "  " + d.first + ":" + d.second);
 		}
 	}
+	*/
 }
 
 void Translator::SetLanguage(std::string Lang) {

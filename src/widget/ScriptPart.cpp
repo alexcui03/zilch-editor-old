@@ -1,7 +1,8 @@
 #include "ScriptPart.h"
-#include "../scratch/Scratch.h"
 #include "../logger/Logger.h"
-#include <QDebug>
+#include "../scratch/Scratch.h"
+#include "../scratch/ScratchSprite.h"
+#include "../scratch/ScratchStage.h"
 
 ScriptPart_BlockTab::ScriptPart_BlockTab(QWidget *parent):Widget(parent) {
 	LastClicked = nullptr;
@@ -40,7 +41,7 @@ void ScriptPart_BlockView::Reload(ScratchBlockCategory *Category) {
 	Block.clear();
 	size_t Length = Category->Block.size();
 	for (size_t i = 0; i < Length; i++) {
-		const auto &Temp = Category->Block[i];
+		ScratchBlock *Temp = new ScratchBlock(Category->Block[i]);
 		BlockItem *Item = new BlockItem(Temp, nullptr, nullptr, this);
 		Item->isViewingBlock = true;
 		Item->ViewerIndex = i;
@@ -56,6 +57,11 @@ void ScriptPart_BlockView::Reload(ScratchBlockCategory *Category) {
 }
 
 ScriptPart_ScriptEdit::ScriptPart_ScriptEdit(QWidget *parent):Widget(parent) {
+	Object = &ScratchMain.Stage;
+	connect(this, SIGNAL(reload()), SLOT(Reload()));
+}
+
+void ScriptPart_ScriptEdit::Reload() {
 
 }
 

@@ -82,3 +82,18 @@ Features:
   - Added ui of SpritePart_Topbar.
 Source:
   - Added jsdoc for some funtions.
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0.370
+Date: 2018.12.14
+Features:
+  - Added GUI to show sprite's information.
+  - Added API for decode YAML data.
+  - Set default style as Fusion(some system may not support).
+  - Changed size of EditArea.
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0.392
+Date: 2018.12.16
+Features:
+  - Changed block's source.
+  - Added cpu status output to crasher.(amd64)
+---------------------------------------------------------------------------------------------------
