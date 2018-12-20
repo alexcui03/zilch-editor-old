@@ -13,6 +13,7 @@
 #include "ScriptPart.h"
 #include "../scratch/ScratchBlockCategory.h"
 #include "../util/Util.h"
+#include "../logger/Logger.h"
 
 BlockItem::BlockItem(ScratchBlock *Block, ScratchBlock *LastBlock, ScratchBlock *NextBlock, QWidget *parent):Widget(parent) {
 	this->BlockData = Block;
@@ -20,6 +21,7 @@ BlockItem::BlockItem(ScratchBlock *Block, ScratchBlock *LastBlock, ScratchBlock 
 	this->BlockData->NextBlock = NextBlock;
 	this->isDragging = false;
 	this->isViewingBlock = false;
+	this->Object = nullptr;
 	this->FillColor = BlockData->Block->Category->Color;
 	this->FrameColor = QColor(BlockData->Block->Category->Color) * 0.9;
 	this->ViewerIndex = 0;
@@ -146,6 +148,7 @@ void BlockItem::mouseMoveEvent(QMouseEvent *e) {
 			NewItem->isViewingBlock = true;
 			NewItem->move(pos());
 			NewItem->show();
+			BlockData->Item = this;
 			setParent(AppWindow);
 			MovVector = e->pos();
 			move(AppWindow->mapFromGlobal(e->globalPos()) - MovVector);
@@ -167,8 +170,8 @@ void BlockItem::mouseMoveEvent(QMouseEvent *e) {
 					BlockData->LastBlock = nullptr;
 				}
 				MovVector = e->pos();
-				move(AppWindow->mapFromGlobal(e->globalPos()) - MovVector);
 				setParent(AppWindow);
+				move(AppWindow->mapFromGlobal(e->globalPos()) - MovVector);
 				show();
 				ScratchBlock *LastTemp = this->BlockData;
 				for (ScratchBlock *Temp = BlockData->NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
@@ -192,7 +195,7 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 				// Delete all block below.
 				ScratchBlock *LastTemp = this->BlockData;
 				for (ScratchBlock *Temp = BlockData->NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
-					delete Temp;
+					delete LastTemp;
 				}
 			}
 			else {
@@ -203,14 +206,18 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 				setParent(Edit);
 				if (Nearest != nullptr) {
 					// Insert as next for the nearest block.
-					BlockData->NextBlock = Nearest->BlockData->NextBlock;
-					Nearest->BlockData->NextBlock = BlockData;
-					BlockData->LastBlock = Nearest->BlockData;
+					this->BlockData->NextBlock = Nearest->BlockData->NextBlock;
+					Nearest->BlockData->NextBlock = this->BlockData;
+					this->BlockData->LastBlock = Nearest->BlockData;
 					move(Nearest->pos().x(), Nearest->pos().y() + Nearest->height() - 4);
 				}
 				else {
 					// No search for the nearest block.
 					move(Edit->mapFromGlobal(e->globalPos()) - MovVector);
+					if (Object == nullptr) {
+						Object = Edit->Object;
+						Edit->Object->Blocks.push_back(this->BlockData);
+					}
 				}
 				show();
 				// Remove all blocks below.

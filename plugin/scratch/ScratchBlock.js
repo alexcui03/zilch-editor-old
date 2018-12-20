@@ -19,6 +19,10 @@ class ScratchBlock {
         this.x = 0;
         this.y = 0;
     }
+
+    toString() {
+        return `(ScratchBlock)[blockprototype:${this.blockprototype}]`
+    }
 }
 
 export default ScratchBlock

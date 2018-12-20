@@ -7,6 +7,7 @@
 #include <QEvent>
 #include "Widget.h"
 #include "../scratch/ScratchBlock.h"
+#include "../scratch/ScratchObject.h"
 
 class BlockItem : public Widget {
 	Q_OBJECT
@@ -27,6 +28,7 @@ signals:
 public:
 	bool isViewingBlock;
 	ScratchBlock *BlockData;
+	ScratchObject *Object;
 	size_t ViewerIndex;
 	QLabel *TextLabel;
 private:

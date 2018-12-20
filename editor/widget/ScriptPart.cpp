@@ -62,7 +62,24 @@ ScriptPart_ScriptEdit::ScriptPart_ScriptEdit(QWidget *parent):Widget(parent) {
 }
 
 void ScriptPart_ScriptEdit::Reload() {
-
+	for (auto &c : this->children()) {
+		dynamic_cast<Widget*>(c)->hide();
+	}
+	for (auto &c : Object->Blocks) {
+		if (c->isHead()) {
+			if (c->Item == nullptr) {
+				c->Item = new BlockItem(c, nullptr, nullptr, this);
+			}
+			c->Item->move(c->X, c->Y);
+		}
+		else {
+			if (c->Item == nullptr) {
+				c->Item = new BlockItem(c, c->LastBlock, c->NextBlock, this);
+			}
+			c->Item->move(c->LastBlock->Item->x(), c->LastBlock->Item->y() + c->LastBlock->Item->height());
+		}
+		c->Item->show();
+	}
 }
 
 ScriptPart::ScriptPart(QWidget *parent):Widget(parent) {

@@ -8,6 +8,7 @@ class BlockItem;
 class ScratchBlock {
 public:
 	ScratchBlock(ScratchBlockPrototype *Block, ScratchBlock *LastBlock = nullptr, ScratchBlock *NextBlock = nullptr);
+	~ScratchBlock();
 	bool isHead();
 public:
 	ScratchBlockPrototype *Block;
