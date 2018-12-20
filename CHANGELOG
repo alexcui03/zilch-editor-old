@@ -101,12 +101,12 @@ Version: 0.1.0.408
 Date: 2018.12.20
 Bugfixes:
   - Fixed the block cannot be dragged after the block was copied.[bug#9]
-  - Fixed sometimes program will crashed while inserting or moving blocks.[bug#13]
-  - Fixed the program crash when delete a block.[bug#15]
-  - Fixed the program crash when drag a block.[bug#16]
-  - Fixed the program crash when release a block.[bug#17]
+  - Fixed sometimes the program will crash while inserting or moving blocks.[bug#13]
+  - Fixed the program crash when deleting a block.[bug#15]
+  - Fixed the program crash when dragging a block.[bug#16]
+  - Fixed the program crash when releasing a block.[bug#17]
   - Fixed the program crash when run project.[bug#18]
-  - Fixed the program crash when move a block.[bug#19]
+  - Fixed the program crash when moving a block.[bug#19]
 Source:
   - Added compiler option /WA on msvc and -Werror on gcc, the compiler will make warnings as errors
   - Removed resource file.
