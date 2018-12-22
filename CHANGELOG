@@ -108,6 +108,14 @@ Bugfixes:
   - Fixed the program crash when run project.[bug#18]
   - Fixed the program crash when moving a block.[bug#19]
 Source:
-  - Added compiler option /WA on msvc and -Werror on gcc, the compiler will make warnings as errors
+  - Added compiler option /WA on msvc and -Werror on gcc, the compiler will make warnings as errors.
   - Removed resource file.
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0.413
+Date: 2018.12.22
+Features:
+  - Add button to show information of sprite.
+Source:
+  - Deleted unsed signals and slots.
+  - Changed block's function calling.
 ---------------------------------------------------------------------------------------------------
