@@ -11,9 +11,11 @@ public:
 	SpriteListItem(ScratchSprite *Sprite, QWidget *parent = nullptr);
 public slots:
 	void OnClick();
+	void ShowInfo();
 public:
 	ScratchSprite *Sprite;
 	QLabel *Text;
+	Widget *Button;
 };
 
 #endif // SPRITELISTITEM_H

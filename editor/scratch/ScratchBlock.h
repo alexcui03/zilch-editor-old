@@ -10,6 +10,7 @@ public:
 	ScratchBlock(ScratchBlockPrototype *Block, ScratchBlock *LastBlock = nullptr, ScratchBlock *NextBlock = nullptr);
 	~ScratchBlock();
 	bool isHead();
+	void Run();
 public:
 	ScratchBlockPrototype *Block;
 	ScratchBlock *LastBlock;

@@ -1,4 +1,5 @@
 #include "ScriptPart.h"
+#include "MainWindow.h"
 #include "../logger/Logger.h"
 #include "../scratch/Scratch.h"
 #include "../scratch/ScratchSprite.h"
@@ -57,7 +58,6 @@ void ScriptPart_BlockView::Reload(ScratchBlockCategory *Category) {
 }
 
 ScriptPart_ScriptEdit::ScriptPart_ScriptEdit(QWidget *parent):Widget(parent) {
-	Object = &ScratchMain.Stage;
 	connect(this, SIGNAL(reload()), SLOT(Reload()));
 }
 
@@ -65,7 +65,7 @@ void ScriptPart_ScriptEdit::Reload() {
 	for (auto &c : this->children()) {
 		dynamic_cast<Widget*>(c)->hide();
 	}
-	for (auto &c : Object->Blocks) {
+	for (auto &c : AppWindow->EditArea->Object->Blocks) {
 		if (c->isHead()) {
 			if (c->Item == nullptr) {
 				c->Item = new BlockItem(c, nullptr, nullptr, this);

@@ -38,11 +38,10 @@ Scratch::Scratch() {
  * @brief Scratch::ProgramRun - Run program.
  */
 void Scratch::ProgramRun() {
-	ScriptPart_ScriptEdit *&Edit = AppWindow->EditArea->ScriptPart->ScriptEdit;
-	for (const auto &c : Edit->children()) {
-		if (dynamic_cast<BlockItem*>(c)->BlockData->Block->Name == "When program start") {
-			// TODO: multiprocess
-			emit dynamic_cast<BlockItem*>(c)->run();
+	///TODO: Muiltiprocess
+	for (const auto &c : this->Stage.Blocks) {
+		if (c->Block->Name == "When program start") {
+			c->Run();
 		}
 	}
 }

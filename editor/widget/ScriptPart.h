@@ -47,8 +47,6 @@ public slots:
 	void Reload();
 signals:
 	void reload();
-public:
-	ScratchObject *Object;
 };
 
 class ScriptPart : public Widget {

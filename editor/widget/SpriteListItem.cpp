@@ -2,6 +2,8 @@
 #include <QPalette>
 #include <QColor>
 #include "SpriteArea.h"
+#include "ScriptPart.h"
+#include "MainWindow.h"
 
 /**
  * @brief SpriteListItem::SpriteListItem - Constructor.
@@ -23,18 +25,33 @@ SpriteListItem::SpriteListItem(ScratchSprite *Sprite, QWidget *parent) : Widget(
 	Text->setText(Sprite->Name.c_str());
 	Text->setAlignment(Qt::AlignCenter);
 
+	Button = new Widget(this);
+	Button->setObjectName("SpriteListItem_Text");
+	Button->move(3, 3);
+	Button->resize(5, 5);
+	Button->setAutoFillBackground(true);
+	Button->setPalette(QPalette(QColor(0x66CCFF)));
+
 	connect(this, SIGNAL(leftclicked()), SLOT(OnClick()));
+	connect(Button, SIGNAL(leftclicked()), this, SLOT(ShowInfo()));
 }
 
 /**
  * @brief SpriteListItem::OnClick - Onclick event.
  */
 void SpriteListItem::OnClick() {
+	AppWindow->EditArea->Object = this->Sprite;
+}
+
+/**
+ * @brief SpriteListItem::ShowInfo - Onclick event.
+ */
+void SpriteListItem::ShowInfo() {
 	SpriteArea_SpriteArea *Area = dynamic_cast<SpriteArea_SpriteArea*>(parentWidget());
 	for (size_t i = 0; i < Area->SpriteList.size(); i++) {
 		if (Area->SpriteList[i]->Sprite->Name == Sprite->Name) {
 			Area->ShowIndex = static_cast<int>(i);
-			emit Area->refresh();
+			Area->RefreshList();
 		}
 	}
 }

@@ -16,3 +16,10 @@ ScratchBlock::~ScratchBlock() {
 bool ScratchBlock::isHead() {
 	return this->LastBlock == nullptr;
 }
+
+void ScratchBlock::Run() {
+	this->Block->Function();
+	if (this->NextBlock != nullptr) {
+		this->NextBlock->Run();
+	}
+}

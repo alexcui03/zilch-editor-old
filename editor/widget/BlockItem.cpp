@@ -113,16 +113,6 @@ BlockItem::BlockItem(ScratchBlock *Block, ScratchBlock *LastBlock, ScratchBlock 
 		break;
 	}
 	}
-
-	connect(this, SIGNAL(copy(const QPoint &)), SLOT(Copy(const QPoint &)));
-	connect(this, SIGNAL(run()), SLOT(RunFunction()));
-}
-
-void BlockItem::RunFunction() {
-	BlockData->Block->Function();
-	if (BlockData->NextBlock != nullptr) {
-		BlockData->NextBlock->Item->RunFunction();
-	}
 }
 
 void BlockItem::paintEvent(QPaintEvent *) {
@@ -189,12 +179,12 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 	static auto Edit = AppWindow->EditArea->ScriptPart->ScriptEdit;
 	if (e->button() == Qt::LeftButton) {
 		// If the block is on dragging and for edit.
-		if (isDragging && !isViewingBlock) {
+		if (this->isDragging && !this->isViewingBlock) {
 			// If the block is not in edit area.
 			if (!Edit->rect().contains(Edit->mapFromGlobal(e->globalPos()))) {
 				// Delete all block below.
 				ScratchBlock *LastTemp = this->BlockData;
-				for (ScratchBlock *Temp = BlockData->NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
+				for (ScratchBlock *Temp = this->BlockData->NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
 					delete LastTemp;
 				}
 			}
@@ -214,9 +204,9 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 				else {
 					// No search for the nearest block.
 					move(Edit->mapFromGlobal(e->globalPos()) - MovVector);
-					if (Object == nullptr) {
-						Object = Edit->Object;
-						Edit->Object->Blocks.push_back(this->BlockData);
+					if (this->Object == nullptr) {
+						this->Object = AppWindow->EditArea->Object;
+						AppWindow->EditArea->Object->Blocks.push_back(this->BlockData);
 					}
 				}
 				show();
@@ -224,7 +214,7 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 				ScratchBlock *LastTemp = this->BlockData;
 				for (ScratchBlock *Temp = BlockData->NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
 					Temp->Item->setParent(Edit);
-					Temp->Item->move(LastTemp->Item->x(), LastTemp->Item->y() + LastTemp->Item->height() - 3);
+					Temp->Item->move(LastTemp->Item->x(), LastTemp->Item->y() + LastTemp->Item->height() - 4);
 					Temp->Item->show();
 				}
 			}
@@ -251,8 +241,4 @@ BlockItem *BlockItem::SearchNearest(const QPoint &Pos) const {
 		}
 	}
 	return dynamic_cast<BlockItem*>(Nearest);
-}
-
-void BlockItem::Copy(const QPoint &) {
-	// NO USE
 }

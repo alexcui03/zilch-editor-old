@@ -15,16 +15,10 @@ public:
 	BlockItem(ScratchBlock *Block, ScratchBlock *LastBlock, ScratchBlock *NextBlock, QWidget *parent = nullptr);
 	BlockItem *SearchNearest(const QPoint &Pos) const;
 public slots:
-	void Copy(const QPoint &Pos);
-	void RunFunction();
 	void paintEvent(QPaintEvent *e) override;
-	//void leaveEvent(QEvent *e) override;
 	void mousePressEvent(QMouseEvent *e) override;
 	void mouseMoveEvent(QMouseEvent *e) override;
 	void mouseReleaseEvent(QMouseEvent *e) override;
-signals:
-	void copy(const QPoint &Pos);
-	void run();
 public:
 	bool isViewingBlock;
 	ScratchBlock *BlockData;
