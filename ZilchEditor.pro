@@ -4,26 +4,31 @@
 #
 #-------------------------------------------------
 
+#=================================================
 # Qt settings.
 QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
+#=================================================
 # Project settings.
 TARGET = ZilchEditor
 TEMPLATE = app
-
+#=================================================
 # Project marco definition.
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
+#-------------------------------------------------
 # You can also make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+#-------------------------------------------------
+# Disable MSVC++ compiler security warnings
 #DEFINES += _CRT_SECURE_NO_DEPRECATE
 DEFINES += _CRT_SECURE_NO_WARNINGS
+#-------------------------------------------------
 # Compiling environment(cpu).
 #DEFINES += PLATFORM_X86 #(NOT ALLOWED)
 DEFINES += PLATFORM_X86_64
@@ -34,26 +39,26 @@ DEFINES += PLATFORM_WINDOWS
 # JavaScript engine.
 DEFINES += JAVASCRIPT_GOOGLE # use Google V8 (NOT ALLOWED)
 #DEFINES += JAVASCRIPT_MOZILLA #use Mozilla Spider Monkey (NOT ALLOWED)
-
+#=================================================
 # C++ Standard
 #CONFIG += c++11 # use ISO/IEC 14882:2011
 #CONFIG += c++14 # use ISO/IEC 14882:2014
 CONFIG += c++17 # use ISO/IEC 14882:2017
 #CONFIG += c++2a # use C++2a
-
+#=================================================
 # Compiler settings
 QMAKE_CXXFLAGS += /WX # make warnings as error [MSVC++]
 #QMAKE_CXXFLAGS += -Werror # make warnings as error [G++]
 #QMAKE_CFLAGS += /WX # make warnings as error [MSVC]
 #QMAKE_CFLAGS += -Werror # make warnings as error [GCC]
-
+#=================================================
 # The program version
 # {Marjor}.{Minor}.{Revision}.{Build}
 VERSION = 0.1.0.408
-
+#=================================================
 # Linked libs.
 LIBS += -ldbghelp # DbgHelp.dll [Windows]
-
+#=================================================
 # Project files.
 SOURCES += \
     editor/Main.cpp \
@@ -102,7 +107,7 @@ SOURCES += \
     editor/scratch/ScratchObject.cpp \
     editor/scratch/ScratchResource.cpp \
     editor/util/Resource.cpp
-
+#-------------------------------------------------
 HEADERS += \
     editor/stylesheet/StyleSheet.h \
     editor/Define.h \
@@ -150,9 +155,9 @@ HEADERS += \
     editor/scratch/ScratchObject.h \
     editor/scratch/ScratchResource.h \
     editor/util/Resource.h
-
+#-------------------------------------------------
 RESOURCES +=
-
+#=================================================
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
