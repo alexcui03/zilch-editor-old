@@ -114,8 +114,13 @@ Source:
 Version: 0.1.0.413
 Date: 2018.12.22
 Features:
-  - Add button to show information of sprite.
+  - Added button to show information of sprite.
 Source:
   - Deleted unsed signals and slots.
   - Changed block's function calling.
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0.417 | 0.1.0
+Date: 2018.12.25
+Source:
+  - Added destructor to some of functions.
 ---------------------------------------------------------------------------------------------------
