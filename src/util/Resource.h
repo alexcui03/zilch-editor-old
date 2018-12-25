@@ -22,15 +22,21 @@ public:
 
 class ResourceAudio : public ResourceBasic {
 public:
-	uint64_t Size;
+	unsigned int Length;
 };
 
 class ResourceVideo : public ResourceBasic {
-
+public:
+	unsigned int Length;
+	unsigned int Height;
+	unsigned int Width;
+	unsigned int FPS;
 };
 
 class ResourcePhoto : public ResourceBasic {
-
+public:
+	unsigned int Height;
+	unsigned int Width;
 };
 
 #endif // RESOURCE_H

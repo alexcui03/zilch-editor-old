@@ -35,6 +35,20 @@ Scratch::Scratch() {
 }
 
 /**
+ * @brief Scratch::~Scratch - Destructor.
+ */
+Scratch::~Scratch() {
+	for (size_t i = 0; i < BlockCategory.size(); i++) {
+		delete BlockCategory[i];
+	}
+	BlockCategory.clear();
+	for (size_t i = 0; i < Block.size(); i++) {
+		delete Block[i];
+	}
+	Block.clear();
+}
+
+/**
  * @brief Scratch::ProgramRun - Run program.
  */
 void Scratch::ProgramRun() {

@@ -9,6 +9,7 @@
 class ScratchBlockCategory {
 public:
 	ScratchBlockCategory(std::string Name, unsigned int Color);
+	~ScratchBlockCategory();
 public:
 	std::vector<ScratchBlockPrototype*> Block;
 	std::string Name;

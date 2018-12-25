@@ -9,3 +9,8 @@ ScratchBlockPrototype::ScratchBlockPrototype(ScratchBlockCategory *Category, std
 
 	Category->Block.push_back(this);
 }
+
+ScratchBlockPrototype::~ScratchBlockPrototype() {
+
+}
+
