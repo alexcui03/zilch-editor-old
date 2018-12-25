@@ -5,19 +5,18 @@
 #include <vector>
 #include <string>
 
-class ResourceBasic;
-class ResourceAudio;
-class ResourceVideo;
-class ResourcePhoto;
-
 union HashMD5 {
 	unsigned char Byte[16];
 };
 
 class ResourceBasic {
 public:
+	ResourceBasic();
+	~ResourceBasic();
+public:
 	HashMD5 Hash;
 	std::string Path;
+	void *Data;
 };
 
 class ResourceAudio : public ResourceBasic {
@@ -33,7 +32,7 @@ public:
 	unsigned int FPS;
 };
 
-class ResourcePhoto : public ResourceBasic {
+class ResourceBitmap : public ResourceBasic {
 public:
 	unsigned int Height;
 	unsigned int Width;
