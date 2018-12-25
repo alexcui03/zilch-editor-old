@@ -1,0 +1,126 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0.210
+Date: 2018.12.01
+Features:
+  - Main frame of widgets.
+  - Block drawing(BODY_BLOCK).
+  - Script category tab drawing.
+  - Menu bar painting.
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0.236
+Date: 2018.12.02
+Features:
+  - Can drag and move blocks.
+  - Copy block from ScriptPart_BlockView widget.
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0.255
+Date: 2018.12.03
+Features:
+  - Block display: TAIL_BLOCK
+  - Block display: HEAD_BLOCK
+  - Delete block while dragging it out from ScriptPart_ScriptEdit widget
+Bugfixes:
+  - Fixed block copy all time.[bug#1]
+  - Fixed block position error while moving.[bug#2]
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0.276
+Date: 2018.12.04
+Bugfixes:
+  - Fixed block cannot be dragged after the block was copied.[bug#3]
+  - Fixed block's position is wrong after the block was copied.[bug#4]
+  - Fixed block's offset vector is [0, 0] after the block was copied.[bug#5]
+---------------------------------------------------------------------------------------------------
+Version: alpha-bd294
+Date: 2018.12.09
+Features:
+  - Block can be connect if their position are lower than (30, 30)
+Bugfixes:
+  - Fixed block in edit area but contains in main widget.[bug#7]
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0.307
+Date: 2018.12.11
+Features:
+  - Added function to blocks.
+  - Added TestSprite for testing program.
+  - Added Test block: add 10 to x
+  - Added Test block: sub 10 to x
+  - Added Test block: add 10 to y
+  - Added Test block: sub 10 to y
+  - Now the project can be run.
+  - The first executable program on win_x86_64.
+Bugfixes:
+  - Fixed some blocks doesn¡¯t redraw while changing block tabs.[bug#6]
+  - Fixed the position of the block in block view with index greater than 2 error.[bug#11]
+Source:
+  - Now output assembly file for debugging.[compiler#msvc]
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0.313
+Date: 2018.12.11
+Features:
+  - Insert block between two blocks.
+  - Added dump file making if program crashed.
+  - Added function for catching unhandled exception.
+  - Print logs to log file if the program crashed, including calling stack, source file.
+Source:
+  - Added defines PLATFORM_X86_64, PLATFORM_X86 for compiling.
+  - Added defines PLATFORM_WINDOWS, PLATFORM_LINUX for compiling.
+  - Added VERSION for executable file information.
+  - Deleted assembly file output for msvc++ compiler to make building project faster.[compiler#msvc]
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0.346
+Date: 2018.12.13
+Features:
+  - Changed StageArea top-left and top-right bold radius into 8px.
+  - Changed bold radius of start button and stop button into 8px.
+  - Changed calling resize function of some widgets into resizeEvent function.
+  - Changed translation file into YAML file.
+  - Changed title of "Zilsh" into "Zilch".
+  - Each translation file must have key "current_lang" to show that what language is.
+  - Added translation file for language type.
+  - Added translation enable option file.
+  - Added StagePart and SpritePart to StageArea.
+  - Added ui of SpritePart_Topbar.
+Source:
+  - Added jsdoc for some funtions.
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0.370
+Date: 2018.12.14
+Features:
+  - Added GUI to show sprite's information.
+  - Added API for decode YAML data.
+  - Set default style as Fusion(some system may not support).
+  - Changed size of EditArea.
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0.392
+Date: 2018.12.16
+Features:
+  - Changed block's source.
+  - Added cpu status output to crasher.[cpu#amd64, os#windows]
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0.408
+Date: 2018.12.20
+Bugfixes:
+  - Fixed the block cannot be dragged after the block was copied.[bug#9]
+  - Fixed sometimes the program will crash while inserting or moving blocks.[bug#13]
+  - Fixed the program crash when deleting a block.[bug#15]
+  - Fixed the program crash when dragging a block.[bug#16]
+  - Fixed the program crash when releasing a block.[bug#17]
+  - Fixed the program crash when run project.[bug#18]
+  - Fixed the program crash when moving a block.[bug#19]
+Source:
+  - Added compiler option /WA on msvc and -Werror on gcc, the compiler will make warnings as errors.
+  - Removed resource file.
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0.413
+Date: 2018.12.22
+Features:
+  - Added button to show information of sprite.
+Source:
+  - Deleted unsed signals and slots.
+  - Changed block's function calling.
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0.417 | 0.1.0
+Date: 2018.12.25
+Source:
+  - Added destructor to some of functions.
+---------------------------------------------------------------------------------------------------
