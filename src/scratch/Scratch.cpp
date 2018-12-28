@@ -1,4 +1,5 @@
 #include "Scratch.h"
+#include <filesystem>
 #include "../widget/MainWindow.h"
 #include "../widget/ScriptPart.h"
 #include "../widget/StageView.h"

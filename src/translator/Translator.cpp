@@ -4,7 +4,11 @@
 #include <fstream>
 #include <QDebug>
 
-namespace fs = std::experimental::filesystem;
+#ifndef _HAS_CXX17
+namespace std::filesystem {
+using namespace std::experimental::filesystem;
+}
+#endif
 
 constexpr unsigned int BUFSIZE = 1024;
 
@@ -35,8 +39,8 @@ const char *Translator::operator[](const char *LocalisedString) {
 }
 */
 void Translator::LoadTranslation(std::string Path) {
-	for (const auto &Temp : fs::directory_iterator(Path)) {
-		if (fs::is_directory(Temp)) {
+	for (const auto &Temp : std::filesystem::directory_iterator(Path)) {
+		if (std::filesystem::is_directory(Temp)) {
 			LoadTranslation(Temp.path().string());
 		}
 		else {

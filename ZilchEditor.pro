@@ -39,18 +39,22 @@ DEFINES += PLATFORM_WINDOWS
 # JavaScript engine.
 DEFINES += JAVASCRIPT_GOOGLE # use Google V8 (NOT ALLOWED)
 #DEFINES += JAVASCRIPT_MOZILLA #use Mozilla Spider Monkey (NOT ALLOWED)
+#-------------------------------------------------
+DEFINES += _HAS_CXX17 # enable ISO/IEC 14882:2017 [MSVC++]
 #=================================================
 # C++ Standard
-#CONFIG += c++11 # use ISO/IEC 14882:2011
-#CONFIG += c++14 # use ISO/IEC 14882:2014
-CONFIG += c++17 # use ISO/IEC 14882:2017
-#CONFIG += c++2a # use C++2a
+#CONFIG += C++11 # use ISO/IEC 14882:2011
+#CONFIG += C++14 # use ISO/IEC 14882:2014
+CONFIG += C++17 # use ISO/IEC 14882:2017
+#CONFIG += C++2a # use C++2a
 #=================================================
 # Compiler settings
 QMAKE_CXXFLAGS += /WX # make warnings as error [MSVC++]
-#QMAKE_CXXFLAGS += -Werror # make warnings as error [G++]
-#QMAKE_CFLAGS += /WX # make warnings as error [MSVC]
-#QMAKE_CFLAGS += -Werror # make warnings as error [GCC]
+QMAKE_CXXFLAGS += -Werror # make warnings as error [G++]
+QMAKE_CXXFLAGS += /std:c++17 # enable ISO/IEC 14882:2017 [MSVC++]
+QMAKE_CXXFLAGS += -std=c++17 # enable ISO/IEC 14882:2017 [G++]
+QMAKE_CFLAGS += /WX # make warnings as error [MSVC]
+QMAKE_CFLAGS += -Werror # make warnings as error [GCC]
 #=================================================
 # The program version
 # {Marjor}.{Minor}.{Revision}.{Build}
@@ -107,7 +111,8 @@ SOURCES += \
     src/scratch/ScratchObject.cpp \
     src/scratch/ScratchResource.cpp \
     src/util/Resource.cpp \
-    src/scratch/ScratchPlugin.cpp
+    src/plugin/PluginPrototype.cpp \
+    src/plugin/PluginBase.cpp
 #-------------------------------------------------
 HEADERS += \
     src/stylesheet/StyleSheet.h \
@@ -156,7 +161,8 @@ HEADERS += \
     src/scratch/ScratchObject.h \
     src/scratch/ScratchResource.h \
     src/util/Resource.h \
-    src/scratch/ScratchPlugin.h
+    src/plugin/PluginPrototype.h \
+    src/plugin/PluginBase.h
 #-------------------------------------------------
 RESOURCES +=
 #-------------------------------------------------

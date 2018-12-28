@@ -12,7 +12,6 @@ class Scratch {
 public:
 	Scratch();
 	~Scratch();
-	void LoadPlugin();
 	void ProgramRun();
 	void ProgramStop();
 public:
