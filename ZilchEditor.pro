@@ -10,7 +10,7 @@ QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 #=================================================
 # Project settings.
-TARGET = Zilchsrc
+TARGET = zilcheditor
 TEMPLATE = app
 #=================================================
 # Project marco definition.
@@ -106,7 +106,8 @@ SOURCES += \
     src/scratch/ScratchBlock.cpp \
     src/scratch/ScratchObject.cpp \
     src/scratch/ScratchResource.cpp \
-    src/util/Resource.cpp
+    src/util/Resource.cpp \
+    src/scratch/ScratchPlugin.cpp
 #-------------------------------------------------
 HEADERS += \
     src/stylesheet/StyleSheet.h \
@@ -154,12 +155,17 @@ HEADERS += \
     src/scratch/ScratchBlock.h \
     src/scratch/ScratchObject.h \
     src/scratch/ScratchResource.h \
-    src/util/Resource.h
+    src/util/Resource.h \
+    src/scratch/ScratchPlugin.h
 #-------------------------------------------------
 RESOURCES +=
+#-------------------------------------------------
+DISTFILES += \
+    bin/locale/en.yml
 #=================================================
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
 

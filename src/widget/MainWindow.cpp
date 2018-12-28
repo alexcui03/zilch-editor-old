@@ -40,6 +40,7 @@ MainWindow::MainWindow(std::string Title, QWidget *parent):QMainWindow(parent) {
 	MenuOption = new QMenu(AppTranslator["window_menubar_option"].c_str());
 	MenuOption->setObjectName("Menu_Option");
 	MenuOption->addAction(AppTranslator["window_menubar_option_settings"].c_str());
+	MenuOption->addAction(AppTranslator["window_menubar_option_about"].c_str(), qApp, SLOT(aboutQt()));
 
 	MenuBar->addMenu(MenuFile);
 	MenuBar->addMenu(MenuOption);
