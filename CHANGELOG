@@ -1,4 +1,25 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.0.420
+Date: 2018.12.29
+Features:
+  - Changed class for plugin information.
+Source:
+  - Added compile flags for c++ standard.
+  - Added marco '_HAS_CXX17'.
+  - Changed c++ standard to ISO/IEC 14882:2017.
+  - Changed namespace 'std::experiment::filesystem' to 'std::filesystem'.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.0.419
+Date: 2018.12.28
+Features:
+  - Added class for plugin information.
+  - Added information widget to menu bar.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.0.418
+Date: 2018.12.25
+Features:
+  - Added loading for image resource.
+---------------------------------------------------------------------------------------------------
 Version: 0.1.0.417 | 0.1.0
 Date: 2018.12.25
 Source:
