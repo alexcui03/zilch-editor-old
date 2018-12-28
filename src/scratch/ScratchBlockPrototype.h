@@ -18,6 +18,7 @@ enum class ScratchBlockType {
 class ScratchBlockPrototype {
 public:
 	ScratchBlockPrototype(ScratchBlockCategory *Category, std::string Name, ScratchBlockType Type, std::function<void()> Function);
+	~ScratchBlockPrototype();
 public:
 	ScratchBlockCategory *Category;
 	ScratchBlockType Type;

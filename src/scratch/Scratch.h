@@ -11,6 +11,7 @@
 class Scratch {
 public:
 	Scratch();
+	~Scratch();
 	void ProgramRun();
 	void ProgramStop();
 public:
