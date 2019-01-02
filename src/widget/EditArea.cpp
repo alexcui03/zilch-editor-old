@@ -41,3 +41,5 @@ void EditArea::ChangeObject(ScratchObject *Object) {
 	this->Object = Object;
 	this->ScriptPart->ScriptEdit->Reload();
 }
+
+

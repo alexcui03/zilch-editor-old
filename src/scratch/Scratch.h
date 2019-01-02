@@ -7,6 +7,7 @@
 #include "ScratchBlockCategory.h"
 #include "ScratchBlockPrototype.h"
 #include "ScratchStage.h"
+#include "ScratchResource.h"
 
 class Scratch {
 public:
@@ -17,6 +18,7 @@ public:
 public:
 	std::vector<ScratchBlockCategory*> BlockCategory;
 	std::vector<ScratchBlockPrototype*> Block;
+	ScratchResource ResourceControl;
 	ScratchStage Stage;
 };
 

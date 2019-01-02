@@ -40,7 +40,7 @@ SpriteListItem::SpriteListItem(ScratchSprite *Sprite, QWidget *parent) : Widget(
  * @brief SpriteListItem::OnClick - Onclick event.
  */
 void SpriteListItem::OnClick() {
-	AppWindow->EditArea->Object = this->Sprite;
+	AppWindow->EditArea->ChangeObject(this->Sprite);
 }
 
 /**

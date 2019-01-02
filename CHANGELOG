@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.0.424
+Date: 2019.1.2
+Features:
+  - Now add a new empty sprite was enabled.
+  - Deleted TestSprite.
+  - Each sprite has their own blocks.
+Source:
+  - Changed some compile flags.
+---------------------------------------------------------------------------------------------------
 Version: 0.2.0.420
 Date: 2018.12.29
 Features:

@@ -22,7 +22,6 @@ public slots:
 public:
 	bool isViewingBlock;
 	ScratchBlock *BlockData;
-	ScratchObject *Object;
 	size_t ViewerIndex;
 	QLabel *TextLabel;
 private:

@@ -51,6 +51,7 @@ SpriteArea_SpriteArea::SpriteArea_SpriteArea(QWidget *parent) : Widget(parent) {
 	ButtonBack->setObjectName("SpriteArea_SpriteArea_ButtonBack");
 	ButtonBack->move(5, 35);
 	ButtonBack->resize(20, 20);
+	connect(ButtonBack, SIGNAL(clicked()), this, SLOT(BackToList()));
 
 	View = new QLabel(this);
 	View->setObjectName("SpriteArea_SpriteArea_View");
@@ -89,14 +90,8 @@ SpriteArea_SpriteArea::SpriteArea_SpriteArea(QWidget *parent) : Widget(parent) {
 	Show->resize(200, 25);
 	Show->setText("Show:");
 
-	for (auto &c : ScratchMain.Stage.Sprite) {
-		SpriteListItem *Item = new SpriteListItem(c, this);
-		SpriteList.push_back(Item);
-	}
-
-	connect(this, SIGNAL(refresh()), SLOT(RefreshList()));
-	connect(ButtonBack, SIGNAL(clicked()), this, SLOT(BackToList()));
-	emit refresh();
+	ReloadList();
+	RefreshList();
 }
 
 /**
@@ -131,6 +126,19 @@ void SpriteArea_SpriteArea::RefreshList() {
 	}
 }
 
+void SpriteArea_SpriteArea::ReloadList() {
+	if (!SpriteList.empty()) {
+		for (auto &c : SpriteList) {
+			delete c;
+		}
+		SpriteList.clear();
+	}
+	for (auto &c : ScratchMain.Stage.Sprite) {
+		SpriteListItem *Item = new SpriteListItem(&c, this);
+		SpriteList.push_back(Item);
+	}
+}
+
 /**
  * @brief SpriteArea_SpriteArea::BackToList - Refresh view.
  */
@@ -161,6 +169,7 @@ SpriteArea_SpriteArea_TopBar::SpriteArea_SpriteArea_TopBar(QWidget *parent) : Wi
 	ButtonNewSprite->setObjectName("SpriteArea_SpriteArea_TopBar_ButtonNewSprite");
 	ButtonNewSprite->move(370, 5);
 	ButtonNewSprite->resize(20, 20);
+	connect(ButtonNewSprite, SIGNAL(clicked()), this, SLOT(NewSprite()));
 
 	TextNewSprite = new QLabel(this);
 	TextNewSprite->setObjectName("SpriteArea_SpriteArea_TopBar_TextNewSprite");
@@ -176,6 +185,12 @@ void SpriteArea_SpriteArea_TopBar::resizeEvent(QResizeEvent*) {
 	TextSprite->adjustSize();
 	TextNewSprite->adjustSize();
 	TextNewSprite->move(380 - ButtonNewSprite->width() - TextNewSprite->width(), 5);
+}
+
+void SpriteArea_SpriteArea_TopBar::NewSprite() {
+	ScratchMain.Stage.CreateNew();
+	dynamic_cast<SpriteArea_SpriteArea*>(parent())->ReloadList();
+	dynamic_cast<SpriteArea_SpriteArea*>(parent())->RefreshList();
 }
 
 

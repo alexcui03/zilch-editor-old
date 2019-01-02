@@ -1,4 +1,5 @@
 #include "ScratchBlock.h"
+#include "ScratchObject.h"
 #include "../widget/BlockItem.h"
 
 ScratchBlock::ScratchBlock(ScratchBlockPrototype *Block, ScratchBlock *LastBlock, ScratchBlock *NextBlock) {
@@ -6,6 +7,7 @@ ScratchBlock::ScratchBlock(ScratchBlockPrototype *Block, ScratchBlock *LastBlock
 	this->LastBlock = LastBlock;
 	this->NextBlock = NextBlock;
 	this->Item = nullptr;
+	this->Object = nullptr;
 	this->X = this->Y = 0;
 }
 
@@ -18,7 +20,7 @@ bool ScratchBlock::isHead() {
 }
 
 void ScratchBlock::Run() {
-	this->Block->Function();
+	this->Block->Function(this->Object);
 	if (this->NextBlock != nullptr) {
 		this->NextBlock->Run();
 	}

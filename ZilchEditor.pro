@@ -50,11 +50,11 @@ CONFIG += C++17 # use ISO/IEC 14882:2017
 #=================================================
 # Compiler settings
 QMAKE_CXXFLAGS += /WX # make warnings as error [MSVC++]
-QMAKE_CXXFLAGS += -Werror # make warnings as error [G++]
+#QMAKE_CXXFLAGS += -Werror # make warnings as error [G++]
 QMAKE_CXXFLAGS += /std:c++17 # enable ISO/IEC 14882:2017 [MSVC++]
-QMAKE_CXXFLAGS += -std=c++17 # enable ISO/IEC 14882:2017 [G++]
+#QMAKE_CXXFLAGS += -std=c++17 # enable ISO/IEC 14882:2017 [G++]
 QMAKE_CFLAGS += /WX # make warnings as error [MSVC]
-QMAKE_CFLAGS += -Werror # make warnings as error [GCC]
+#QMAKE_CFLAGS += -Werror # make warnings as error [GCC]
 #=================================================
 # The program version
 # {Marjor}.{Minor}.{Revision}.{Build}

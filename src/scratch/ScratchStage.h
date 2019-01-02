@@ -8,8 +8,9 @@
 class ScratchStage : public ScratchObject {
 public:
 	ScratchStage();
+	void CreateNew();
 public:
-	std::vector<ScratchSprite*> Sprite;
+	std::vector<ScratchSprite> Sprite;
 };
 
 #endif // SCRATCHSTAGE_H

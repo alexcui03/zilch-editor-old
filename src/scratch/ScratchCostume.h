@@ -2,13 +2,14 @@
 #define SCRATCHCOSTUME_H
 
 #include <string>
+#include "ScratchResource.h"
 
 class ScratchCostume {
 public:
 	ScratchCostume();
 public:
 	std::string Name;
-	size_t ResourseID;
+	ResourcePhoto *Resourse;
 };
 
 #endif // SCRATCHCOSTUME_H

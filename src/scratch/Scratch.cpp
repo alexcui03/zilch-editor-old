@@ -4,6 +4,8 @@
 #include "../widget/ScriptPart.h"
 #include "../widget/StageView.h"
 
+#include "ScratchSprite.h"
+
 /**
  * @brief Scratch::Scratch - Constructor.
  */
@@ -12,27 +14,27 @@ Scratch::Scratch() {
 	BlockCategory.push_back(new ScratchBlockCategory("Motion", 0x4C97FF));
 	BlockCategory.push_back(new ScratchBlockCategory("Event", 0xFDD200));
 
-	Block.push_back(new ScratchBlockPrototype(BlockCategory[0], "add 10 to x", ScratchBlockType::BODY_BLOCK, []()->void {
-		auto &Sprite = AppWindow->StageArea->StageView->TestSprite;
+	Block.push_back(new ScratchBlockPrototype(BlockCategory[0], "add 10 to x", ScratchBlockType::BODY_BLOCK, [](ScratchObject* Object)->void {
+		auto Sprite = static_cast<ScratchSprite*>(Object)->Item;
 		Sprite->move(Sprite->x() + 10, Sprite->y());
 	}));
-	Block.push_back(new ScratchBlockPrototype(BlockCategory[0], "add 10 to y", ScratchBlockType::BODY_BLOCK, []()->void {
-		auto &Sprite = AppWindow->StageArea->StageView->TestSprite;
+	Block.push_back(new ScratchBlockPrototype(BlockCategory[0], "add 10 to y", ScratchBlockType::BODY_BLOCK, [](ScratchObject* Object)->void {
+		auto Sprite = static_cast<ScratchSprite*>(Object)->Item;
 		Sprite->move(Sprite->x(), Sprite->y() + 10);
 	}));
-	Block.push_back(new ScratchBlockPrototype(BlockCategory[0], "sub 10 to x", ScratchBlockType::BODY_BLOCK, []()->void {
-		auto &Sprite = AppWindow->StageArea->StageView->TestSprite;
+	Block.push_back(new ScratchBlockPrototype(BlockCategory[0], "sub 10 to x", ScratchBlockType::BODY_BLOCK, [](ScratchObject* Object)->void {
+		auto Sprite = static_cast<ScratchSprite*>(Object)->Item;
 		Sprite->move(Sprite->x() - 10, Sprite->y());
 	}));
-	Block.push_back(new ScratchBlockPrototype(BlockCategory[0], "sub 10 to y", ScratchBlockType::BODY_BLOCK, []()->void {
-		auto &Sprite = AppWindow->StageArea->StageView->TestSprite;
+	Block.push_back(new ScratchBlockPrototype(BlockCategory[0], "sub 10 to y", ScratchBlockType::BODY_BLOCK, [](ScratchObject* Object)->void {
+		auto Sprite = static_cast<ScratchSprite*>(Object)->Item;
 		Sprite->move(Sprite->x(), Sprite->y() - 10);
 	}));
-	Block.push_back(new ScratchBlockPrototype(BlockCategory[1], "When program start", ScratchBlockType::HEAD_BLOCK, []()->void {
+	Block.push_back(new ScratchBlockPrototype(BlockCategory[1], "When program start", ScratchBlockType::HEAD_BLOCK, [](ScratchObject*)->void {
 
 	}));
 
-	Stage.Sprite.push_back(new ScratchSprite("Sprite A"));
+	Stage.Sprite.push_back(ScratchSprite("Sprite A"));
 }
 
 /**

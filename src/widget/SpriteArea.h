@@ -36,11 +36,10 @@ class SpriteArea_SpriteArea : public Widget {
 public:
 	explicit SpriteArea_SpriteArea(QWidget *parent = nullptr);
 	void resizeEvent(QResizeEvent* size);
-public slots:
 	void RefreshList();
+	void ReloadList();
+public slots:
 	void BackToList();
-signals:
-	void refresh();
 public:
 	SpriteArea_SpriteArea_TopBar *TopBar;
 	std::vector<SpriteListItem*> SpriteList;
@@ -56,9 +55,12 @@ public:
 };
 
 class SpriteArea_SpriteArea_TopBar : public Widget {
+	Q_OBJECT
 public:
 	explicit SpriteArea_SpriteArea_TopBar(QWidget *parent = nullptr);
 	void resizeEvent(QResizeEvent* size);
+public slots:
+	void NewSprite();
 public:
 	QLabel *TextSprite;
 	QLabel *TextNewSprite;

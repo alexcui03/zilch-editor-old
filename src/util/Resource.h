@@ -32,7 +32,7 @@ public:
 	unsigned int FPS;
 };
 
-class ResourceBitmap : public ResourceBasic {
+class ResourcePhoto : public ResourceBasic {
 public:
 	unsigned int Height;
 	unsigned int Width;

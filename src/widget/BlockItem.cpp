@@ -21,7 +21,6 @@ BlockItem::BlockItem(ScratchBlock *Block, ScratchBlock *LastBlock, ScratchBlock 
 	this->BlockData->NextBlock = NextBlock;
 	this->isDragging = false;
 	this->isViewingBlock = false;
-	this->Object = nullptr;
 	this->FillColor = BlockData->Block->Category->Color;
 	this->FrameColor = QColor(BlockData->Block->Category->Color) * 0.9;
 	this->ViewerIndex = 0;
@@ -204,8 +203,8 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 				else {
 					// No search for the nearest block.
 					move(Edit->mapFromGlobal(e->globalPos()) - MovVector);
-					if (this->Object == nullptr) {
-						this->Object = AppWindow->EditArea->Object;
+					if (this->BlockData->Object == nullptr) {
+						this->BlockData->Object = AppWindow->EditArea->Object;
 						AppWindow->EditArea->Object->Blocks.push_back(this->BlockData);
 					}
 				}

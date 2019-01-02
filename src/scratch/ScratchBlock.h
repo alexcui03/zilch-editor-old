@@ -3,6 +3,7 @@
 
 #include "ScratchBlockPrototype.h"
 
+class ScratchObject;
 class BlockItem;
 
 class ScratchBlock {
@@ -13,6 +14,7 @@ public:
 	void Run();
 public:
 	ScratchBlockPrototype *Block;
+	ScratchObject *Object;
 	ScratchBlock *LastBlock;
 	ScratchBlock *NextBlock;
 	BlockItem *Item;

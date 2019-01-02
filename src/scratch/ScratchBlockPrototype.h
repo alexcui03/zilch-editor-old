@@ -4,7 +4,10 @@
 #include <string>
 #include <functional>
 
+class ScratchObject;
 class ScratchBlockCategory;
+
+typedef std::function<void(ScratchObject*)> ScratchBlockFuntion;
 
 enum class ScratchBlockType {
 	HEAD_BLOCK,
@@ -17,13 +20,13 @@ enum class ScratchBlockType {
 
 class ScratchBlockPrototype {
 public:
-	ScratchBlockPrototype(ScratchBlockCategory *Category, std::string Name, ScratchBlockType Type, std::function<void()> Function);
+	ScratchBlockPrototype(ScratchBlockCategory *Category, std::string Name, ScratchBlockType Type, ScratchBlockFuntion Function);
 	~ScratchBlockPrototype();
 public:
 	ScratchBlockCategory *Category;
 	ScratchBlockType Type;
 	std::string Name;
-	std::function<void()> Function;
+	ScratchBlockFuntion Function;
 };
 
 #endif // SCRATCHBLOCK_H

@@ -1,5 +1,5 @@
 #include "ScratchResource.h"
-#include "exception"
+#include <exception>
 #include <QImage>
 
 ScratchResource::ScratchResource() {
@@ -13,23 +13,23 @@ ScratchResource::~ScratchResource() {
 	Resource.clear();
 }
 
-size_t ScratchResource::LoadResourceAudio(std::string Path) {
+ResourceAudio *ScratchResource::LoadResourceAudio(std::string) {
 	///TODO: Load Audio Source
-	return 0;
+	return nullptr;
 }
 
-size_t ScratchResource::LoadResourceVideo(std::string Path) {
+ResourceVideo *ScratchResource::LoadResourceVideo(std::string) {
 	///TODO: Load Video Source
-	return 0;
+	return nullptr;
 }
 
-size_t ScratchResource::LoadResourceBitmap(std::string Path) {
+ResourcePhoto *ScratchResource::LoadResourcePhoto(std::string Path) {
 	QImage *Data = new QImage(Path.c_str());
-	ResourceBasic *Res = new ResourceBitmap();
+	ResourcePhoto *Res = new ResourcePhoto();
 	Res->Data = Data;
 	Res->Path = Path;
 	Resource.push_back(Res);
-	return 0;
+	return Res;
 }
 
 void ScratchResource::UnloadResource(size_t Index) {
