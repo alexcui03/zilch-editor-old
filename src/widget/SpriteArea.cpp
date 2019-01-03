@@ -1,4 +1,5 @@
 #include "SpriteArea.h"
+#include "MainWindow.h"
 #include "../translator/Translator.h"
 #include "../scratch/Scratch.h"
 
@@ -188,8 +189,12 @@ void SpriteArea_SpriteArea_TopBar::resizeEvent(QResizeEvent*) {
 }
 
 void SpriteArea_SpriteArea_TopBar::NewSprite() {
-	ScratchMain.Stage.CreateNew();
-	dynamic_cast<SpriteArea_SpriteArea*>(parent())->ReloadList();
+	ScratchMain.Stage.CreateNewSprite();
+	SpriteListItem *Item = new SpriteListItem(&ScratchMain.Stage.Sprite[ScratchMain.Stage.Sprite.size() - 1], dynamic_cast<Widget*>(parent()));
+	dynamic_cast<SpriteArea_SpriteArea*>(parent())->SpriteList.push_back(Item);
+	SpriteItem *Sprite = new SpriteItem(&ScratchMain.Stage.Sprite[ScratchMain.Stage.Sprite.size() - 1], AppWindow->StageArea->StageView);
+	AppWindow->StageArea->StageView->Sprites.push_back(Sprite);
+	ScratchMain.Stage.Sprite[ScratchMain.Stage.Sprite.size() - 1].Item = Sprite;
 	dynamic_cast<SpriteArea_SpriteArea*>(parent())->RefreshList();
 }
 

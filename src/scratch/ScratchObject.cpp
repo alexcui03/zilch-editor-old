@@ -2,5 +2,6 @@
 
 ScratchObject::ScratchObject(std::string Name) {
 	this->Name = Name;
-	this->Costumes.push_back(ScratchCostume());
+	this->CostumeList.push_back(ScratchCostume());
+	this->CurrentCostume = 0;
 }

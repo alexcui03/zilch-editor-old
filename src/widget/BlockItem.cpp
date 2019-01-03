@@ -205,7 +205,7 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 					move(Edit->mapFromGlobal(e->globalPos()) - MovVector);
 					if (this->BlockData->Object == nullptr) {
 						this->BlockData->Object = AppWindow->EditArea->Object;
-						AppWindow->EditArea->Object->Blocks.push_back(this->BlockData);
+						AppWindow->EditArea->Object->BlockList.push_back(this->BlockData);
 					}
 				}
 				show();

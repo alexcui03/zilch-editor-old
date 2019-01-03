@@ -65,7 +65,7 @@ void ScriptPart_ScriptEdit::Reload() {
 	for (auto &c : this->children()) {
 		dynamic_cast<Widget*>(c)->hide();
 	}
-	for (auto &c : AppWindow->EditArea->Object->Blocks) {
+	for (auto &c : AppWindow->EditArea->Object->BlockList) {
 		if (c->isHead()) {
 			if (c->Item == nullptr) {
 				c->Item = new BlockItem(c, nullptr, nullptr, this);

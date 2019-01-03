@@ -10,6 +10,7 @@ class StageView : public Widget {
 public:
 	explicit StageView(QWidget *parent = nullptr);
 	QPoint ConvertXY(int x, int y);
+	void Reload();
 public:
 	int Width;
 	int Height;

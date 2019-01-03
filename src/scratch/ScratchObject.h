@@ -11,9 +11,10 @@ public:
 	ScratchObject(std::string Name);
 public:
 	std::string Name;
-	std::vector<ScratchCostume> Costumes;
+	size_t CurrentCostume;
+	std::vector<ScratchCostume> CostumeList;
 	std::vector<size_t> Sounds;
-	std::vector<ScratchBlock*> Blocks;
+	std::vector<ScratchBlock*> BlockList;
 };
 
 #endif // SCRATCHOBJECT_H

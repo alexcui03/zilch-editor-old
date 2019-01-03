@@ -13,4 +13,5 @@ ScratchSprite::ScratchSprite(std::string Name) : ScratchObject(Name) {
 	this->Draggable = false;
 	this->Show = true;
 	this->Direction = 90;
+	this->Item = nullptr;
 }

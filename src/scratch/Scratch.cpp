@@ -56,7 +56,7 @@ Scratch::~Scratch() {
  */
 void Scratch::ProgramRun() {
 	///TODO: Muiltiprocess
-	for (const auto &c : this->Stage.Blocks) {
+	for (const auto &c : this->Stage.BlockList) {
 		if (c->Block->Name == "When program start") {
 			c->Run();
 		}
