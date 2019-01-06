@@ -2,6 +2,11 @@
 Version: 0.2.0.424
 Date: 2019.1.2
 Features:
+  - Added default costume(test only).
+---------------------------------------------------------------------------------------------------
+Version: 0.2.0.424
+Date: 2019.1.2
+Features:
   - Now add a new empty sprite was enabled.
   - Deleted TestSprite.
   - Each sprite has their own blocks.
