@@ -34,6 +34,9 @@
 # Log path
 bin/log/*
 
+# Dump file
+*.dmp
+
 # Build path
 build/*
 

@@ -154,6 +154,7 @@ void BlockItem::mouseMoveEvent(QMouseEvent *e) {
 				}
 			}
 			else {
+				// First time move.
 				if (BlockData->LastBlock != nullptr) {
 					BlockData->LastBlock->NextBlock = nullptr;
 					BlockData->LastBlock = nullptr;
@@ -189,7 +190,9 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 			}
 			else {
 				// Search for the nearest block that can be connect to.
-				BlockItem *Nearest = SearchNearest(Edit->mapFromGlobal(e->globalPos()) - MovVector);
+				BlockItem *Nearest = nullptr;
+				if (this->BlockData->Block->Type == ScratchBlockType::BODY_BLOCK)
+					Nearest = SearchNearest(Edit->mapFromGlobal(e->globalPos()) - MovVector);
 				// End dragging.
 				isDragging = false;
 				setParent(Edit);
@@ -203,13 +206,12 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 				else {
 					// No search for the nearest block.
 					move(Edit->mapFromGlobal(e->globalPos()) - MovVector);
-					if (this->BlockData->Object == nullptr) {
-						this->BlockData->Object = AppWindow->EditArea->Object;
-						AppWindow->EditArea->Object->BlockList.push_back(this->BlockData);
-					}
+					this->BlockData->Object = AppWindow->EditArea->Object;
+					//this->BlockData->Object->BlockList.push_back(this->BlockData);
+					///TODO: Check if already contains.
 				}
 				show();
-				// Remove all blocks below.
+				// Move all blocks below.
 				ScratchBlock *LastTemp = this->BlockData;
 				for (ScratchBlock *Temp = BlockData->NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
 					Temp->Item->setParent(Edit);

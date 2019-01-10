@@ -167,7 +167,8 @@ HEADERS += \
 RESOURCES +=
 #-------------------------------------------------
 DISTFILES += \
-    bin/locale/en.yml
+    bin/locale/en.yml \
+    bin/asset/app.qss
 #=================================================
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -108,6 +108,8 @@ long ApplicationCrashHandler(EXCEPTION_POINTERS *pException) {
 
 	DumpCallStack(pException->ContextRecord);
 
+	//LoggerDestroy();
+
 	if (SymCleanup(GetCurrentProcess())) {
 		LoggerAddLog("Core", "DbgHelp has been cleaned up.");
 	}

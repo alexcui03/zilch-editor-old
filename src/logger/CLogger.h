@@ -9,6 +9,7 @@ void LoggerAddLog(const char *From, const char *Message);
 void LoggerAddWarning(const char *From, const char *Message);
 void LoggerAddError(const char *From, const char *Message);
 void LoggerAddSplashLog(const char *From, const char *Message);
+void LoggerDestroy(); // DON'T USE! IT'S VERY DANGEROUS!
 
 #ifdef __cplusplus
 }

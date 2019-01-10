@@ -19,4 +19,8 @@ void LoggerAddSplashLog(const char *From, const char *Message) {
 	AppLogger.AddSplashLog(From, Message);
 }
 
+void LoggerDestroy() {
+	AppLogger.~Logger();
+}
+
 }
