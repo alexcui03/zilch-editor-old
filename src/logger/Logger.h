@@ -2,6 +2,7 @@
 #define LOGGER_H
 
 #include <fstream>
+#include <sstream>
 #include <list>
 #include <string>
 #include <QSplashScreen>
@@ -29,6 +30,8 @@ public:
 	void AddLog(std::string From, std::string Message);
 	void AddWarning(std::string From, std::string Message);
 	void AddSplashLog(std::string From, std::string Message);
+	template<typename ...Ty>
+	void AddLog(std::string From, Ty ...Message);
 	void AddError(LogMsg Log);
 	void AddLog(LogMsg Log);
 	void AddWarning(LogMsg Log);
@@ -37,5 +40,12 @@ public:
 };
 
 extern Logger AppLogger;
+
+template<typename ...Ty>
+void Logger::AddLog(std::string From, Ty... Message) {
+	std::stringstream Stream;
+	(Stream << ... << Message);
+	WriteInfo("Info", From, Stream.str());
+}
 
 #endif // LOGGER_H

@@ -56,7 +56,7 @@ void Logger::AddError(LogMsg Log) {
 }
 
 void Logger::AddLog(LogMsg Log) {
-	WriteInfo("Log", Log.From, Log.Message);
+	WriteInfo("Info", Log.From, Log.Message);
 }
 
 void Logger::AddWarning(LogMsg Log) {

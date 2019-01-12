@@ -2,6 +2,7 @@
 #include "MainWindow.h"
 #include "../translator/Translator.h"
 #include "../scratch/Scratch.h"
+#include "../logger/Logger.h"
 
 /**
  * @brief SpriteArea::SpriteArea - Constructor.
@@ -135,7 +136,7 @@ void SpriteArea_SpriteArea::ReloadList() {
 		SpriteList.clear();
 	}
 	for (auto &c : ScratchMain.Stage.Sprite) {
-		SpriteListItem *Item = new SpriteListItem(&c, this);
+		SpriteListItem *Item = new SpriteListItem(c, this);
 		SpriteList.push_back(Item);
 	}
 }
@@ -190,11 +191,12 @@ void SpriteArea_SpriteArea_TopBar::resizeEvent(QResizeEvent*) {
 
 void SpriteArea_SpriteArea_TopBar::NewSprite() {
 	ScratchMain.Stage.CreateNewSprite();
-	SpriteListItem *Item = new SpriteListItem(&ScratchMain.Stage.Sprite[ScratchMain.Stage.Sprite.size() - 1], dynamic_cast<Widget*>(parent()));
+	AppLogger.AddLog("Runtime", "Create sprite: ", ScratchMain.Stage.Sprite.at(ScratchMain.Stage.Sprite.size() - 1)->Name);
+	SpriteListItem *Item = new SpriteListItem(ScratchMain.Stage.Sprite.at(ScratchMain.Stage.Sprite.size() - 1), dynamic_cast<Widget*>(parent()));
 	dynamic_cast<SpriteArea_SpriteArea*>(parent())->SpriteList.push_back(Item);
-	SpriteItem *Sprite = new SpriteItem(&ScratchMain.Stage.Sprite[ScratchMain.Stage.Sprite.size() - 1], AppWindow->StageArea->StageView);
+	SpriteItem *Sprite = new SpriteItem(ScratchMain.Stage.Sprite.at(ScratchMain.Stage.Sprite.size() - 1), AppWindow->StageArea->StageView);
 	AppWindow->StageArea->StageView->Sprites.push_back(Sprite);
-	ScratchMain.Stage.Sprite[ScratchMain.Stage.Sprite.size() - 1].Item = Sprite;
+	Sprite->show();
 	dynamic_cast<SpriteArea_SpriteArea*>(parent())->RefreshList();
 }
 

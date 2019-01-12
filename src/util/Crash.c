@@ -36,21 +36,21 @@ void OutputCPUStatus64(char *Buffer, const char *Name, uint64_t Value) {
 	static char Temp[65] = { 0 };
 	ConvertNumberBin64(Temp, Value);
 	sprintf(Buffer, "%-8s: 0x%016llX %2s %64s", Name, Value, "", Temp);
-	LoggerAddLog("DumpInfo", Buffer);
+	LoggerAddError("DumpInfo", Buffer);
 }
 
 void OutputCPUStatus32(char *Buffer, const char *Name, uint32_t Value) {
 	static char Temp[33] = { 0 };
 	ConvertNumberBin32(Temp, Value);
 	sprintf(Buffer, "%-8s: 0x%08X %10s %64s", Name, Value, "", Temp);
-	LoggerAddLog("DumpInfo", Buffer);
+	LoggerAddError("DumpInfo", Buffer);
 }
 
 void OutputCPUStatus16(char *Buffer, const char *Name, uint16_t Value) {
 	static char Temp[17] = { 0 };
-	ConvertNumberBin32(Temp, Value);
+	ConvertNumberBin16(Temp, Value);
 	sprintf(Buffer, "%-8s: 0x%04hX %14s %64s", Name, Value, "", Temp);
-	LoggerAddLog("DumpInfo", Buffer);
+	LoggerAddError("DumpInfo", Buffer);
 }
 
 #if defined(PLATFORM_WINDOWS)
@@ -78,7 +78,7 @@ long ApplicationCrashHandler(EXCEPTION_POINTERS *pException) {
 
 	// Initialize DbgHelp
 	if (SymInitialize(GetCurrentProcess(), NULL, TRUE)) {
-		LoggerAddLog("Core", "DbgHelp initialized.");
+		LoggerAddError("Core", "DbgHelp initialized.");
 	}
 
 	// Get system time as the name of dump file.
@@ -94,8 +94,8 @@ long ApplicationCrashHandler(EXCEPTION_POINTERS *pException) {
 
 	// Create and import dump file.
 	HANDLE hDumpFile = CreateFileA(FileName, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-	LoggerAddLog("Core", "Create Dump file successfully.");
-	LoggerAddLog("Core", FileName);
+	LoggerAddError("Core", "Create Dump file successfully.");
+	LoggerAddError("Core", FileName);
 	if (hDumpFile != INVALID_HANDLE_VALUE) {
 		// Dump info
 		MINIDUMP_EXCEPTION_INFORMATION dumpInfo;
@@ -111,7 +111,7 @@ long ApplicationCrashHandler(EXCEPTION_POINTERS *pException) {
 	//LoggerDestroy();
 
 	if (SymCleanup(GetCurrentProcess())) {
-		LoggerAddLog("Core", "DbgHelp has been cleaned up.");
+		LoggerAddError("Core", "DbgHelp has been cleaned up.");
 	}
 
 	return EXCEPTION_EXECUTE_HANDLER;
@@ -149,11 +149,11 @@ void DumpCallStack(CONTEXT *pContext) {
 
 #if defined(PLATFORM_X86)
 #elif defined(PLATFORM_X86_64)
-	LoggerAddLog("DumpInfo", "CPU status:");
-	LoggerAddLog("DumpInfo", "CPU type: AMD64(x86_64)");
+	LoggerAddError("DumpInfo", "CPU status:");
+	LoggerAddError("DumpInfo", "CPU type: AMD64(x86_64)");
 	char Log[128];
 	memset(Log, 0, sizeof(Log) / sizeof(char));
-	LoggerAddLog("DumpInfo", "Integer registers:");
+	LoggerAddError("DumpInfo", "Integer registers:");
 	OutputCPUStatus64(Log, "RAX",	pContext->Rax);
 	OutputCPUStatus64(Log, "RBX",	pContext->Rbx);
 	OutputCPUStatus64(Log, "RCX",	pContext->Rcx);
@@ -170,16 +170,16 @@ void DumpCallStack(CONTEXT *pContext) {
 	OutputCPUStatus64(Log, "R13",	pContext->R13);
 	OutputCPUStatus64(Log, "R14",	pContext->R14);
 	OutputCPUStatus64(Log, "R15",	pContext->R15);
-	LoggerAddLog("DumpInfo", "Program counter:");
+	LoggerAddError("DumpInfo", "Program counter:");
 	OutputCPUStatus64(Log, "RIP",	pContext->Rip);
-	LoggerAddLog("DumpInfo", "Debug registers:");
+	LoggerAddError("DumpInfo", "Debug registers:");
 	OutputCPUStatus64(Log, "DR0",	pContext->Dr0);
 	OutputCPUStatus64(Log, "DR1",	pContext->Dr1);
 	OutputCPUStatus64(Log, "DR2",	pContext->Dr2);
 	OutputCPUStatus64(Log, "DR3",	pContext->Dr3);
 	OutputCPUStatus64(Log, "DR6",	pContext->Dr6);
 	OutputCPUStatus64(Log, "DR7",	pContext->Dr7);
-	LoggerAddLog("DumpInfo", "Segment Registers and processor flags:");
+	LoggerAddError("DumpInfo", "Segment Registers and processor flags:");
 	OutputCPUStatus16(Log, "CS",	pContext->SegCs);
 	OutputCPUStatus16(Log, "DS",	pContext->SegDs);
 	OutputCPUStatus16(Log, "ES",	pContext->SegEs);
@@ -208,23 +208,23 @@ void DumpCallStack(CONTEXT *pContext) {
 
 		if (SymFromAddr(hProcess, sf.AddrPC.Offset, 0, pSymbol)) {
 			sprintf(Log, "Function    : %s", pSymbol->Name);
-			LoggerAddLog("DumpInfo", Log);
+			LoggerAddError("DumpInfo", Log);
 		}
 		else {
-			LoggerAddLog("DumpInfo", "Function    : Unknown");
+			LoggerAddError("DumpInfo", "Function    : Unknown");
 		}
 
 		IMAGEHLP_LINE LineInfo;
 		DWORD dwLineDisplacement;
 		if (SymGetLineFromAddr(hProcess, sf.AddrPC.Offset, &dwLineDisplacement, &LineInfo)) {
 			sprintf(Log, "Source File : %s", LineInfo.FileName);
-			LoggerAddLog("DumpInfo", Log);
+			LoggerAddError("DumpInfo", Log);
 			sprintf(Log, "Source Line : %lu", LineInfo.LineNumber);
-			LoggerAddLog("DumpInfo", Log);
+			LoggerAddError("DumpInfo", Log);
 		}
 		else {
-			LoggerAddLog("DumpInfo", "Source File : Unknown");
-			LoggerAddLog("DumpInfo", "Source Line : Unknown");
+			LoggerAddError("DumpInfo", "Source File : Unknown");
+			LoggerAddError("DumpInfo", "Source Line : Unknown");
 		}
 	}
 }

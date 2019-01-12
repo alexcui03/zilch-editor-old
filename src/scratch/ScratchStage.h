@@ -10,7 +10,7 @@ public:
 	ScratchStage();
 	void CreateNewSprite();
 public:
-	std::vector<ScratchSprite> Sprite;
+	std::vector<ScratchSprite*> Sprite;
 };
 
 #endif // SCRATCHSTAGE_H

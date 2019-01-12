@@ -21,9 +21,10 @@ void StageView::Reload() {
 		this->Sprites.clear();
 	}
 	for (auto &c : ScratchMain.Stage.Sprite) {
-		SpriteItem *Item = new SpriteItem(&c, this);
-		c.Item = Item;
+		SpriteItem *Item = new SpriteItem(c, this);
+		c->Item = Item;
 		this->Sprites.push_back(Item);
+		Item->show();
 	}
 }
 

@@ -25,7 +25,8 @@ BlockItem::BlockItem(ScratchBlock *Block, ScratchBlock *LastBlock, ScratchBlock 
 	this->FrameColor = QColor(BlockData->Block->Category->Color) * 0.9;
 	this->ViewerIndex = 0;
 
-	setObjectName("BlockItem");
+	this->setObjectName("BlockItem");
+	this->move(this->BlockData->X, this->BlockData->Y);
 
 	TextLabel = new QLabel(this);
 	TextLabel->setText(BlockData->Block->Name.c_str());
@@ -194,8 +195,8 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 				if (this->BlockData->Block->Type == ScratchBlockType::BODY_BLOCK)
 					Nearest = SearchNearest(Edit->mapFromGlobal(e->globalPos()) - MovVector);
 				// End dragging.
-				isDragging = false;
-				setParent(Edit);
+				this->isDragging = false;
+				this->setParent(Edit);
 				if (Nearest != nullptr) {
 					// Insert as next for the nearest block.
 					this->BlockData->NextBlock = Nearest->BlockData->NextBlock;
@@ -207,13 +208,15 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 					// No search for the nearest block.
 					move(Edit->mapFromGlobal(e->globalPos()) - MovVector);
 					this->BlockData->Object = AppWindow->EditArea->Object;
-					//this->BlockData->Object->BlockList.push_back(this->BlockData);
+					this->BlockData->X = this->x();
+					this->BlockData->Y = this->y();
+					this->BlockData->Object->BlockList.push_back(this->BlockData);
 					///TODO: Check if already contains.
 				}
-				show();
+				this->show();
 				// Move all blocks below.
 				ScratchBlock *LastTemp = this->BlockData;
-				for (ScratchBlock *Temp = BlockData->NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
+				for (ScratchBlock *Temp = this->BlockData->NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
 					Temp->Item->setParent(Edit);
 					Temp->Item->move(LastTemp->Item->x(), LastTemp->Item->y() + LastTemp->Item->height() - 4);
 					Temp->Item->show();

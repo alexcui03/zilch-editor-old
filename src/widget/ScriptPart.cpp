@@ -36,9 +36,9 @@ ScriptPart_BlockView::ScriptPart_BlockView(QWidget *parent):Widget(parent) {
 }
 
 void ScriptPart_BlockView::Reload(ScratchBlockCategory *Category) {
-	for (auto &c : Block) {
-		delete c;
-	}
+	//for (auto &c : Block) {
+		//delete c;
+	//}
 	Block.clear();
 	size_t Length = Category->Block.size();
 	for (size_t i = 0; i < Length; i++) {
@@ -58,24 +58,21 @@ void ScriptPart_BlockView::Reload(ScratchBlockCategory *Category) {
 }
 
 ScriptPart_ScriptEdit::ScriptPart_ScriptEdit(QWidget *parent):Widget(parent) {
-	connect(this, SIGNAL(reload()), SLOT(Reload()));
+
 }
 
 void ScriptPart_ScriptEdit::Reload() {
-	for (auto &c : this->children()) {
-		dynamic_cast<Widget*>(c)->hide();
+	for (auto c : this->children()) {
+		delete c;
+		c = nullptr;
 	}
 	for (auto &c : AppWindow->EditArea->Object->BlockList) {
 		if (c->isHead()) {
-			if (c->Item == nullptr) {
-				c->Item = new BlockItem(c, nullptr, nullptr, this);
-			}
+			c->Item = new BlockItem(c, nullptr, nullptr, this);
 			c->Item->move(c->X, c->Y);
 		}
 		else {
-			if (c->Item == nullptr) {
-				c->Item = new BlockItem(c, c->LastBlock, c->NextBlock, this);
-			}
+			c->Item = new BlockItem(c, c->LastBlock, c->NextBlock, this);
 			c->Item->move(c->LastBlock->Item->x(), c->LastBlock->Item->y() + c->LastBlock->Item->height());
 		}
 		c->Item->show();

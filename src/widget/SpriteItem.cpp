@@ -1,6 +1,7 @@
 #include "SpriteItem.h"
 #include <QImage>
 #include <QPixmap>
+#include "../logger/Logger.h"
 
 SpriteItem::SpriteItem(ScratchSprite *Sprite, QWidget *parent) : Widget(parent) {
 	this->Sprite = Sprite;

@@ -10,6 +10,7 @@
  * @param {ScratchSprite*} Sprite - Sprite data.
  * @param {QWidget*} parent - Parent widget.
  */
+#include "../logger/Logger.h"
 SpriteListItem::SpriteListItem(ScratchSprite *Sprite, QWidget *parent) : Widget(parent) {
 	this->Sprite = Sprite;
 

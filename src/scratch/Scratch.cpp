@@ -34,7 +34,7 @@ Scratch::Scratch() {
 
 	}));
 
-	Stage.Sprite.push_back(ScratchSprite("Sprite A"));
+	//Stage.CreateNewSprite();
 }
 
 /**
