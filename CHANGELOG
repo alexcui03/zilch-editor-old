@@ -1,6 +1,20 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.2.0.424
-Date: 2019.1.2
+Version: 0.2.0.514
+Date: 2019.1.16
+Features:
+  - Changed key 'Log' to 'Info'.
+  - Changed key 'Log' for 'DumpInfo' to 'Error'.
+  - Deleted default sprite creating.
+Bugfixes:
+  - Fixed the position of blocks that is in edit area is not true when changed showing object.[bug#21]
+  - Fixed the program crash when release a block if the sprite changes.[bug#23]
+  - Fixed the program crash when click the same sprite item.[bug#24]
+  - Fixed the program crash when change current sprite after creating new sprites.[bug#25]
+Source:
+  - Added function: template<typename ..Ty>Logger::AddLog(string, Ty...).
+---------------------------------------------------------------------------------------------------
+Version: 0.2.0.435
+Date: 2019.1.6
 Features:
   - Added default costume(test only).
 ---------------------------------------------------------------------------------------------------
