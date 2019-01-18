@@ -19,33 +19,52 @@ class Logger {
 private:
 	std::ofstream File;
 	std::string FileName;
-	std::list<LogMsg> Error;
 	QSplashScreen *Splash;
-	void WriteInfo(std::string Type, std::string From, std::string Message);
+	template<typename ...Ty> void WriteInfo(std::string Type, std::string From, Ty... Message);
 public:
 	Logger();
 	~Logger();
 	void InitLogger(QSplashScreen *Splash);
-	void AddError(std::string From, std::string Message);
-	void AddLog(std::string From, std::string Message);
-	void AddWarning(std::string From, std::string Message);
-	void AddSplashLog(std::string From, std::string Message);
-	template<typename ...Ty>
-	void AddLog(std::string From, Ty ...Message);
-	void AddError(LogMsg Log);
-	void AddLog(LogMsg Log);
-	void AddWarning(LogMsg Log);
-	void AddSplashLog(LogMsg Log);
+	template<typename ...Ty> void AddLog(std::string From, Ty ...Message);
+	template<typename ...Ty> void AddWarning(std::string From, Ty ...Message);
+	template<typename ...Ty> void AddError(std::string From, Ty ...Message);
+	template<typename ...Ty> void AddSplashLog(std::string From, Ty ...Message);
 	std::string GetFileName();
 };
 
 extern Logger AppLogger;
 
 template<typename ...Ty>
+void Logger::WriteInfo(std::string Type, std::string From, Ty... Message) {
+	time_t Time = time(nullptr);
+	char *Head = new char[64]{0};
+	strftime(Head, 64, "[%H:%M:%S]", localtime(&Time));
+	File << Head << "[" + Type + "][" + From + "]";
+	(File << ... << Message) << std::endl;
+	File.flush();
+}
+
+template<typename ...Ty>
 void Logger::AddLog(std::string From, Ty... Message) {
+	WriteInfo("Info", From, Message...);
+}
+
+template<typename ...Ty>
+void Logger::AddWarning(std::string From, Ty... Message) {
+	WriteInfo("Warning", From, Message...);
+}
+
+template<typename ...Ty>
+void Logger::AddError(std::string From, Ty... Message) {
+	WriteInfo("Error", From, Message...);
+}
+
+template<typename ...Ty>
+void Logger::AddSplashLog(std::string From, Ty... Message) {
+	WriteInfo("Info", From, Message...);
 	std::stringstream Stream;
 	(Stream << ... << Message);
-	WriteInfo("Info", From, Stream.str());
+	Splash->showMessage(Stream.str().c_str(), Qt::AlignLeft | Qt::AlignBottom, Qt::white);
 }
 
 #endif // LOGGER_H
