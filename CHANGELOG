@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.2.0.515
+Version: 0.2.0.515 | 0.2.0
 Date: 2019.1.18
 Source:
   - Added function to Logger in template function.
@@ -136,7 +136,7 @@ Features:
   - Now the project can be run.
   - The first executable program on win_x86_64.
 Bugfixes:
-  - Fixed some blocks doesn¡¯t redraw while changing block tabs.[bug#6]
+  - Fixed some blocks doesn't redraw while changing block tabs.[bug#6]
   - Fixed the position of the block in block view with index greater than 2 error.[bug#11]
 Source:
   - Now output assembly file for debugging.[compiler#msvc]
