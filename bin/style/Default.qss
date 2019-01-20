@@ -11,10 +11,12 @@
 }
 
 #StageArea {
-    background-color: #FFFFFF;
-	border-style: solid;
+    border-style: solid;
 	border-width: 1px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
 	border-color: #E0E0E0;
+	background-color: #FFFFFF;
 }
 
 #StageArea_StageView {
@@ -25,6 +27,8 @@
 }
 
 #StageArea_ButtonStart {
+    border-style:none;
+	border-radius: 8px;
     background-color: #90EE90;
 }
 
@@ -33,6 +37,8 @@
 }
 
 #StageArea_ButtonStop {
+    border-style:none;
+	border-radius: 8px;
     background-color: #FF0000;
 }
 
@@ -40,14 +46,37 @@
     background-color: #AA0000;
 }
 
-#SpriteArea,
-#SpriteArea_Sprite,
+#SpriteArea {
+    border-color: #E0E0E0;
+	border-style: solid;
+	border-width: 1px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+#SpriteArea_Sprite {
+    border-color: #E0E0E0;
+	border-left-style: solid;
+	border-left-width: 1px;
+}
+
 #SpriteArea_SpriteArea_TopBar {
     border-color: #E0E0E0;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+
+#SpriteArea_SpriteArea_TopBar_TextSprite {
+    font-size: 15px;
+}
+
+#SpriteArea_SpriteArea_TopBar_TextNewSprite {
+    font-size: 15px;
 }
 
 #SpriteArea_SpriteArea_TopBar_ButtonNewSprite {
     background-color: #FFB11B;
+	border-radius: 8px;
 }
 
 #SpriteArea_SpriteArea_TopBar_ButtonNewSprite:hover {
@@ -56,10 +85,27 @@
 
 #SpriteArea_SpriteArea_ButtonBack {
     background-color: #FFB11B;
+	border-radius: 8px;
 }
 
 #SpriteArea_SpriteArea_ButtonBack:hover {
     background-color: #AA7612;
+}
+
+#SpriteListItem {
+    border-style: solid;
+	border-width: 3px;
+	border-color: #4C97FF;
+	border-radius: 5px;
+}
+
+#SpriteListItem_Text {
+    font-size: 12px;
+}
+
+#SpriteListItem_Info {
+    background-color: #4C97FF;
+	border-radius: 8px;
 }
 
 #EditArea {
@@ -68,9 +114,21 @@
 
 #EditArea_TabWidget::pane {
     border-color: #E0E0E0;
+	border-style: solid;
+	border-width: 1px;
+	outline-style: none;
 }
 
 #EditArea_TabWidget_TabBar::tab {
+    min-width: 75px;
+	max-width: 150px;
+	height: 26px;
+	border-style: solid;
+	border-bottom-style: none;
+	border-width: 1px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	font-size: 13px;
     background-color: #F2F2F2;
 	border-color: #E0E0E0;
 }
@@ -83,31 +141,39 @@
     background-color: #FFFFFF;
 }
 
-#EditArea_ScriptPart,
-#EditArea_CostumePart {
+#EditArea_ScriptPart {
     background-color: #F9F9F9;
 }
-/*
-#EditArea_ScriptPart_BlockTabItem_LabelText {
-    color: #000000;
+
+#EditArea_ScriptPart_BlockTab {
+background-color: transparent;
+outline: none;
+    border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #CCCCCC;
 }
 
-#EditArea_ScriptPart_BlockTabItem_LabelText-Select {
-    color: #FFFFFF;
-}
-
-#EditArea_ScriptPart_BlockTabItem_LabelText-Hover {
-    color: #4C97FF;
-}
-*/
 #EditArea_ScriptPart_ScriptEdit {
     background-color: #E0E0E0;
 	border-color: #CCCCCC;
+	border-style: solid;
+	border-width: 1px;
+}
+
+#EditArea_CostumePart {
+    background-color: #F9F9F9;
+}
+
+#BlockItem {
+    background-color: transparent;
+	outline: none;
 }
 
 #BlockItem > QLabel {
-    color: #FFFFFF;
+    font-size: 15px;
+	color: #FFFFFF;
 }
+
 
 
 

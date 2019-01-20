@@ -40,12 +40,6 @@ QString LoadStyleSheetString(QSplashScreen *Splash, std::string Path) {
  * @param {std::string} Path - File path for loading.
  */
 void LoadStyleSheet(QSplashScreen *Splash, std::string Path) {
-	QFile StyleFile("./asset/app.qss");
-	StyleFile.open(QFile::ReadOnly);
-	QString StyleSheetString = StyleFile.readAll() + "\n";
-	StyleFile.close();
-	StyleSheetString += LoadStyleSheetString(Splash, Path);
-
-	qApp->setStyleSheet(StyleSheetString);
+	qApp->setStyleSheet(LoadStyleSheetString(Splash, Path));
 }
 

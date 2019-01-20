@@ -6,16 +6,15 @@
 #include "../scratch/ScratchStage.h"
 
 ScriptPart_BlockTab::ScriptPart_BlockTab(QWidget *parent):Widget(parent) {
-	LastClicked = nullptr;
-	connect(this, SIGNAL(reload()), SLOT(Reload()));
-	emit reload();
+	this->LastClicked = nullptr;
+	this->Reload();
 }
 
 void ScriptPart_BlockTab::Reload() {
-	for (auto &c : BlockTab) {
+	for (auto &c : this->BlockTab) {
 		delete c;
 	}
-	BlockTab.clear();
+	this->BlockTab.clear();
 	size_t Length = ScratchMain.BlockCategory.size();
 	for (size_t i = 0; i < Length; i++) {
 		const auto &Temp = ScratchMain.BlockCategory[i];
@@ -24,15 +23,14 @@ void ScriptPart_BlockTab::Reload() {
 		Item->setText(Temp->Name.c_str());
 		Item->setPalette(QPalette(QColor(Temp->Color)));
 		Item->show();
-		BlockTab.push_back(Item);
+		this->BlockTab.push_back(Item);
 	}
-	resize(200, (static_cast<int>(ScratchMain.BlockCategory.size()) + 1) / 2 * 24 + 14);
-	emit BlockTab[0]->leftclicked();
+	this->resize(200, (static_cast<int>(ScratchMain.BlockCategory.size()) + 1) / 2 * 24 + 14);
+	this->BlockTab[0]->OnSelect();
 }
 
 ScriptPart_BlockView::ScriptPart_BlockView(QWidget *parent):Widget(parent) {
-	connect(this, SIGNAL(reload(ScratchBlockCategory*)), SLOT(Reload(ScratchBlockCategory*)));
-	emit reload(ScratchMain.BlockCategory[0]);
+	this->Reload(ScratchMain.BlockCategory[0]);
 }
 
 void ScriptPart_BlockView::Reload(ScratchBlockCategory *Category) {

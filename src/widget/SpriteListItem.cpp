@@ -14,24 +14,20 @@
 SpriteListItem::SpriteListItem(ScratchSprite *Sprite, QWidget *parent) : Widget(parent) {
 	this->Sprite = Sprite;
 
-	setObjectName("SpriteListItem");
-	resize(75, 75);
-	setAutoFillBackground(true);
-	setPalette(QPalette(QColor(0xFFB11B)));
+	this->setObjectName("SpriteListItem");
+	this->resize(75, 75);
 
 	Text = new QLabel(this);
 	Text->setObjectName("SpriteListItem_Text");
-	Text->move(0, 60);
+	Text->move(0, 57);
 	Text->resize(75, 15);
 	Text->setText(Sprite->Name.c_str());
 	Text->setAlignment(Qt::AlignCenter);
 
 	Button = new Widget(this);
-	Button->setObjectName("SpriteListItem_Text");
-	Button->move(3, 3);
-	Button->resize(10, 10);
-	Button->setAutoFillBackground(true);
-	Button->setPalette(QPalette(QColor(0x66CCFF)));
+	Button->setObjectName("SpriteListItem_Info");
+	Button->move(5, 5);
+	Button->resize(16, 16);
 
 	connect(this, SIGNAL(leftclicked()), SLOT(OnClick()));
 	connect(Button, SIGNAL(leftclicked()), this, SLOT(ShowInfo()));

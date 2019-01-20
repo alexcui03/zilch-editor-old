@@ -23,7 +23,6 @@ public:
 public slots:
 	void Reload();
 signals:
-	void reload();
 	void reloadview(ScratchBlockCategory*);
 };
 
@@ -33,8 +32,6 @@ public:
 	ScriptPart_BlockView(QWidget *parent = nullptr);
 public slots:
 	void Reload(ScratchBlockCategory *Category);
-signals:
-	void reload(ScratchBlockCategory*);
 public:
 	std::vector<BlockItem*> Block;
 };
@@ -45,8 +42,6 @@ public:
 	ScriptPart_ScriptEdit(QWidget *parent = nullptr);
 public slots:
 	void Reload();
-signals:
-	void reload();
 };
 
 class ScriptPart : public Widget {

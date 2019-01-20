@@ -168,7 +168,7 @@ RESOURCES +=
 #-------------------------------------------------
 DISTFILES += \
     bin/locale/en.yml \
-    bin/asset/app.qss
+    bin/style/Default.qss
 #=================================================
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
