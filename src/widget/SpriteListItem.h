@@ -13,6 +13,7 @@ public slots:
 	void OnClick();
 	void ShowInfo();
 public:
+	bool Selected;
 	ScratchSprite *Sprite;
 	QLabel *Text;
 	Widget *Button;

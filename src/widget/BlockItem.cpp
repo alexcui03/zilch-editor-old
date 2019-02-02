@@ -21,6 +21,7 @@ BlockItem::BlockItem(ScratchBlock *Block, ScratchBlock *LastBlock, ScratchBlock 
 	this->BlockData->NextBlock = NextBlock;
 	this->isDragging = false;
 	this->isViewingBlock = false;
+	this->needAdd = true;
 	this->FillColor = BlockData->Block->Category->Color;
 	this->FrameColor = QColor(BlockData->Block->Category->Color) * 0.9;
 	this->ViewerIndex = 0;
@@ -139,12 +140,13 @@ void BlockItem::mouseMoveEvent(QMouseEvent *e) {
 			NewItem->move(pos());
 			NewItem->show();
 			BlockData->Item = this;
+			isViewingBlock = false;
 			setParent(AppWindow);
 			MovVector = e->pos();
 			move(AppWindow->mapFromGlobal(e->globalPos()) - MovVector);
 			show();
-			isViewingBlock = false;
 			isDragging = true;
+			//this->BlockData->Object->BlockList.push_back(this->BlockData);
 		}
 		else {
 			if (isDragging) {
@@ -180,7 +182,7 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 	static auto Edit = AppWindow->EditArea->ScriptPart->ScriptEdit;
 	if (e->button() == Qt::LeftButton) {
 		// If the block is on dragging and for edit.
-		if (this->isDragging && !this->isViewingBlock) {
+		if (this->isDragging) {
 			// If the block is not in edit area.
 			if (!Edit->rect().contains(Edit->mapFromGlobal(e->globalPos()))) {
 				// Delete all block below.
@@ -207,11 +209,13 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 				else {
 					// No search for the nearest block.
 					move(Edit->mapFromGlobal(e->globalPos()) - MovVector);
-					this->BlockData->Object = AppWindow->EditArea->Object;
+					//this->BlockData->Object = AppWindow->EditArea->Object;
 					this->BlockData->X = this->x();
 					this->BlockData->Y = this->y();
-					this->BlockData->Object->BlockList.push_back(this->BlockData);
-					///TODO: Check if already contains.
+					if (this->needAdd) {
+						AppWindow->EditArea->Object->BlockList.push_back(this->BlockData);
+						this->needAdd = false;
+					}
 				}
 				this->show();
 				// Move all blocks below.

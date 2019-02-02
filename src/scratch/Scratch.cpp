@@ -5,6 +5,7 @@
 #include "../widget/StageView.h"
 
 #include "ScratchSprite.h"
+#include "../logger/Logger.h"
 
 /**
  * @brief Scratch::Scratch - Constructor.
@@ -16,6 +17,7 @@ Scratch::Scratch() {
 
 	Block.push_back(new ScratchBlockPrototype(BlockCategory[0], "add 10 to x", ScratchBlockType::BODY_BLOCK, [](ScratchObject* Object)->void {
 		auto Sprite = static_cast<ScratchSprite*>(Object)->Item;
+		AppLogger.AddLog("Debug", Sprite->x());
 		Sprite->move(Sprite->x() + 10, Sprite->y());
 	}));
 	Block.push_back(new ScratchBlockPrototype(BlockCategory[0], "add 10 to y", ScratchBlockType::BODY_BLOCK, [](ScratchObject* Object)->void {
@@ -58,7 +60,14 @@ void Scratch::ProgramRun() {
 	///TODO: Muiltiprocess
 	for (const auto &c : this->Stage.BlockList) {
 		if (c->Block->Name == "When program start") {
-			c->Run();
+			c->Run(&this->Stage);
+		}
+	}
+	for (const auto &c0 : this->Stage.Sprite) {
+		for (const auto &c1 : c0->BlockList) {
+			if (c1->Block->Name == "When program start") {
+				c1->Run(c0);
+			}
 		}
 	}
 }

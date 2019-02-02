@@ -195,6 +195,7 @@ void SpriteArea_SpriteArea_TopBar::NewSprite() {
 	SpriteListItem *Item = new SpriteListItem(ScratchMain.Stage.Sprite.at(ScratchMain.Stage.Sprite.size() - 1), dynamic_cast<Widget*>(parent()));
 	dynamic_cast<SpriteArea_SpriteArea*>(parent())->SpriteList.push_back(Item);
 	SpriteItem *Sprite = new SpriteItem(ScratchMain.Stage.Sprite.at(ScratchMain.Stage.Sprite.size() - 1), AppWindow->StageArea->StageView);
+	ScratchMain.Stage.Sprite.at(ScratchMain.Stage.Sprite.size() - 1)->Item = Sprite;
 	AppWindow->StageArea->StageView->Sprites.push_back(Sprite);
 	Sprite->show();
 	dynamic_cast<SpriteArea_SpriteArea*>(parent())->RefreshList();

@@ -34,9 +34,9 @@ ScriptPart_BlockView::ScriptPart_BlockView(QWidget *parent):Widget(parent) {
 }
 
 void ScriptPart_BlockView::Reload(ScratchBlockCategory *Category) {
-	//for (auto &c : Block) {
-		//delete c;
-	//}
+	for (auto &c : Block) {
+		delete c;
+	}
 	Block.clear();
 	size_t Length = Category->Block.size();
 	for (size_t i = 0; i < Length; i++) {

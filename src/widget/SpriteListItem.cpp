@@ -13,9 +13,12 @@
 #include "../logger/Logger.h"
 SpriteListItem::SpriteListItem(ScratchSprite *Sprite, QWidget *parent) : Widget(parent) {
 	this->Sprite = Sprite;
+	this->Selected = false;
 
 	this->setObjectName("SpriteListItem");
 	this->resize(75, 75);
+	this->setAutoFillBackground(true);
+	this->setPalette(QPalette(QColor(0xFFB11B)));
 
 	Text = new QLabel(this);
 	Text->setObjectName("SpriteListItem_Text");

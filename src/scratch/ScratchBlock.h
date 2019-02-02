@@ -11,10 +11,9 @@ public:
 	ScratchBlock(ScratchBlockPrototype *Block, ScratchBlock *LastBlock = nullptr, ScratchBlock *NextBlock = nullptr);
 	~ScratchBlock();
 	bool isHead();
-	void Run();
+	void Run(ScratchObject *Object);
 public:
 	ScratchBlockPrototype *Block;
-	ScratchObject *Object;
 	ScratchBlock *LastBlock;
 	ScratchBlock *NextBlock;
 	BlockItem *Item;

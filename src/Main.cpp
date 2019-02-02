@@ -48,5 +48,8 @@ int main(int argc, char *argv[]) {
 	AppWindow->show();
 	Splash.finish(AppWindow);
 
-	return App.exec();
+	int Result = App.exec();
+	AppLogger.AddLog("Core", "Clean up resources");
+	AppLogger.AddLog("Core", "Program exited with code ", Result);
+	return Result;
 }

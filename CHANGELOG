@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.1.547
+Date: 2019.2.2
+Features:
+  - Output the current running block's name to the log file.
+Bugfixes:
+  - Fixed the blocks cannot be used when running project.[bug#22]
+---------------------------------------------------------------------------------------------------
 Version: 0.2.1.527
 Date: 2019.1.20
 Features:

@@ -25,6 +25,7 @@ public:
 	size_t ViewerIndex;
 	QLabel *TextLabel;
 private:
+	bool needAdd;
 	bool isDragging;
 	QPoint StartPos;
 	QPoint MovVector;
