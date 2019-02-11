@@ -12,6 +12,9 @@ enum class SpriteRotationStyle { FREE, LINE, NONE };
 class ScratchSprite : public ScratchObject {
 public:
 	ScratchSprite(std::string Name);
+	void move(int x, int y);
+	int getx();
+	int gety();
 public:
 	static ScratchStage *Stage;
 	SpriteItem *Item;

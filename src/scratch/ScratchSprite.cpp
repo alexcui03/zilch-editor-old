@@ -1,6 +1,7 @@
 #include "ScratchSprite.h"
 #include "ScratchStage.h"
 #include "Scratch.h"
+#include "../widget/SpriteItem.h"
 
 ScratchStage *ScratchSprite::Stage = &ScratchMain.Stage;
 
@@ -14,4 +15,15 @@ ScratchSprite::ScratchSprite(std::string Name) : ScratchObject(Name) {
 	this->Show = true;
 	this->Direction = 90;
 	this->Item = nullptr;
+}
+
+void ScratchSprite::move(int x, int y) {
+	this->Item->move(x, y);
+}
+
+int ScratchSprite::getx() {
+	return this->Item->x();
+}
+int ScratchSprite::gety() {
+	return this->Item->y();
 }

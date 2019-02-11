@@ -1,11 +1,14 @@
 #include "Scratch.h"
 #include <filesystem>
+#include <thread>
+#include <deque>
+
+#include "ScratchSprite.h"
 #include "../widget/MainWindow.h"
 #include "../widget/ScriptPart.h"
 #include "../widget/StageView.h"
-
-#include "ScratchSprite.h"
 #include "../logger/Logger.h"
+#include "../util/Thread.h"
 
 /**
  * @brief Scratch::Scratch - Constructor.
@@ -57,18 +60,21 @@ Scratch::~Scratch() {
  * @brief Scratch::ProgramRun - Run program.
  */
 void Scratch::ProgramRun() {
-	///TODO: Muiltiprocess
+	std::deque<Thread*> Threads;
 	for (const auto &c : this->Stage.BlockList) {
 		if (c->Block->Name == "When program start") {
-			c->Run(&this->Stage);
+			Threads.push_back(new Thread([&c, this]()->void { c->Run(&this->Stage); }));
 		}
 	}
 	for (const auto &c0 : this->Stage.Sprite) {
 		for (const auto &c1 : c0->BlockList) {
 			if (c1->Block->Name == "When program start") {
-				c1->Run(c0);
+				Threads.push_back(new Thread([&c0, &c1]()->void { c1->Run(c0); }));
 			}
 		}
+	}
+	for (auto i = Threads.begin(); i != Threads.end(); i++) {
+		(*i)->run();
 	}
 }
 
