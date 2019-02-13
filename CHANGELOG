@@ -1,8 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.1.563
+Date: 2019.2.13
+Features:
+  - Changed the style of sprite list item.
+---------------------------------------------------------------------------------------------------
 Version: 0.2.1.555
 Date: 2019.2.11
 Features:
   - Run project with multithread.
+Bugfixes:
+  - Fixed the block category did not refresh after changing the category.[bug#26]
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.1.547
 Date: 2019.2.2
