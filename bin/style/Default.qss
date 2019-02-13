@@ -92,20 +92,26 @@
     background-color: #AA7612;
 }
 
-#SpriteListItem {
+#ObjectListItem {}
+
+#ObjectListItem-Select {
     border-style: solid;
 	border-width: 3px;
 	border-color: #4C97FF;
 	border-radius: 5px;
 }
 
-#SpriteListItem_Text {
+#ObjectListItem_Text {
     font-size: 12px;
 }
 
 #SpriteListItem_Info {
     background-color: #4C97FF;
 	border-radius: 8px;
+}
+
+#SpriteListItem_Info:hover {
+    background-color: #2D5A99;
 }
 
 #EditArea {

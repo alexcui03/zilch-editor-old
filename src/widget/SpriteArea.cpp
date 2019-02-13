@@ -33,7 +33,9 @@ void SpriteArea::resizeEvent(QResizeEvent *) {
  * @param {QWidget*} parent - Parent widget.
  */
 SpriteArea_StageArea::SpriteArea_StageArea(QWidget *parent) : Widget(parent) {
-
+	Stage = new StageListItem(&ScratchMain.Stage, this);
+	Stage->move(3, 15);
+	Stage->select();
 }
 
 /**
@@ -119,7 +121,7 @@ void SpriteArea_SpriteArea::RefreshList() {
 		}
 		ButtonBack->show();
 		View->show();
-		Name->setText(SpriteList[static_cast<size_t>(ShowIndex)]->Sprite->Name.c_str());
+		Name->setText(SpriteList[static_cast<size_t>(ShowIndex)]->object->Name.c_str());
 		Name->show();
 		Position->show();
 		Direction->show();

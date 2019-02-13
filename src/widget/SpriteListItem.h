@@ -1,22 +1,20 @@
 #ifndef SPRITELISTITEM_H
 #define SPRITELISTITEM_H
 
-#include "Widget.h"
 #include <QLabel>
+
+#include "ObjectListItem.h"
 #include "../scratch/ScratchSprite.h"
 
-class SpriteListItem : public Widget {
+class SpriteListItem : public ObjectListItem {
 	Q_OBJECT
 public:
-	SpriteListItem(ScratchSprite *Sprite, QWidget *parent = nullptr);
+	SpriteListItem(ScratchSprite *sprite, QWidget *parent = nullptr);
+	virtual ~SpriteListItem();
 public slots:
-	void OnClick();
-	void ShowInfo();
+	void showInfo();
 public:
-	bool Selected;
-	ScratchSprite *Sprite;
-	QLabel *Text;
-	Widget *Button;
+	Widget *btnInfo;
 };
 
 #endif // SPRITELISTITEM_H

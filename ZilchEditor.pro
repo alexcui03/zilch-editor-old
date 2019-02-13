@@ -113,7 +113,9 @@ SOURCES += \
     src/util/Resource.cpp \
     src/plugin/PluginPrototype.cpp \
     src/plugin/PluginBase.cpp \
-    src/util/Thread.cpp
+    src/util/Thread.cpp \
+    src/widget/StageListItem.cpp \
+    src/widget/ObjectListItem.cpp
 #-------------------------------------------------
 HEADERS += \
     src/stylesheet/StyleSheet.h \
@@ -164,7 +166,9 @@ HEADERS += \
     src/util/Resource.h \
     src/plugin/PluginPrototype.h \
     src/plugin/PluginBase.h \
-    src/util/Thread.h
+    src/util/Thread.h \
+    src/widget/StageListItem.h \
+    src/widget/ObjectListItem.h
 #-------------------------------------------------
 RESOURCES +=
 #-------------------------------------------------

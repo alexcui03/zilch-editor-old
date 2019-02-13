@@ -9,6 +9,7 @@
 #include <QCheckBox>
 #include <vector>
 #include "SpriteListItem.h"
+#include "StageListItem.h"
 
 class SpriteArea;
 class SpriteArea_StageArea;
@@ -28,7 +29,7 @@ class SpriteArea_StageArea : public Widget {
 public:
 	explicit SpriteArea_StageArea(QWidget *parent = nullptr);
 public:
-
+	StageListItem *Stage;
 };
 
 class SpriteArea_SpriteArea : public Widget {

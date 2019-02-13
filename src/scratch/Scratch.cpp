@@ -20,7 +20,6 @@ Scratch::Scratch() {
 
 	Block.push_back(new ScratchBlockPrototype(BlockCategory[0], "add 10 to x", ScratchBlockType::BODY_BLOCK, [](ScratchObject* Object)->void {
 		auto Sprite = static_cast<ScratchSprite*>(Object)->Item;
-		AppLogger.AddLog("Debug", Sprite->x());
 		Sprite->move(Sprite->x() + 10, Sprite->y());
 	}));
 	Block.push_back(new ScratchBlockPrototype(BlockCategory[0], "add 10 to y", ScratchBlockType::BODY_BLOCK, [](ScratchObject* Object)->void {

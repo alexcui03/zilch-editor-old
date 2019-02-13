@@ -1,55 +1,35 @@
 #include "SpriteListItem.h"
+
 #include <QPalette>
 #include <QColor>
+#include <QStyle>
+
 #include "SpriteArea.h"
 #include "ScriptPart.h"
 #include "MainWindow.h"
 
-/**
- * @brief SpriteListItem::SpriteListItem - Constructor.
- * @param {ScratchSprite*} Sprite - Sprite data.
- * @param {QWidget*} parent - Parent widget.
- */
-#include "../logger/Logger.h"
-SpriteListItem::SpriteListItem(ScratchSprite *Sprite, QWidget *parent) : Widget(parent) {
-	this->Sprite = Sprite;
-	this->Selected = false;
-
-	this->setObjectName("SpriteListItem");
+SpriteListItem::SpriteListItem(ScratchSprite *sprite, QWidget *parent) : ObjectListItem(sprite, parent) {
 	this->resize(75, 75);
-	this->setAutoFillBackground(true);
-	this->setPalette(QPalette(QColor(0xFFB11B)));
 
-	Text = new QLabel(this);
-	Text->setObjectName("SpriteListItem_Text");
-	Text->move(0, 57);
-	Text->resize(75, 15);
-	Text->setText(Sprite->Name.c_str());
-	Text->setAlignment(Qt::AlignCenter);
+	this->text->move(0, 57);
+	this->text->resize(75, 15);
 
-	Button = new Widget(this);
-	Button->setObjectName("SpriteListItem_Info");
-	Button->move(5, 5);
-	Button->resize(16, 16);
+	this->btnInfo = new Widget(this);
+	this->btnInfo->setObjectName("SpriteListItem_Info");
+	this->btnInfo->move(5, 5);
+	this->btnInfo->resize(16, 16);
 
-	connect(this, SIGNAL(leftclicked()), SLOT(OnClick()));
-	connect(Button, SIGNAL(leftclicked()), this, SLOT(ShowInfo()));
+	connect(btnInfo, SIGNAL(leftclicked()), this, SLOT(showInfo()));
 }
 
-/**
- * @brief SpriteListItem::OnClick - Onclick event.
- */
-void SpriteListItem::OnClick() {
-	AppWindow->EditArea->ChangeObject(this->Sprite);
+SpriteListItem::~SpriteListItem() {
+
 }
 
-/**
- * @brief SpriteListItem::ShowInfo - Onclick event.
- */
-void SpriteListItem::ShowInfo() {
+void SpriteListItem::showInfo() {
 	SpriteArea_SpriteArea *Area = dynamic_cast<SpriteArea_SpriteArea*>(parentWidget());
 	for (size_t i = 0; i < Area->SpriteList.size(); i++) {
-		if (Area->SpriteList[i]->Sprite->Name == Sprite->Name) {
+		if (Area->SpriteList[i]->object->Name == object->Name) {
 			Area->ShowIndex = static_cast<int>(i);
 			Area->RefreshList();
 		}
