@@ -17,7 +17,6 @@ public:
 	bool is_selected;
 	ScratchObject *object;
 	QLabel *text;
-private:
 	static ObjectListItem *selected_item;
 };
 

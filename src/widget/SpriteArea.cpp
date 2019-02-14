@@ -35,7 +35,9 @@ void SpriteArea::resizeEvent(QResizeEvent *) {
 SpriteArea_StageArea::SpriteArea_StageArea(QWidget *parent) : Widget(parent) {
 	Stage = new StageListItem(&ScratchMain.Stage, this);
 	Stage->move(3, 15);
-	Stage->select();
+	ObjectListItem::selected_item = Stage;
+	Stage->is_selected = true;
+	Stage->setObjectName("ObjectListItem-Select");
 }
 
 /**
