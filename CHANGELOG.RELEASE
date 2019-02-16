@@ -1,4 +1,20 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.1
+Date: 2019.2.16
+Features:
+  - Added stage to list of sprites.[build-570]
+  - Changed the style of sprite list item.[build-563]
+  - Finished UI of SpriteListItem.[build-527]
+  - Output the current running block's name to the log file.[build-547]
+  - Run project with multithread.[build-555]
+Bugfixes:
+  - Fixed the blocks cannot be used when running project.[bug#22][build-547]
+  - Fixed the block category did not refresh after changing the category.[bug#26][build-555]
+  - Fixed the body-blocks that is in edit area is disabled when changed showing object.[bug#27][build-577]
+  - Fixed the program crash when initialization.[bug#28][build-573]
+Source:
+  - Deleted some signals and slots.[build-570]
+---------------------------------------------------------------------------------------------------
 Version: 0.2.0
 Date: 2019.1.18
 Features:

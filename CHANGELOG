@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.1.577
+Date: 2019.2.16
+Bugfixes:
+  - Fixed the body-blocks that is in edit area is disabled when changed showing object.[bug#27]
+---------------------------------------------------------------------------------------------------
 Version: 0.2.1.573
 Date: 2019.2.14
 Bugfixes:
@@ -37,7 +42,7 @@ Features:
 Source:
   - Deleted some signals and slots.
 ---------------------------------------------------------------------------------------------------
-Version: 0.2.0.515 | 0.2.0
+Version: 0.2.0.515
 Date: 2019.1.18
 Source:
   - Added function to Logger in template function.
@@ -92,7 +97,7 @@ Date: 2018.12.25
 Features:
   - Added loading for image resource.
 ---------------------------------------------------------------------------------------------------
-Version: 0.1.0.417 | 0.1.0
+Version: 0.1.0.417
 Date: 2018.12.25
 Source:
   - Added destructor to some of functions.

@@ -61,19 +61,13 @@ ScriptPart_ScriptEdit::ScriptPart_ScriptEdit(QWidget *parent):Widget(parent) {
 
 void ScriptPart_ScriptEdit::Reload() {
 	for (auto c : this->children()) {
-		delete c;
-		c = nullptr;
+		static_cast<BlockItem*>(c)->hide();
 	}
 	for (auto &c : AppWindow->EditArea->Object->BlockList) {
-		if (c->isHead()) {
-			c->Item = new BlockItem(c, nullptr, nullptr, this);
-			c->Item->move(c->X, c->Y);
-		}
-		else {
-			c->Item = new BlockItem(c, c->LastBlock, c->NextBlock, this);
-			c->Item->move(c->LastBlock->Item->x(), c->LastBlock->Item->y() + c->LastBlock->Item->height());
-		}
 		c->Item->show();
+		for (auto &i = c->NextBlock; i != nullptr; i = i->NextBlock) {
+			i->Item->show();
+		}
 	}
 }
 
