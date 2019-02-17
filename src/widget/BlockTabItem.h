@@ -6,7 +6,7 @@
 #include "Widget.h"
 #include "../scratch/ScratchBlockCategory.h"
 
-class ScriptPart_BlockTab;
+class ScriptPartTab;
 
 class BlockTabItem : public Widget {
 	Q_OBJECT

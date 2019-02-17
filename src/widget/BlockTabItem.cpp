@@ -24,7 +24,7 @@ BlockTabItem::BlockTabItem(ScratchBlockCategory *CategoryData, QWidget *parent):
 }
 
 void BlockTabItem::OnSelect() {
-	auto BlockTab = dynamic_cast<ScriptPart_BlockTab*>(parentWidget());
+	auto BlockTab = dynamic_cast<ScriptPartTab*>(parentWidget());
 	emit BlockTab->reloadview(CategoryData);
 	Selected = true;
 	if (BlockTab->LastClicked != nullptr) {

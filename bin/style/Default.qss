@@ -152,8 +152,7 @@
 }
 
 #EditArea_ScriptPart_BlockTab {
-background-color: transparent;
-outline: none;
+    background-color: transparent;
     border-bottom-style: solid;
 	border-bottom-width: 1px;
 	border-bottom-color: #CCCCCC;
@@ -168,6 +167,19 @@ outline: none;
 
 #EditArea_CostumePart {
     background-color: #F9F9F9;
+}
+
+#EditArea_CostumePart_New {
+    background-color: #66CCFF;
+}
+
+#EditArea_CostumePart_List {
+    background-color: #FFB11B;
+}
+
+#EditArea_CostumePart_View {
+    background-color: #F7FAFC;
+	border: 1px solid #CCCCCC;
 }
 
 #BlockItem {

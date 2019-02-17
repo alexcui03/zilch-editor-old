@@ -6,7 +6,7 @@
 
 #include "Widget.h"
 #include "ScriptPart.h"
-#include "CostumePart.h"
+#include "costumepart/CostumePart.h"
 
 class EditArea : public Widget {
 public:

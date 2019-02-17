@@ -5,12 +5,12 @@
 #include "../scratch/ScratchSprite.h"
 #include "../scratch/ScratchStage.h"
 
-ScriptPart_BlockTab::ScriptPart_BlockTab(QWidget *parent):Widget(parent) {
+ScriptPartTab::ScriptPartTab(QWidget *parent) : Widget(parent) {
 	this->LastClicked = nullptr;
 	this->Reload();
 }
 
-void ScriptPart_BlockTab::Reload() {
+void ScriptPartTab::Reload() {
 	for (auto &c : this->BlockTab) {
 		delete c;
 	}
@@ -29,11 +29,11 @@ void ScriptPart_BlockTab::Reload() {
 	this->BlockTab[0]->OnSelect();
 }
 
-ScriptPart_BlockView::ScriptPart_BlockView(QWidget *parent):Widget(parent) {
+ScriptPartView::ScriptPartView(QWidget *parent) : Widget(parent) {
 	this->Reload(ScratchMain.BlockCategory[0]);
 }
 
-void ScriptPart_BlockView::Reload(ScratchBlockCategory *Category) {
+void ScriptPartView::Reload(ScratchBlockCategory *Category) {
 	for (auto &c : Block) {
 		delete c;
 	}
@@ -55,11 +55,11 @@ void ScriptPart_BlockView::Reload(ScratchBlockCategory *Category) {
 	}
 }
 
-ScriptPart_ScriptEdit::ScriptPart_ScriptEdit(QWidget *parent):Widget(parent) {
+ScriptPartEdit::ScriptPartEdit(QWidget *parent) : Widget(parent) {
 
 }
 
-void ScriptPart_ScriptEdit::Reload() {
+void ScriptPartEdit::Reload() {
 	for (auto c : this->children()) {
 		static_cast<BlockItem*>(c)->hide();
 	}
@@ -71,18 +71,18 @@ void ScriptPart_ScriptEdit::Reload() {
 	}
 }
 
-ScriptPart::ScriptPart(QWidget *parent):Widget(parent) {
-	BlockTab = new ScriptPart_BlockTab(this);
+ScriptPart::ScriptPart(QWidget *parent) : Widget(parent) {
+	BlockTab = new ScriptPartTab(this);
 	BlockTab->setObjectName("EditArea_ScriptPart_BlockTab");
 	BlockTab->move(0, 0);
 	BlockTab->resize(200, (static_cast<int>(ScratchMain.BlockCategory.size()) + 1) / 2 * 24 + 14);
 
-	BlockView = new ScriptPart_BlockView(this);
+	BlockView = new ScriptPartView(this);
 	BlockView->setObjectName("EditArea_ScriptPart_BlockView");
 	BlockView->move(0, BlockTab->rect().bottom() + 5);
 	BlockView->resize(200, this->height() - BlockView->rect().top());
 
-	ScriptEdit = new ScriptPart_ScriptEdit(this);
+	ScriptEdit = new ScriptPartEdit(this);
 	ScriptEdit->setObjectName("EditArea_ScriptPart_ScriptEdit");
 	ScriptEdit->move(BlockTab->rect().right(), 5);
 	ScriptEdit->resize(this->width() - 205, this->height() - 10);

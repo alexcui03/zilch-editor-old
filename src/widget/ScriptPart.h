@@ -13,10 +13,10 @@
 #include "BlockTabItem.h"
 #include "../scratch/ScratchObject.h"
 
-class ScriptPart_BlockTab : public Widget {
+class ScriptPartTab : public Widget {
 	Q_OBJECT
 public:
-	ScriptPart_BlockTab(QWidget *parent = nullptr);
+	ScriptPartTab(QWidget *parent = nullptr);
 public:
 	BlockTabItem *LastClicked;
 	std::vector<BlockTabItem*> BlockTab;
@@ -26,20 +26,20 @@ signals:
 	void reloadview(ScratchBlockCategory*);
 };
 
-class ScriptPart_BlockView : public Widget {
+class ScriptPartView : public Widget {
 	Q_OBJECT
 public:
-	ScriptPart_BlockView(QWidget *parent = nullptr);
+	ScriptPartView(QWidget *parent = nullptr);
 public slots:
 	void Reload(ScratchBlockCategory *Category);
 public:
 	std::vector<BlockItem*> Block;
 };
 
-class ScriptPart_ScriptEdit : public Widget {
+class ScriptPartEdit : public Widget {
 	Q_OBJECT
 public:
-	ScriptPart_ScriptEdit(QWidget *parent = nullptr);
+	ScriptPartEdit(QWidget *parent = nullptr);
 public slots:
 	void Reload();
 };
@@ -49,9 +49,9 @@ public:
 	ScriptPart(QWidget *parent = nullptr);
 	void resizeEvent(QResizeEvent* size);
 public:
-	ScriptPart_BlockTab *BlockTab;
-	ScriptPart_BlockView *BlockView;
-	ScriptPart_ScriptEdit *ScriptEdit;
+	ScriptPartTab *BlockTab;
+	ScriptPartView *BlockView;
+	ScriptPartEdit *ScriptEdit;
 };
 
 #endif // SCRIPTPART_H

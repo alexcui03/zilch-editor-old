@@ -135,7 +135,7 @@ void BlockItem::mouseMoveEvent(QMouseEvent *e) {
 		if (isViewingBlock) {
 			// Copy a new block for viewing, and make current block for edit.
 			BlockItem *NewItem = new BlockItem(this->BlockData, nullptr, nullptr, parentWidget());
-			dynamic_cast<ScriptPart_BlockView*>(parentWidget())->Block[ViewerIndex] = NewItem;
+			dynamic_cast<ScriptPartView*>(parentWidget())->Block[ViewerIndex] = NewItem;
 			NewItem->isViewingBlock = true;
 			NewItem->move(pos());
 			NewItem->show();

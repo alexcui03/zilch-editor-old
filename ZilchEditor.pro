@@ -77,7 +77,6 @@ SOURCES += \
     src/widget/SpriteArea.cpp \
     src/widget/EditArea.cpp \
     src/widget/ScriptPart.cpp \
-    src/widget/CostumePart.cpp \
     src/widget/BlockItem.cpp \
     src/scratch/ScratchBlockCategory.cpp \
     src/widget/BlockTabItem.cpp \
@@ -93,7 +92,6 @@ SOURCES += \
     src/util/Util.cpp \
     src/widget/BlockItem.cpp \
     src/widget/BlockTabItem.cpp \
-    src/widget/CostumePart.cpp \
     src/widget/EditArea.cpp \
     src/widget/MainWindow.cpp \
     src/widget/ScriptPart.cpp \
@@ -115,7 +113,12 @@ SOURCES += \
     src/plugin/PluginBase.cpp \
     src/util/Thread.cpp \
     src/widget/StageListItem.cpp \
-    src/widget/ObjectListItem.cpp
+    src/widget/ObjectListItem.cpp \
+    src/widget/costumepart/CostumeListItem.cpp \
+    src/widget/costumepart/CostumePart.cpp \
+    src/widget/costumepart/CostumeList.cpp \
+    src/widget/costumepart/CostumeView.cpp \
+    src/widget/costumepart/CostumeNew.cpp
 #-------------------------------------------------
 HEADERS += \
     src/stylesheet/StyleSheet.h \
@@ -130,7 +133,6 @@ HEADERS += \
     src/widget/SpriteArea.h \
     src/widget/EditArea.h \
     src/widget/ScriptPart.h \
-    src/widget/CostumePart.h \
     src/widget/BlockItem.h \
     src/scratch/ScratchBlockCategory.h \
     src/widget/BlockTabItem.h \
@@ -147,7 +149,6 @@ HEADERS += \
     src/util/Util.h \
     src/widget/BlockItem.h \
     src/widget/BlockTabItem.h \
-    src/widget/CostumePart.h \
     src/widget/EditArea.h \
     src/widget/MainWindow.h \
     src/widget/ScriptPart.h \
@@ -168,7 +169,12 @@ HEADERS += \
     src/plugin/PluginBase.h \
     src/util/Thread.h \
     src/widget/StageListItem.h \
-    src/widget/ObjectListItem.h
+    src/widget/ObjectListItem.h \
+    src/widget/costumepart/CostumeListItem.h \
+    src/widget/costumepart/CostumePart.h \
+    src/widget/costumepart/CostumeList.h \
+    src/widget/costumepart/CostumeView.h \
+    src/widget/costumepart/CostumeNew.h
 #-------------------------------------------------
 RESOURCES +=
 #-------------------------------------------------

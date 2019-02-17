@@ -11,25 +11,24 @@
 #include "SpriteListItem.h"
 #include "StageListItem.h"
 
-class SpriteArea;
-class SpriteArea_StageArea;
-class SpriteArea_SpriteArea;
-class SpriteArea_SpriteArea_TopBar;
-
-class SpriteArea : public Widget {
-public:
-	explicit SpriteArea(QWidget *parent = nullptr);
-	void resizeEvent(QResizeEvent* size);
-public:
-	SpriteArea_StageArea *Stage;
-	SpriteArea_SpriteArea *Sprite;
-};
-
 class SpriteArea_StageArea : public Widget {
 public:
 	explicit SpriteArea_StageArea(QWidget *parent = nullptr);
 public:
 	StageListItem *Stage;
+};
+
+class SpriteArea_SpriteArea_TopBar : public Widget {
+	Q_OBJECT
+public:
+	explicit SpriteArea_SpriteArea_TopBar(QWidget *parent = nullptr);
+	void resizeEvent(QResizeEvent* size);
+public slots:
+	void NewSprite();
+public:
+	QLabel *TextSprite;
+	QLabel *TextNewSprite;
+	QPushButton *ButtonNewSprite;
 };
 
 class SpriteArea_SpriteArea : public Widget {
@@ -55,17 +54,13 @@ public:
 	QCheckBox *Show;
 };
 
-class SpriteArea_SpriteArea_TopBar : public Widget {
-	Q_OBJECT
+class SpriteArea : public Widget {
 public:
-	explicit SpriteArea_SpriteArea_TopBar(QWidget *parent = nullptr);
+	explicit SpriteArea(QWidget *parent = nullptr);
 	void resizeEvent(QResizeEvent* size);
-public slots:
-	void NewSprite();
 public:
-	QLabel *TextSprite;
-	QLabel *TextNewSprite;
-	QPushButton *ButtonNewSprite;
+	SpriteArea_StageArea *Stage;
+	SpriteArea_SpriteArea *Sprite;
 };
 
 #endif // SPRITEAREA_H
