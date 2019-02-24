@@ -30,7 +30,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 DEFINES += _CRT_SECURE_NO_WARNINGS
 #-------------------------------------------------
 # Compiling environment(cpu).
-#DEFINES += PLATFORM_X86 #(NOT ALLOWED)
+#DEFINES += PLATFORM_X86
 DEFINES += PLATFORM_X86_64
 #DEFINES += PLATFORM_ARM64 #(NOT ALLOWED)
 # Compiling environment(system).

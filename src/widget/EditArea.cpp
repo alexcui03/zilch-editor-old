@@ -4,8 +4,8 @@
 #include <QTabBar>
 
 /**
- * @brief EditArea::EditArea - Constructor.
- * @param {QWidget*} parent - Parent widget.
+ * Constructor.
+ * parent : The parent widget pointer.
  */
 EditArea::EditArea(QWidget *parent):Widget(parent) {
 	this->Object = &ScratchMain.Stage;
@@ -26,20 +26,20 @@ EditArea::EditArea(QWidget *parent):Widget(parent) {
 }
 
 /**
- * @brief EditArea::resizeEvent - Resize event.
- * @param {QResizeEvent*} - Resize event.
+ * Called when the widget size changes.
  */
 void EditArea::resizeEvent(QResizeEvent *) {
 	TabWidget->resize(this->width(), this->height());
 }
 
 /**
- * @brief EditArea::ChangeObject
- * @param {ScratchObject*} Object - Sprite or stage.
+ * To call all the widgets to change data.
+ * This function will be called when any ObjectListItem was clicked.
  */
 void EditArea::ChangeObject(ScratchObject *Object) {
 	this->Object = Object;
 	this->ScriptPart->ScriptEdit->Reload();
+	this->CostumePart->costume_list->reload();
 }
 
 

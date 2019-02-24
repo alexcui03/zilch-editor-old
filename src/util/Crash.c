@@ -53,6 +53,13 @@ void OutputCPUStatus16(char *Buffer, const char *Name, uint16_t Value) {
 	LoggerAddError("DumpInfo", Buffer);
 }
 
+void OutputCPUStatus8(char *Buffer, const char *Name, uint8_t Value) {
+	static char Temp[17] = { 0 };
+	ConvertNumberBin16(Temp, Value);
+	sprintf(Buffer, "%-8s: 0x%02dX %16s %64s", Name, Value, "", Temp);
+	LoggerAddError("DumpInfo", Buffer);
+}
+
 #if defined(PLATFORM_WINDOWS)
 #include <Windows.h>
 #include <DbgHelp.h>
@@ -124,11 +131,11 @@ void DumpCallStack(CONTEXT *pContext) {
 	// Get EIP, ESP, EBP in x86
 	// Get RIP, RSP, RBP in x86_64
 #if defined(PLATFORM_X86)
-	sf.AddrPC.Offset = (CONTEXT*)pContext->Eip;
+	sf.AddrPC.Offset = pContext->Eip;
 	sf.AddrPC.Mode = AddrModeFlat;
-	sf.AddrStack.Offset = (CONTEXT*)pContext->Esp;
+	sf.AddrStack.Offset = pContext->Esp;
 	sf.AddrStack.Mode = AddrModeFlat;
-	sf.AddrFrame.Offset = (CONTEXT*)pContext->Ebp;
+	sf.AddrFrame.Offset = pContext->Ebp;
 	sf.AddrFrame.Mode = AddrModeFlat;
 #elif defined(PLATFORM_X86_64)
 	sf.AddrPC.Offset = pContext->Rip;
@@ -148,6 +155,36 @@ void DumpCallStack(CONTEXT *pContext) {
 #endif
 
 #if defined(PLATFORM_X86)
+	LoggerAddError("DumpInfo", "CPU status:");
+	LoggerAddError("DumpInfo", "CPU type: I386(x8)");
+	char Log[128];
+	memset(Log, 0, sizeof(Log) / sizeof(char));
+	LoggerAddError("DumpInfo", "Integer registers:");
+	OutputCPUStatus32(Log, "EAX",	pContext->Eax);
+	OutputCPUStatus32(Log, "EBX",	pContext->Ebx);
+	OutputCPUStatus32(Log, "ECX",	pContext->Ecx);
+	OutputCPUStatus32(Log, "EDX",	pContext->Edx);
+	OutputCPUStatus32(Log, "ESP",	pContext->Esp);
+	OutputCPUStatus32(Log, "EBP",	pContext->Ebp);
+	OutputCPUStatus32(Log, "ESI",	pContext->Esi);
+	OutputCPUStatus32(Log, "EDI",	pContext->Edi);
+	LoggerAddError("DumpInfo", "Program counter:");
+	OutputCPUStatus32(Log, "RIP",	pContext->Eip);
+	LoggerAddError("DumpInfo", "Debug registers:");
+	OutputCPUStatus32(Log, "DR0",	pContext->Dr0);
+	OutputCPUStatus32(Log, "DR1",	pContext->Dr1);
+	OutputCPUStatus32(Log, "DR2",	pContext->Dr2);
+	OutputCPUStatus32(Log, "DR3",	pContext->Dr3);
+	OutputCPUStatus32(Log, "DR6",	pContext->Dr6);
+	OutputCPUStatus32(Log, "DR7",	pContext->Dr7);
+	LoggerAddError("DumpInfo", "Segment Registers and processor flags:");
+	OutputCPUStatus32(Log, "CS",	pContext->SegCs);
+	OutputCPUStatus32(Log, "DS",	pContext->SegDs);
+	OutputCPUStatus32(Log, "ES",	pContext->SegEs);
+	OutputCPUStatus32(Log, "FS",	pContext->SegFs);
+	OutputCPUStatus32(Log, "GS",	pContext->SegGs);
+	OutputCPUStatus32(Log, "SS",	pContext->SegSs);
+	OutputCPUStatus32(Log, "EFLAGS",pContext->EFlags);
 #elif defined(PLATFORM_X86_64)
 	LoggerAddError("DumpInfo", "CPU status:");
 	LoggerAddError("DumpInfo", "CPU type: AMD64(x86_64)");

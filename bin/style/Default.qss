@@ -11,25 +11,21 @@
 }
 
 #StageArea {
-    border-style: solid;
-	border-width: 1px;
+    background-color: #FFFFFF;
+	border: 1px solid #E0E0E0;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
-	border-color: #E0E0E0;
-	background-color: #FFFFFF;
 }
 
 #StageArea_StageView {
     background-color: #FFFFFF;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #E0E0E0;
+	border: 1px solid #E0E0E0;
 }
 
 #StageArea_ButtonStart {
-    border-style:none;
-	border-radius: 8px;
     background-color: #90EE90;
+	border-style: none;
+	border-radius: 8px;
 }
 
 #StageArea_ButtonStart:hover {
@@ -37,9 +33,9 @@
 }
 
 #StageArea_ButtonStop {
-    border-style:none;
-	border-radius: 8px;
     background-color: #FF0000;
+	border-style: none;
+	border-radius: 8px;
 }
 
 #StageArea_ButtonStop:hover {
@@ -47,9 +43,7 @@
 }
 
 #SpriteArea {
-    border-color: #E0E0E0;
-	border-style: solid;
-	border-width: 1px;
+    border: 1px solid #E0E0E0;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
 }
@@ -95,9 +89,7 @@
 #ObjectListItem {}
 
 #ObjectListItem-Select {
-    border-style: solid;
-	border-width: 3px;
-	border-color: #4C97FF;
+    border: 3px solid #4C97FF;
 	border-radius: 5px;
 }
 
@@ -119,24 +111,20 @@
 }
 
 #EditArea_TabWidget::pane {
-    border-color: #E0E0E0;
-	border-style: solid;
-	border-width: 1px;
+    border: 1px solid #E0E0E0;
 	outline-style: none;
 }
 
 #EditArea_TabWidget_TabBar::tab {
-    min-width: 75px;
+    font-size: 13px;
+	min-width: 75px;
 	max-width: 150px;
 	height: 26px;
-	border-style: solid;
+	background-color: #F2F2F2;
+	border: 1px solid #E0E0E0;
 	border-bottom-style: none;
-	border-width: 1px;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
-	font-size: 13px;
-    background-color: #F2F2F2;
-	border-color: #E0E0E0;
 }
 
 #EditArea_TabWidget_TabBar::tab:hover {
@@ -153,16 +141,12 @@
 
 #EditArea_ScriptPart_BlockTab {
     background-color: transparent;
-    border-bottom-style: solid;
-	border-bottom-width: 1px;
-	border-bottom-color: #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
 }
 
 #EditArea_ScriptPart_ScriptEdit {
     background-color: #E0E0E0;
-	border-color: #CCCCCC;
-	border-style: solid;
-	border-width: 1px;
+	border: 1px solid #CCCCCC;
 }
 
 #EditArea_CostumePart {
@@ -170,11 +154,16 @@
 }
 
 #EditArea_CostumePart_New {
-    background-color: #66CCFF;
+
 }
 
 #EditArea_CostumePart_List {
-    background-color: #FFB11B;
+
+}
+
+#EditArea-CostumePart-List-Item {
+    border: 3px solid #4C97FF;
+	border-radius: 5px;
 }
 
 #EditArea_CostumePart_View {

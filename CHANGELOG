@@ -1,4 +1,21 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.2.597
+Date: 2019.2.24
+Features:
+  - Added dumpinfo support for windows x86.
+  - Added costume list.
+  - Added border to costume item in costume part.
+  - Changed style of costume part.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.2.590
+Date: 2019.2.21
+Features:
+  - Added button for importing files as a costume.
+  - Added support on Windows 32bit.
+Source:
+  - Added qt5.11.2 msvc2015 64bit sdk.
+  - Changed build directory.
+---------------------------------------------------------------------------------------------------
 Version: 0.2.2.586
 Date: 2019.2.17
 Features:
