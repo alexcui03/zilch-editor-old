@@ -4,7 +4,7 @@
 
 /**
  * Constructor.
- * parent : The parent widget pointer.
+ * parent - The parent widget pointer.
  */
 CostumeList::CostumeList(QWidget *parent) : Widget(parent) {
 
@@ -42,4 +42,5 @@ void CostumeList::reload() {
 		item->show();
 		this->list_items.push_back(item);
 	}
+	CostumeListItem::selected_item = nullptr;
 }

@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.2.608
+Date: 2019.2.26
+Features:
+  - Added costume selecting.
+  - Finished UI part of costume list and costume view.
+  - Finished import images as a costume.
+---------------------------------------------------------------------------------------------------
 Version: 0.2.2.597
 Date: 2019.2.24
 Features:

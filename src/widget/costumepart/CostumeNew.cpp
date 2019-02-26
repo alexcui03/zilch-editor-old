@@ -1,7 +1,21 @@
 #include "CostumeNew.h"
 
-#include <QFileDialog>
+#include <string>
+#include <fstream>
 
+#include <QFileDialog>
+#include <QImage>
+
+#include "../MainWindow.h"
+#include "../../scratch/Scratch.h"
+#include "../../scratch/ScratchResource.h"
+#include "../../scratch/ScratchCostume.h"
+#include "../../scratch/ScratchObject.h"
+
+/**
+ * Constructor.
+ * parent - Parent widget.
+ */
 CostumeNew::CostumeNew(QWidget *parent) : Widget(parent) {
 	this->txt_new_sprite = new QLabel(this);
 	this->txt_new_sprite->setObjectName("EditArea_CostumePart_New_Label");
@@ -17,17 +31,30 @@ CostumeNew::CostumeNew(QWidget *parent) : Widget(parent) {
 	connect(this->btn_from_file, SIGNAL(clicked()), this, SLOT(importFromFile()));
 }
 
+/**
+ * Destructor.
+ */
 CostumeNew::~CostumeNew() {
 
 }
 
+/**
+ * Select and import image.
+ */
 void CostumeNew::importFromFile() {
 	QFileDialog *file_dialog = new QFileDialog(this);
 	file_dialog->setWindowTitle("Import costume from file");
 	file_dialog->setNameFilter("Image files (*.png *.jpg *.jpeg)");
 	file_dialog->setViewMode(QFileDialog::ViewMode::List);
 	file_dialog->show();
+	// If select file
 	if (file_dialog->exec()) {
-		this->txt_new_sprite->setText(file_dialog->selectedFiles().at(0));
+		std::string file_name = file_dialog->selectedFiles().at(0).toStdString();
+		// Load image and create costume
+		ScratchCostume costume(ScratchMain.ResourceControl.LoadResourcePhoto(file_name));
+		// Add costume to object
+		AppWindow->EditArea->Object->CostumeList.push_back(costume);
+		// Reload frame
+		AppWindow->EditArea->CostumePart->costume_list->reload();
 	}
 }

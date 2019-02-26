@@ -7,10 +7,14 @@
 #include "../../scratch/ScratchCostume.h"
 
 class CostumeListItem : public Widget {
+	Q_OBJECT
 public:
 	CostumeListItem(ScratchCostume *costume, QWidget *parent = nullptr);
 	~CostumeListItem();
+public slots:
+	void select();
 public:
+	static CostumeListItem *selected_item;
 	ScratchCostume *costume;
 	QLabel *label;
 };

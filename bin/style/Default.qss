@@ -86,7 +86,9 @@
     background-color: #AA7612;
 }
 
-#ObjectListItem {}
+#ObjectListItem {
+
+}
 
 #ObjectListItem-Select {
     border: 3px solid #4C97FF;
@@ -162,6 +164,11 @@
 }
 
 #EditArea-CostumePart-List-Item {
+    padding: 3px;
+}
+
+#EditArea-CostumePart-List-Item_selected {
+    padding: 3px;
     border: 3px solid #4C97FF;
 	border-radius: 5px;
 }

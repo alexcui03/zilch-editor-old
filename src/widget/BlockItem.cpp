@@ -1,5 +1,7 @@
 #include "BlockItem.h"
+
 #include <cmath>
+
 #include <QApplication>
 #include <QPalette>
 #include <QPaintEvent>
@@ -9,12 +11,20 @@
 #include <QPoint>
 #include <QVector2D>
 #include <QObjectList>
+
 #include "MainWindow.h"
 #include "ScriptPart.h"
 #include "../scratch/ScratchBlockCategory.h"
 #include "../util/Util.h"
 #include "../logger/Logger.h"
 
+/**
+ * Constructor.
+ * Block - Scratch block.
+ * LastBlock - Last block.
+ * NextBlock - Next block.
+ * parent - Parent widget.
+ */
 BlockItem::BlockItem(ScratchBlock *Block, ScratchBlock *LastBlock, ScratchBlock *NextBlock, QWidget *parent):Widget(parent) {
 	this->BlockData = Block;
 	this->BlockData->LastBlock = LastBlock;

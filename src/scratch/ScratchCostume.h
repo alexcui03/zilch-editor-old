@@ -7,9 +7,10 @@
 class ScratchCostume {
 public:
 	ScratchCostume();
+	ScratchCostume(ResourcePhoto *resource);
 public:
-	std::string Name;
-	ResourcePhoto *Resourse;
+	std::string name;
+	ResourcePhoto *resource;
 };
 
 #endif // SCRATCHCOSTUME_H

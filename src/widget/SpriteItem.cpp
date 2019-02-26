@@ -10,7 +10,7 @@ SpriteItem::SpriteItem(ScratchSprite *Sprite, QWidget *parent) : Widget(parent) 
 
 	this->Label = new QLabel(this);
 	this->Label->move(0, 0);
-	this->Label->setPixmap(QPixmap::fromImage(*static_cast<QImage*>(this->Sprite->CostumeList[this->Sprite->CurrentCostume].Resourse->Data)));
+	this->Label->setPixmap(QPixmap::fromImage(*static_cast<QImage*>(this->Sprite->CostumeList[this->Sprite->CurrentCostume].resource->Data)));
 	this->Label->adjustSize();
 
 	this->adjustSize();
