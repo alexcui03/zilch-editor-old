@@ -8,6 +8,8 @@
 class SpriteItem : public Widget {
 public:
 	explicit SpriteItem(ScratchSprite *Sprite, QWidget *parent = nullptr);
+	~SpriteItem();
+	void reload();
 public:
 	ScratchSprite *Sprite;
 	QLabel *Label;

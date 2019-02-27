@@ -30,11 +30,9 @@ CostumeListItem::CostumeListItem(ScratchCostume *costume, QWidget *parent) : Wid
  * Destructor.
  */
 CostumeListItem::~CostumeListItem() {
-	auto f = [](int, const char *)->void {};
-	f(5, ("aaa" "ccc"));
 	delete label;
 }
-
+#include "../../logger/Logger.h"
 /**
  * Called when select this item.
  * To change the image of view.
@@ -57,6 +55,14 @@ void CostumeListItem::select() {
 	this->style()->polish(CostumeListItem::selected_item);
 	// Change image in view
 	static_cast<CostumePart*>(this->parent()->parent())->costume_view->setImage(static_cast<QImage*>(this->costume->resource->Data));
-	/// TODO: Change current costume of sprite
+	// Change current costume of sprite
+	auto *t = static_cast<ScratchSprite*>(AppWindow->EditArea->Object);
+	size_t i = 0;
+	ScratchCostume *p = &t->CostumeList[i];
+	while (p != this->costume) {
+		p = &t->CostumeList[++i];
+	}
+	t->CurrentCostume = i;
+	t->Item->reload();
 }
 
