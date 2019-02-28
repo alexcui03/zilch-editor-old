@@ -40,7 +40,7 @@ void ScriptPartView::Reload(ScratchBlockCategory *Category) {
 	Block.clear();
 	size_t Length = Category->Block.size();
 	for (size_t i = 0; i < Length; i++) {
-		ScratchBlock *Temp = new ScratchBlock(Category->Block[i]);
+		ScratchBlock *Temp = new ScratchBlock(Category->Block[i], nullptr);
 		BlockItem *Item = new BlockItem(Temp, nullptr, nullptr, this);
 		Item->isViewingBlock = true;
 		Item->ViewerIndex = i;

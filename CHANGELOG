@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.2.621
+Date: 2019.2.28
+Bugfixes:
+  - Fixed the blocks below a block that will be deleted cannot be deleted.[bug#12]
+  - Fixed the sprite doesn't resize when changes the costume.[bug#29]
+  - Fixed the block doesn't delete from block list of sprite.[bug#30]
+Source:
+  - Add build profile to project, for Qt5.12.1 msvc2017 32/64bit.
+---------------------------------------------------------------------------------------------------
 Version: 0.2.2.616
 Date: 2019.2.27
 Features:

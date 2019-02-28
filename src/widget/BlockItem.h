@@ -20,12 +20,12 @@ public slots:
 	void mouseMoveEvent(QMouseEvent *e) override;
 	void mouseReleaseEvent(QMouseEvent *e) override;
 public:
+	bool needAdd;
 	bool isViewingBlock;
 	ScratchBlock *BlockData;
 	size_t ViewerIndex;
 	QLabel *TextLabel;
 private:
-	bool needAdd;
 	bool isDragging;
 	QPoint StartPos;
 	QPoint MovVector;

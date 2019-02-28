@@ -32,7 +32,7 @@ CostumeListItem::CostumeListItem(ScratchCostume *costume, QWidget *parent) : Wid
 CostumeListItem::~CostumeListItem() {
 	delete label;
 }
-#include "../../logger/Logger.h"
+
 /**
  * Called when select this item.
  * To change the image of view.

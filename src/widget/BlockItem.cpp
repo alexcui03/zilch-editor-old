@@ -197,11 +197,13 @@ void BlockItem::mouseReleaseEvent(QMouseEvent *e) {
 			if (!Edit->rect().contains(Edit->mapFromGlobal(e->globalPos()))) {
 				// Delete all block below.
 				ScratchBlock *LastTemp = this->BlockData;
-				for (ScratchBlock *Temp = this->BlockData->NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
+				for (ScratchBlock *Temp = LastTemp->NextBlock; Temp != nullptr; LastTemp = Temp, Temp = Temp->NextBlock) {
 					delete LastTemp;
 				}
+				delete LastTemp;
 			}
 			else {
+				this->BlockData->Object = AppWindow->EditArea->Object;
 				// Search for the nearest block that can be connect to.
 				BlockItem *Nearest = nullptr;
 				if (this->BlockData->Block->Type == ScratchBlockType::BODY_BLOCK)

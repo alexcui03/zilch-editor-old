@@ -3,8 +3,9 @@
 #include "../widget/BlockItem.h"
 #include "../logger/Logger.h"
 
-ScratchBlock::ScratchBlock(ScratchBlockPrototype *Block, ScratchBlock *LastBlock, ScratchBlock *NextBlock) {
+ScratchBlock::ScratchBlock(ScratchBlockPrototype *Block, ScratchObject *Object, ScratchBlock *LastBlock, ScratchBlock *NextBlock) {
 	this->Block = Block;
+	this->Object = Object;
 	this->LastBlock = LastBlock;
 	this->NextBlock = NextBlock;
 	this->Item = nullptr;
@@ -12,6 +13,16 @@ ScratchBlock::ScratchBlock(ScratchBlockPrototype *Block, ScratchBlock *LastBlock
 }
 
 ScratchBlock::~ScratchBlock() {
+	if (this->Object != nullptr) {
+		if (!this->Item->needAdd) {
+			for (auto i = this->Object->BlockList.begin(); i != this->Object->BlockList.end(); i++) {
+				if (*i == this) {
+					this->Object->BlockList.erase(i);
+					break;
+				}
+			}
+		}
+	}
 	delete this->Item;
 }
 

@@ -23,5 +23,7 @@ SpriteItem::~SpriteItem() {
 void SpriteItem::reload() {
 	this->Label->setPixmap(QPixmap::fromImage(*static_cast<QImage*>(this->Sprite->CostumeList[this->Sprite->CurrentCostume].resource->Data)));
 	this->Label->adjustSize();
+
+	this->adjustSize();
 }
 
