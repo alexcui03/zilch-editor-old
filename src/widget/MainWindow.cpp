@@ -1,8 +1,12 @@
 #include "MainWindow.h"
+
+#include <fstream>
+
 #include <QMenuBar>
 #include <QMenu>
 #include <QApplication>
-#include <fstream>
+
+#include "About.h"
 #include "../translator/Translator.h"
 
 std::vector<std::string> GetTitleList() {
@@ -40,7 +44,8 @@ MainWindow::MainWindow(std::string Title, QWidget *parent):QMainWindow(parent) {
 	MenuOption = new QMenu(AppTranslator["window_menubar_option"].c_str());
 	MenuOption->setObjectName("Menu_Option");
 	MenuOption->addAction(AppTranslator["window_menubar_option_settings"].c_str());
-	MenuOption->addAction(AppTranslator["window_menubar_option_about"].c_str(), qApp, SLOT(aboutQt()));
+	MenuOption->addAction(AppTranslator["window_menubar_option_about_qt"].c_str(), qApp, SLOT(aboutQt()));
+	MenuOption->addAction(AppTranslator["window_menubar_option_about_ze"].c_str(), this, SLOT(about()));
 
 	MenuBar->addMenu(MenuFile);
 	MenuBar->addMenu(MenuOption);
@@ -71,3 +76,9 @@ void MainWindow::resizeEvent(QResizeEvent* size) {
 	SpriteArea->resize(480, size->size().height() - 470);
 	EditArea->resize(this->size().width() - 510, this->size().height() - 50);
 }
+
+void MainWindow::about() {
+	About *about = new About();
+	about->show();
+}
+
