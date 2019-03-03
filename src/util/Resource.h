@@ -6,7 +6,8 @@
 #include <string>
 
 union HashMD5 {
-	unsigned char Byte[16];
+	unsigned char byte[16];
+	uint16_t data;
 };
 
 class ResourceBasic {

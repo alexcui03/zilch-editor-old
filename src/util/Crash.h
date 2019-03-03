@@ -15,6 +15,7 @@ void ConvertNumberBin8(char *Buffer, uint8_t Value);
 void OutputCPUStatus64(char *Buffer, const char *Name, uint64_t Value);
 void OutputCPUStatus32(char *Buffer, const char *Name, uint32_t Value);
 void OutputCPUStatus16(char *Buffer, const char *Name, uint16_t Value);
+void OutputCPUStatus8(char *Buffer, const char *Name, uint8_t Value);
 
 void BindCrashHandler(void);
 

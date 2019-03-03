@@ -1,4 +1,29 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.2
+Date: 2019.3.3
+Features:
+  - Added area in costume part.[build-586]
+  - Added button for importing files as a costume.[build-590]
+  - Added support on Windows 32bit.[build-590]
+  - Added dumpinfo support for windows x86.[build-597]
+  - Added costume list.[build-597]
+  - Added border to costume item in costume part.[build-597]
+  - Added costume selecting.[build-608]
+  - Added about widget.[build-625]
+  - Changed style of costume part.[build-597]
+  - Changed dump file to /dump directory.[build-626]
+  - Finished UI part of costume list and costume view.[build-608]
+  - Finished import images as a costume.[build-608]
+  - Now select costume in costume list can change the costume of sprite.[build-616]
+Bugfixes:
+  - Fixed the blocks below a block that will be deleted cannot be deleted.[bug#12][build-621]
+  - Fixed the sprite doesn't resize when changes the costume.[bug#29][build-621]
+  - Fixed the block doesn't delete from block list of sprite.[bug#30][build-621]
+Source:
+  - Added qt5.11.2 msvc2015 64bit sdk.[build-590]
+  - Add build profile to project, for Qt5.12.1 msvc2017 32/64bit.[build-621]
+  - Changed build directory.[build-590]
+---------------------------------------------------------------------------------------------------
 Version: 0.2.1
 Date: 2019.2.16
 Features:

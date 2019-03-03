@@ -58,7 +58,7 @@ QMAKE_CFLAGS += /WX # make warnings as error [MSVC]
 #=================================================
 # The program version
 # {Marjor}.{Minor}.{Revision}.{Build}
-VERSION = 0.1.1.408
+VERSION = 0.2.2.626
 #=================================================
 # Linked libs.
 LIBS += -ldbghelp # DbgHelp.dll [Windows]

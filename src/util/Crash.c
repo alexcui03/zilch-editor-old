@@ -93,7 +93,7 @@ long ApplicationCrashHandler(EXCEPTION_POINTERS *pException) {
 	GetLocalTime(&SystemTime);
 	char FileName[50];
 	memset(FileName, 0, sizeof(FileName) / sizeof(char));
-	sprintf(FileName, "%04d%02d%02d-%02d%02d%02d.%03d.dmp",
+	sprintf(FileName, "dump/%04d%02d%02d-%02d%02d%02d.%03d.dmp",
 		SystemTime.wYear, SystemTime.wMonth, SystemTime.wDay,
 		SystemTime.wHour, SystemTime.wMinute, SystemTime.wSecond,
 		SystemTime.wMilliseconds
