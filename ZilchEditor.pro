@@ -119,7 +119,8 @@ SOURCES += \
     src/widget/costumepart/CostumeList.cpp \
     src/widget/costumepart/CostumeView.cpp \
     src/widget/costumepart/CostumeNew.cpp \
-    src/widget/About.cpp
+    src/widget/About.cpp \
+    src/widget/LanguageAction.cpp
 #-------------------------------------------------
 HEADERS += \
     src/stylesheet/StyleSheet.h \
@@ -176,7 +177,8 @@ HEADERS += \
     src/widget/costumepart/CostumeList.h \
     src/widget/costumepart/CostumeView.h \
     src/widget/costumepart/CostumeNew.h \
-    src/widget/About.h
+    src/widget/About.h \
+    src/widget/LanguageAction.h
 #-------------------------------------------------
 RESOURCES +=
 #-------------------------------------------------

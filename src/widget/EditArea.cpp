@@ -1,7 +1,9 @@
 #include "EditArea.h"
+
+#include <QTabBar>
+
 #include "../translator/Translator.h"
 #include "../scratch/Scratch.h"
-#include <QTabBar>
 
 /**
  * Constructor.
@@ -21,8 +23,22 @@ EditArea::EditArea(QWidget *parent):Widget(parent) {
 	CostumePart = new ::CostumePart();
 	CostumePart->setObjectName("EditArea_CostumePart");
 
-	TabWidget->addTab(ScriptPart, "Script");
-	TabWidget->addTab(CostumePart, "Costume");
+	ScriptPart->index = TabWidget->addTab(ScriptPart, AppTranslator["editarea_tab_scriptpart"]);
+	CostumePart->index = TabWidget->addTab(CostumePart, AppTranslator["editarea_tab_costumepart"]);
+}
+
+EditArea::~EditArea() {
+	delete this->TabWidget;
+	delete this->ScriptPart;
+	delete this->CostumePart;
+}
+
+void EditArea::reloadTranslation() {
+	TabWidget->setTabText(ScriptPart->index, AppTranslator["editarea_tab_scriptpart"]);
+	TabWidget->setTabText(CostumePart->index, AppTranslator["editarea_tab_costumepart"]);
+
+	this->ScriptPart->reloadTranslation();
+	this->CostumePart->reloadTranslation();
 }
 
 /**

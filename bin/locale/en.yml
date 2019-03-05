@@ -5,6 +5,7 @@ window_menubar_file_openfile: Open File
 window_menubar_file_save: Save
 window_menubar_file_saveas: Save as
 window_menubar_file_exit: Exit
+window_menubar_lang: Language
 window_menubar_option: Option
 window_menubar_option_settings: Settings
 window_menubar_option_about: About
@@ -12,3 +13,5 @@ window_menubar_option_about_qt: About Qt
 window_menubar_option_about_ze: About ZE
 spritearea_sprite_topbar_sprites: Sprites
 spritearea_sprite_topbar_newsprite: New Sprite
+editarea_tab_scriptpart: Script
+editarea_tab_costumepart: Costume

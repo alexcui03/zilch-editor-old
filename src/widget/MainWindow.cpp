@@ -7,6 +7,7 @@
 #include <QApplication>
 
 #include "About.h"
+#include "LanguageAction.h"
 #include "../translator/Translator.h"
 
 std::vector<std::string> GetTitleList() {
@@ -32,22 +33,29 @@ MainWindow::MainWindow(std::string Title, QWidget *parent):QMainWindow(parent) {
 	MenuBar->resize(this->width(), 30);
 	MenuBar->setObjectName("Menu");
 
-	MenuFile = new QMenu(AppTranslator["window_menubar_file"].c_str());
+	MenuFile = new QMenu(AppTranslator["window_menubar_file"]);
 	MenuFile->setObjectName("Menu_File");
-	MenuFile->addAction(AppTranslator["window_menubar_file_openfile"].c_str());
+	MenuFile->addAction(AppTranslator["window_menubar_file_openfile"]);
 	MenuFile->addSeparator();
-	MenuFile->addAction(AppTranslator["window_menubar_file_save"].c_str());
-	MenuFile->addAction(AppTranslator["window_menubar_file_saveas"].c_str());
+	MenuFile->addAction(AppTranslator["window_menubar_file_save"]);
+	MenuFile->addAction(AppTranslator["window_menubar_file_saveas"]);
 	MenuFile->addSeparator();
-	MenuFile->addAction(AppTranslator["window_menubar_file_exit"].c_str());
+	MenuFile->addAction(AppTranslator["window_menubar_file_exit"]);
 
-	MenuOption = new QMenu(AppTranslator["window_menubar_option"].c_str());
+	MenuLang = new QMenu(AppTranslator["window_menubar_lang"]);
+	MenuLang->setObjectName("Menu_Lang");
+	for (const auto &c : AppTranslator.LanguageMap) {
+		new LanguageAction(c.second, c.first, static_cast<void(QObject::*)(std::string)>(&MainWindow::setLanguage), MenuLang);
+	}
+
+	MenuOption = new QMenu(AppTranslator["window_menubar_option"]);
 	MenuOption->setObjectName("Menu_Option");
-	MenuOption->addAction(AppTranslator["window_menubar_option_settings"].c_str());
-	MenuOption->addAction(AppTranslator["window_menubar_option_about_qt"].c_str(), qApp, SLOT(aboutQt()));
-	MenuOption->addAction(AppTranslator["window_menubar_option_about_ze"].c_str(), this, SLOT(about()));
+	MenuOption->addAction(AppTranslator["window_menubar_option_settings"]);
+	MenuOption->addAction(AppTranslator["window_menubar_option_about_qt"], qApp, SLOT(aboutQt()));
+	MenuOption->addAction(AppTranslator["window_menubar_option_about_ze"], this, SLOT(about()));
 
 	MenuBar->addMenu(MenuFile);
+	MenuBar->addMenu(MenuLang);
 	MenuBar->addMenu(MenuOption);
 
 	StageArea = new ::StageArea(this);
@@ -80,5 +88,20 @@ void MainWindow::resizeEvent(QResizeEvent* size) {
 void MainWindow::about() {
 	About *about = new About();
 	about->show();
+}
+
+void MainWindow::setLanguage(std::string lang) {
+	AppTranslator.SetLanguage(lang);
+	this->reloadTranslation();
+}
+
+void MainWindow::reloadTranslation() {
+	this->MenuFile->setTitle(AppTranslator["window_menubar_file"]);
+	this->MenuLang->setTitle(AppTranslator["window_menubar_lang"]);
+	this->MenuOption->setTitle(AppTranslator["window_menubar_option"]);
+
+	this->StageArea->reloadTranslation();
+	this->SpriteArea->reloadTranslation();
+	this->EditArea->reloadTranslation();
 }
 

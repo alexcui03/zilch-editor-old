@@ -49,6 +49,7 @@ public:
 	ScriptPart(QWidget *parent = nullptr);
 	void resizeEvent(QResizeEvent* size);
 public:
+	int index;
 	ScriptPartTab *BlockTab;
 	ScriptPartView *BlockView;
 	ScriptPartEdit *ScriptEdit;

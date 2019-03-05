@@ -40,3 +40,6 @@ bin/dump/*
 # Build path
 build/*
 
+file/*
+data/*
+

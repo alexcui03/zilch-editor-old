@@ -12,7 +12,7 @@ public:
 	void SetLanguage(std::string Lang);
 	void SetLanguage();
 	std::string operator[](std::string LocalisedString);
-	//const char *operator[](const char *LocalisedString);
+	const char *operator[](const char *LocalisedString);
 public:
 	std::map<std::string, std::map<std::string, std::string>> TranslationString;
 	std::map<std::string, std::string> LanguageMap;

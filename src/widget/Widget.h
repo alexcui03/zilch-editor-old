@@ -8,21 +8,21 @@ class Widget : public QWidget {
 	Q_OBJECT
 public:
 	Widget(QWidget *parent = nullptr);
-	void paintEvent(QPaintEvent *e) override;
-	void mousePressEvent(QMouseEvent *e) override;
-	void mouseReleaseEvent(QMouseEvent *e) override;
-	void mouseMoveEvent(QMouseEvent *e) override;
-	void enterEvent(QEvent *e) override;
-	void leaveEvent(QEvent *e) override;
+	virtual ~Widget() override;
+	virtual void paintEvent(QPaintEvent *e) override;
+	virtual void mousePressEvent(QMouseEvent *e) override;
+	virtual void mouseReleaseEvent(QMouseEvent *e) override;
+	virtual void mouseMoveEvent(QMouseEvent *e) override;
+	virtual void enterEvent(QEvent *e) override;
+	virtual void leaveEvent(QEvent *e) override;
+	virtual void reloadTranslation();
 private slots:
 	void DefMouseProc();
-	void ReloadTranslation();
 signals:
 	void leftclicked();
 	void rightclicked();
 	void onmouseenter();
 	void onmouseleave();
-	void reloadtranslation();
 protected:
 	bool LeftPressed;
 	bool RightPressed;

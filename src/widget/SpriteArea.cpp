@@ -20,6 +20,16 @@ SpriteArea::SpriteArea(QWidget *parent) : Widget(parent) {
 	//Sprite->resize(width() - 80, height());
 }
 
+SpriteArea::~SpriteArea() {
+	delete this->Stage;
+	delete this->Sprite;
+}
+
+void SpriteArea::reloadTranslation() {
+	this->Stage->reloadTranslation();
+	this->Sprite->reloadTranslation();
+}
+
 /**
  * @brief SpriteArea::resizeEvent - Resize event.
  */
@@ -33,11 +43,19 @@ void SpriteArea::resizeEvent(QResizeEvent *) {
  * @param {QWidget*} parent - Parent widget.
  */
 SpriteArea_StageArea::SpriteArea_StageArea(QWidget *parent) : Widget(parent) {
-	Stage = new StageListItem(&ScratchMain.Stage, this);
-	Stage->move(3, 15);
+	this->Stage = new StageListItem(&ScratchMain.Stage, this);
+	this->Stage->move(3, 15);
 	ObjectListItem::selected_item = Stage;
-	Stage->is_selected = true;
-	Stage->setObjectName("ObjectListItem-Select");
+	this->Stage->is_selected = true;
+	this->Stage->setObjectName("ObjectListItem-Select");
+}
+
+SpriteArea_StageArea::~SpriteArea_StageArea() {
+	delete this->Stage;
+}
+
+void SpriteArea_StageArea::reloadTranslation() {
+	this->Stage->reloadTranslation();
 }
 
 /**
@@ -98,6 +116,21 @@ SpriteArea_SpriteArea::SpriteArea_SpriteArea(QWidget *parent) : Widget(parent) {
 
 	ReloadList();
 	RefreshList();
+}
+
+SpriteArea_SpriteArea::~SpriteArea_SpriteArea() {
+	delete this->TopBar;
+	delete this->ButtonBack;
+	delete this->View;
+	delete this->Name;
+	delete this->Position;
+	delete this->Direction;
+	delete this->Draggable;
+	delete this->Show;
+}
+
+void SpriteArea_SpriteArea::reloadTranslation() {
+	this->TopBar->reloadTranslation();
 }
 
 /**
@@ -167,7 +200,7 @@ void SpriteArea_SpriteArea::resizeEvent(QResizeEvent*) {
 SpriteArea_SpriteArea_TopBar::SpriteArea_SpriteArea_TopBar(QWidget *parent) : Widget(parent) {
 	TextSprite = new QLabel(this);
 	TextSprite->setObjectName("SpriteArea_SpriteArea_TopBar_TextSprite");
-	TextSprite->setText(AppTranslator["spritearea_sprite_topbar_sprites"].c_str());
+	TextSprite->setText(AppTranslator["spritearea_sprite_topbar_sprites"]);
 	TextSprite->move(10, 5);
 	//TextSprite->adjustSize();
 
@@ -179,7 +212,22 @@ SpriteArea_SpriteArea_TopBar::SpriteArea_SpriteArea_TopBar(QWidget *parent) : Wi
 
 	TextNewSprite = new QLabel(this);
 	TextNewSprite->setObjectName("SpriteArea_SpriteArea_TopBar_TextNewSprite");
-	TextNewSprite->setText(AppTranslator["spritearea_sprite_topbar_newsprite"].c_str());
+	TextNewSprite->setText(AppTranslator["spritearea_sprite_topbar_newsprite"]);
+	TextNewSprite->adjustSize();
+	TextNewSprite->move(380 - ButtonNewSprite->width() - TextNewSprite->width(), 5);
+}
+
+SpriteArea_SpriteArea_TopBar::~SpriteArea_SpriteArea_TopBar() {
+	delete this->TextSprite;
+	delete this->ButtonNewSprite;
+	delete this->TextNewSprite;
+}
+
+void SpriteArea_SpriteArea_TopBar::reloadTranslation() {
+	this->TextSprite->setText(AppTranslator["spritearea_sprite_topbar_sprites"]);
+	this->TextNewSprite->setText(AppTranslator["spritearea_sprite_topbar_newsprite"]);
+
+	TextSprite->adjustSize();
 	TextNewSprite->adjustSize();
 	TextNewSprite->move(380 - ButtonNewSprite->width() - TextNewSprite->width(), 5);
 }

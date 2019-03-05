@@ -20,6 +20,14 @@ StageArea::StageArea(QWidget *parent):Widget(parent) {
 	connect(ButtonStart, SIGNAL(clicked()), this, SLOT(RunProgram()));
 }
 
+StageArea::~StageArea() {
+
+}
+
+void StageArea::reloadTranslation() {
+	this->StageView->reloadTranslation();
+}
+
 void StageArea::RunProgram() {
 	ScratchMain.ProgramRun();
 }

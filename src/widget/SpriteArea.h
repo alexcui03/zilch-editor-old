@@ -2,18 +2,23 @@
 #define SPRITEAREA_H
 
 #include "Widget.h"
+
+#include <vector>
+
 #include <QWidget>
 #include <QLabel>
 #include <QPushButton>
 #include <QLineEdit>
 #include <QCheckBox>
-#include <vector>
+
 #include "SpriteListItem.h"
 #include "StageListItem.h"
 
 class SpriteArea_StageArea : public Widget {
 public:
 	explicit SpriteArea_StageArea(QWidget *parent = nullptr);
+	~SpriteArea_StageArea() override;
+	void reloadTranslation() override;
 public:
 	StageListItem *Stage;
 };
@@ -22,7 +27,9 @@ class SpriteArea_SpriteArea_TopBar : public Widget {
 	Q_OBJECT
 public:
 	explicit SpriteArea_SpriteArea_TopBar(QWidget *parent = nullptr);
-	void resizeEvent(QResizeEvent* size);
+	~SpriteArea_SpriteArea_TopBar() override;
+	void reloadTranslation() override;
+	void resizeEvent(QResizeEvent* size) override;
 public slots:
 	void NewSprite();
 public:
@@ -35,7 +42,9 @@ class SpriteArea_SpriteArea : public Widget {
 	Q_OBJECT
 public:
 	explicit SpriteArea_SpriteArea(QWidget *parent = nullptr);
-	void resizeEvent(QResizeEvent* size);
+	~SpriteArea_SpriteArea() override;
+	void reloadTranslation() override;
+	void resizeEvent(QResizeEvent* size) override;
 	void RefreshList();
 	void ReloadList();
 public slots:
@@ -57,7 +66,9 @@ public:
 class SpriteArea : public Widget {
 public:
 	explicit SpriteArea(QWidget *parent = nullptr);
-	void resizeEvent(QResizeEvent* size);
+	~SpriteArea() override;
+	void reloadTranslation() override;
+	void resizeEvent(QResizeEvent* size) override;
 public:
 	SpriteArea_StageArea *Stage;
 	SpriteArea_SpriteArea *Sprite;

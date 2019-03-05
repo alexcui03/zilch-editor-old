@@ -1,0 +1,18 @@
+current_lang: zh_cn
+
+window_menubar_file: 文件
+window_menubar_file_openfile: 打开
+window_menubar_file_save: 保存
+window_menubar_file_saveas: 另存为
+window_menubar_file_exit: 关闭
+window_menubar_lang: 语言
+window_menubar_option: 选项
+window_menubar_option_settings: 设置
+window_menubar_option_about: 关于
+window_menubar_option_about_qt: 关于 Qt
+window_menubar_option_about_ze: 关于 ZE
+spritearea_sprite_topbar_sprites: 角色
+spritearea_sprite_topbar_newsprite: 新建角色
+editarea_tab_scriptpart: 脚本
+editarea_tab_costumepart: 造型
+

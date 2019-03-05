@@ -18,15 +18,17 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 public:
 	explicit MainWindow(std::string TitleList, QWidget *parent = nullptr);
-	~MainWindow();
-	//bool nativeEvent(const QByteArray &eventType, void *message, long *result);
-	void resizeEvent(QResizeEvent* size);
+	~MainWindow() override;
+	void resizeEvent(QResizeEvent* size) override;
+	void reloadTranslation();
 public slots:
 	void about();
+	void setLanguage(std::string lang);
 public:
 	QMenuBar *MenuBar;
 	QMenu *MenuFile;
 	QMenu *MenuOption;
+	QMenu *MenuLang;
 	StageArea *StageArea;
 	SpriteArea *SpriteArea;
 	EditArea *EditArea;

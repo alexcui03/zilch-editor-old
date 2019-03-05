@@ -1,8 +1,10 @@
 #include "Translator.h"
-#include "../logger/Logger.h"
+
 #include <filesystem>
 #include <fstream>
-#include <QDebug>
+#include <cstring>
+
+#include "../logger/Logger.h"
 
 #ifndef _HAS_CXX17
 namespace std::filesystem {
@@ -20,24 +22,44 @@ std::string Translator::operator[](std::string LocalisedString) {
 	auto &StringMap = TranslationString[UsingLanguage];
 	if (StringMap.find(LocalisedString) == StringMap.end()) {
 		AppLogger.AddWarning("Translator", "Translation string of " + LocalisedString + " does not exist in " + UsingLanguage + ".");
-		return LocalisedString;
+		if (UsingLanguage == "en") {
+			return LocalisedString;
+		}
+		else {
+			if (TranslationString["en"].find(LocalisedString) == TranslationString["en"].end()) {
+				return LocalisedString;
+			}
+			else {
+				return TranslationString["en"][LocalisedString].c_str();
+			}
+		}
 	}
 	else {
 		return StringMap[LocalisedString];
 	}
 }
-/* for const char*
+
 const char *Translator::operator[](const char *LocalisedString) {
 	auto &StringMap = TranslationString[UsingLanguage];
 	if (StringMap.find(LocalisedString) == StringMap.end()) {
 		AppLogger.AddWarning("Translator", "Translation string of " + std::string(LocalisedString) + " does not exist in " + UsingLanguage + ".");
-		return LocalisedString;
+		if (UsingLanguage == "en") {
+			return LocalisedString;
+		}
+		else {
+			if (TranslationString["en"].find(LocalisedString) == TranslationString["en"].end()) {
+				return LocalisedString;
+			}
+			else {
+				return TranslationString["en"][LocalisedString].c_str();
+			}
+		}
 	}
 	else {
 		return StringMap[LocalisedString].c_str();
 	}
 }
-*/
+
 void Translator::LoadTranslation(std::string Path) {
 	for (const auto &Temp : std::filesystem::directory_iterator(Path)) {
 		if (std::filesystem::is_directory(Temp)) {
@@ -88,22 +110,10 @@ void Translator::LoadTranslation(std::string Path) {
 			File.close();
 		}
 	}
-	/* Output languages
-	AppLogger.AddLog("Debug", "Language List");
-	for (auto &c : LanguageMap) {
-		AppLogger.AddLog("Debug", c.first + ":" + c.second);
-	}
-	AppLogger.AddLog("Debug", "Key List");
-	for (auto &c : TranslationString) {
-		AppLogger.AddLog("Debug", c.first);
-		for (auto &d : c.second) {
-			AppLogger.AddLog("Debug", "  " + d.first + ":" + d.second);
-		}
-	}
-	*/
 }
 
 void Translator::SetLanguage(std::string Lang) {
+	AppLogger.AddLog("Translator", "Change language :", Lang);
 	UsingLanguage = Lang;
 }
 

@@ -11,7 +11,9 @@
 class EditArea : public Widget {
 public:
 	explicit EditArea(QWidget *parent = nullptr);
-	void resizeEvent(QResizeEvent *size);
+	~EditArea() override;
+	void reloadTranslation() override;
+	void resizeEvent(QResizeEvent *size) override;
 	void ChangeObject(ScratchObject *Object);
 public:
 	ScratchObject *Object;

@@ -12,6 +12,7 @@ public:
 	~CostumePart();
 	void resizeEvent(QResizeEvent* size);
 public:
+	int index;
 	CostumeNew *costume_new;
 	CostumeList *costume_list;
 	CostumeView *costume_view;

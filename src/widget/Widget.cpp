@@ -10,10 +10,13 @@ Widget::Widget(QWidget *parent):QWidget(parent) {
 	connect(this, SIGNAL(rightclicked()), SLOT(DefMouseProc()));
 	connect(this, SIGNAL(onmouseenter()), SLOT(DefMouseProc()));
 	connect(this, SIGNAL(onmouseleave()), SLOT(DefMouseProc()));
-	connect(this, SIGNAL(reloadtranslation()), SLOT(ReloadTranslation()));
 }
 
-void Widget::ReloadTranslation() {
+Widget::~Widget() {
+
+}
+
+void Widget::reloadTranslation() {
 	return;
 }
 

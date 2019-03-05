@@ -10,6 +10,8 @@ class StageArea : public Widget {
 	Q_OBJECT
 public:
 	explicit StageArea(QWidget *parent = nullptr);
+	virtual ~StageArea() override;
+	virtual void reloadTranslation() override;
 public slots:
 	void RunProgram();
 public:
