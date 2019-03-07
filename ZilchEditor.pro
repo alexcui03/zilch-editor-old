@@ -6,8 +6,7 @@
 
 #=================================================
 # Qt settings.
-QT       += core gui
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT       += core gui widgets
 #=================================================
 # Project settings.
 TARGET = zilcheditor
@@ -26,21 +25,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 #-------------------------------------------------
 # Disable MSVC++ compiler security warnings
-#DEFINES += _CRT_SECURE_NO_DEPRECATE
 DEFINES += _CRT_SECURE_NO_WARNINGS
 #-------------------------------------------------
-# Compiling environment(cpu).
+# CPU Env
 #DEFINES += PLATFORM_X86
 DEFINES += PLATFORM_X86_64
 #DEFINES += PLATFORM_ARM64 #(NOT ALLOWED)
-# Compiling environment(system).
-#DEFINES += PLATFORM_LINUX #(NOT ALLOWED)
-DEFINES += PLATFORM_WINDOWS
-# JavaScript engine.
-DEFINES += JAVASCRIPT_GOOGLE # use Google V8 (NOT ALLOWED)
-#DEFINES += JAVASCRIPT_MOZILLA #use Mozilla Spider Monkey (NOT ALLOWED)
 #-------------------------------------------------
-DEFINES += _HAS_CXX17 # enable ISO/IEC 14882:2017 [MSVC++]
+# OS Env
+DEFINES += PLATFORM_WINDOWS
+#DEFINES += PLATFORM_LINUX
+#DEFINES += PLATFORM_MACOSX
+#DEFINES += PLATFORM_ANDROID
+#DEFINES += PLATFORM_IOS
+#-------------------------------------------------
+# Enable C++ 17 Standard library for msvc.
+DEFINES += _HAS_CXX17
 #=================================================
 # C++ Standard
 #CONFIG += C++11 # use ISO/IEC 14882:2011
@@ -51,8 +51,10 @@ CONFIG += C++17 # use ISO/IEC 14882:2017
 # Compiler settings
 QMAKE_CXXFLAGS += /WX # make warnings as error [MSVC++]
 #QMAKE_CXXFLAGS += -Werror # make warnings as error [G++]
+#-------------------------------------------------
 QMAKE_CXXFLAGS += /std:c++17 # enable ISO/IEC 14882:2017 [MSVC++]
 #QMAKE_CXXFLAGS += -std=c++17 # enable ISO/IEC 14882:2017 [G++]
+#-------------------------------------------------
 QMAKE_CFLAGS += /WX # make warnings as error [MSVC]
 #QMAKE_CFLAGS += -Werror # make warnings as error [GCC]
 #=================================================
@@ -66,119 +68,87 @@ LIBS += -ldbghelp # DbgHelp.dll [Windows]
 # Project files.
 SOURCES += \
     src/Main.cpp \
-    src/stylesheet/StyleSheet.cpp \
-    src/logger/Logger.cpp \
-    src/widget/MainWindow.cpp \
-    src/widget/Widget.cpp \
-    src/widget/StageArea.cpp \
-    src/widget/StageView.cpp \
-    src/translator/Translator.cpp \
-    src/scratch/Scratch.cpp \
-    src/widget/SpriteArea.cpp \
-    src/widget/EditArea.cpp \
-    src/widget/ScriptPart.cpp \
-    src/widget/BlockItem.cpp \
-    src/scratch/ScratchBlockCategory.cpp \
-    src/widget/BlockTabItem.cpp \
-    src/util/Util.cpp \
     src/logger/CLogger.cpp \
     src/logger/Logger.cpp \
+    src/plugin/PluginBase.cpp \
+    src/plugin/PluginPrototype.cpp \
     src/scratch/Scratch.cpp \
+    src/scratch/ScratchBlock.cpp \
     src/scratch/ScratchBlockCategory.cpp \
+    src/scratch/ScratchBlockPrototype.cpp \
+    src/scratch/ScratchCostume.cpp \
+    src/scratch/ScratchObject.cpp \
+    src/scratch/ScratchResource.cpp \
     src/scratch/ScratchSprite.cpp \
     src/scratch/ScratchStage.cpp \
-    src/stylesheet/stylesheet.cpp \
+    src/stylesheet/StyleSheet.cpp \
     src/translator/Translator.cpp \
+    src/util/Crash.c \
+    src/util/Resource.cpp \
+    src/util/Thread.cpp \
     src/util/Util.cpp \
+    src/widget/About.cpp \
     src/widget/BlockItem.cpp \
     src/widget/BlockTabItem.cpp \
     src/widget/EditArea.cpp \
+    src/widget/LanguageAction.cpp \
     src/widget/MainWindow.cpp \
+    src/widget/ObjectListItem.cpp \
     src/widget/ScriptPart.cpp \
     src/widget/SpriteArea.cpp \
-    src/widget/StageArea.cpp \
-    src/widget/StageView.cpp \
-    src/widget/Widget.cpp \
-    src/Main.cpp \
-    src/util/Crash.c \
     src/widget/SpriteItem.cpp \
     src/widget/SpriteListItem.cpp \
-    src/scratch/ScratchCostume.cpp \
-    src/scratch/ScratchBlockPrototype.cpp \
-    src/scratch/ScratchBlock.cpp \
-    src/scratch/ScratchObject.cpp \
-    src/scratch/ScratchResource.cpp \
-    src/util/Resource.cpp \
-    src/plugin/PluginPrototype.cpp \
-    src/plugin/PluginBase.cpp \
-    src/util/Thread.cpp \
+    src/widget/StageArea.cpp \
+    src/widget/StageView.cpp \
     src/widget/StageListItem.cpp \
-    src/widget/ObjectListItem.cpp \
-    src/widget/costumepart/CostumeListItem.cpp \
-    src/widget/costumepart/CostumePart.cpp \
+    src/widget/Widget.cpp \
     src/widget/costumepart/CostumeList.cpp \
-    src/widget/costumepart/CostumeView.cpp \
+    src/widget/costumepart/CostumeListItem.cpp \
     src/widget/costumepart/CostumeNew.cpp \
-    src/widget/About.cpp \
-    src/widget/LanguageAction.cpp
+    src/widget/costumepart/CostumePart.cpp \
+    src/widget/costumepart/CostumeView.cpp
 #-------------------------------------------------
 HEADERS += \
-    src/stylesheet/StyleSheet.h \
     src/Define.h \
-    src/logger/Logger.h \
-    src/widget/MainWindow.h \
-    src/widget/Widget.h \
-    src/widget/StageArea.h \
-    src/widget/StageView.h \
-    src/translator/Translator.h \
-    src/scratch/Scratch.h \
-    src/widget/SpriteArea.h \
-    src/widget/EditArea.h \
-    src/widget/ScriptPart.h \
-    src/widget/BlockItem.h \
-    src/scratch/ScratchBlockCategory.h \
-    src/widget/BlockTabItem.h \
-    src/util/Util.h \
     src/logger/CLogger.h \
     src/logger/Logger.h \
+    src/plugin/PluginBase.h \
+    src/plugin/PluginPrototype.h \
     src/scratch/Scratch.h \
+    src/scratch/ScratchBlock.h \
     src/scratch/ScratchBlockCategory.h \
+    src/scratch/ScratchBlockPrototype.h \
+    src/scratch/ScratchCostume.h \
+    src/scratch/ScratchObject.h \
+    src/scratch/ScratchResource.h \
     src/scratch/ScratchSprite.h \
     src/scratch/ScratchStage.h \
-    src/stylesheet/stylesheet.h \
+    src/stylesheet/StyleSheet.h \
     src/translator/Translator.h \
     src/util/Crash.h \
+    src/util/Resource.h \
+    src/util/Thread.h \
     src/util/Util.h \
+    src/widget/About.h \
     src/widget/BlockItem.h \
     src/widget/BlockTabItem.h \
     src/widget/EditArea.h \
+    src/widget/LanguageAction.h \
     src/widget/MainWindow.h \
+    src/widget/ObjectListItem.h \
     src/widget/ScriptPart.h \
     src/widget/SpriteArea.h \
-    src/widget/StageArea.h \
-    src/widget/StageView.h \
-    src/widget/Widget.h \
-    src/Define.h \
     src/widget/SpriteItem.h \
     src/widget/SpriteListItem.h \
-    src/scratch/ScratchCostume.h \
-    src/scratch/ScratchBlockPrototype.h \
-    src/scratch/ScratchBlock.h \
-    src/scratch/ScratchObject.h \
-    src/scratch/ScratchResource.h \
-    src/util/Resource.h \
-    src/plugin/PluginPrototype.h \
-    src/plugin/PluginBase.h \
-    src/util/Thread.h \
+    src/widget/StageArea.h \
+    src/widget/StageView.h \
     src/widget/StageListItem.h \
-    src/widget/ObjectListItem.h \
-    src/widget/costumepart/CostumeListItem.h \
-    src/widget/costumepart/CostumePart.h \
+    src/widget/Widget.h \
     src/widget/costumepart/CostumeList.h \
-    src/widget/costumepart/CostumeView.h \
+    src/widget/costumepart/CostumeListItem.h \
     src/widget/costumepart/CostumeNew.h \
-    src/widget/About.h \
-    src/widget/LanguageAction.h
+    src/widget/costumepart/CostumePart.h \
+    src/widget/costumepart/CostumeView.h
 #-------------------------------------------------
 RESOURCES +=
 #-------------------------------------------------
