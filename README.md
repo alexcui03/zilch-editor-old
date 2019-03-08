@@ -19,7 +19,7 @@ At first, you should download the zip file or clone this project by using git.
 git clone https://github.com/AlexJason/zilch-editor.git
 ```
 
-Open the file {project root}/ZilchEditor.pro
+Open the file ```ZilchEditor.pro```
 
 Set defines in project and build it with Qt Creator.
 
@@ -32,6 +32,8 @@ git pull origin master
 ```
 
 Build the project with cmake. If your cmake cannot find Qt library, you need to set environment variable ```CMAKE_PREFIX_PATH``` to your Qt cmake root path. For example ```D:\Program\Qt\5.12.1\msvc2017_64\lib\cmake```.
+
+The generator is your compiler version. For example ```Visual Studio 15 2017 Win64```.
 ```bash
 mkdir build
 cd build
@@ -39,3 +41,8 @@ cmake -G "{generator}" .. #use cmake --help to get a complete list of generators
 ```
 
 On windows, to run this program, you need to copy Qt5Core.dll, Qt5Gui.dll and Qt5Widgets.dll from Qt to the program's working directory.
+```bash
+msbuild zilch-editor.sln /p:Configuration=MinSizeRel
+```
+
+The ouput executable file is in ```build/MinSizeRel/zilcheditor.exe```
