@@ -1,15 +1,21 @@
-version: appveyor-build{build}
+version: 0.3.0.{build}
 
-configuration:
-  - MinSizeRel
+skip_commits:
+  message: /\[NB\].*/
+image: Visual Studio 2017
+clone_depth: 5
 
-platform:
-  - Win32
-  - x64
+configuration: MinSizeRel
+platform: x64
+
+before_build:
+  - set CMAKE_PREFIX_PATH=C:/Qt/5.12.1/msvc2017_64/lib/cmake
+  - mkdir build && cd build
 
 build_script:
-  - set CMAKE_PREFIX_PATH=C:/Qt/5.12.1/msvc2017_64/lib/cmake
-  - mkdir build
-  - cd build
   - cmake -G "Visual Studio 15 2017 Win64" ..
   - msbuild zilch-editor.sln
+
+notifications:
+  - provider: Slack
+    incoming_webhook: https://hooks.slack.com/services/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
