@@ -4,6 +4,7 @@
 ![](https://img.shields.io/github/languages/code-size/alexjason/zilch-editor.svg?style=flat-square&color=cc9119)
 [![](https://img.shields.io/github/release/alexjason/zilch-editor.svg?style=flat-square)](https://github.com/AlexJason/zilch-editor/releases)
 ![](https://img.shields.io/badge/qt-5.12.1-green.svg?style=flat-square)
+![](https://img.shields.io/appveyor/ci/alexjason/zilch-editor.svg?style=flat-square)
 
 Zilch Editor is a powerful scratch editor writed in C++. In plan, Zilch Editor will be an editor that can make any program by installing and using different plugins. The scratch2/scratch3 project can run under original scratch2 plugin or original scratch3 plugin. If you do your project only with anyone of these two plugins, you can export the project as scratch2/scratch3 type. Otherwise, the project in Zilch Editor cannot be opened in scratch2/scratch3.
 

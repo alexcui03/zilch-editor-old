@@ -3,7 +3,7 @@ version: 0.3.0.{build}
 skip_commits:
   message: /\[NB\].*/
 image: Visual Studio 2017
-clone_depth: 5
+clone_depth: 1
 
 configuration: MinSizeRel
 platform: x64
