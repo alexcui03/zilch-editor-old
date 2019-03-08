@@ -1,0 +1,15 @@
+version: appveyor-build{build}
+
+configuration:
+  - MinSizeRel
+
+platform:
+  - Win32
+  - x64
+
+build_script:
+  - set CMAKE_PREFIX_PATH=C:/Qt/5.12.1/msvc2017_64/lib/cmake
+  - mkdir build
+  - cd build
+  - cmake -G "Visual Studio 15 2017 Win64" ..
+  - msbuild zilch-editor.sln
