@@ -8,7 +8,7 @@ class Widget : public QWidget {
 	Q_OBJECT
 public:
 	Widget(QWidget *parent = nullptr);
-	virtual ~Widget() override;
+	~Widget() override;
 	virtual void paintEvent(QPaintEvent *e) override;
 	virtual void mousePressEvent(QMouseEvent *e) override;
 	virtual void mouseReleaseEvent(QMouseEvent *e) override;

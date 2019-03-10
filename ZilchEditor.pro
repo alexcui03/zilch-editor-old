@@ -89,12 +89,10 @@ SOURCES += \
     src/util/Util.cpp \
     src/widget/About.cpp \
     src/widget/BlockItem.cpp \
-    src/widget/BlockTabItem.cpp \
     src/widget/EditArea.cpp \
     src/widget/LanguageAction.cpp \
     src/widget/MainWindow.cpp \
     src/widget/ObjectListItem.cpp \
-    src/widget/ScriptPart.cpp \
     src/widget/SpriteArea.cpp \
     src/widget/SpriteItem.cpp \
     src/widget/SpriteListItem.cpp \
@@ -106,7 +104,12 @@ SOURCES += \
     src/widget/costumepart/CostumeListItem.cpp \
     src/widget/costumepart/CostumeNew.cpp \
     src/widget/costumepart/CostumePart.cpp \
-    src/widget/costumepart/CostumeView.cpp
+    src/widget/costumepart/CostumeView.cpp \
+    src/widget/scriptpart/ScriptPart.cpp \
+    src/widget/scriptpart/BlockTabItem.cpp \
+    src/widget/scriptpart/ScriptPartBlockTab.cpp \
+    src/widget/scriptpart/ScriptPartBlockView.cpp \
+    src/widget/scriptpart/ScriptPartEdit.cpp
 #-------------------------------------------------
 HEADERS += \
     src/Define.h \
@@ -131,12 +134,10 @@ HEADERS += \
     src/util/Util.h \
     src/widget/About.h \
     src/widget/BlockItem.h \
-    src/widget/BlockTabItem.h \
     src/widget/EditArea.h \
     src/widget/LanguageAction.h \
     src/widget/MainWindow.h \
     src/widget/ObjectListItem.h \
-    src/widget/ScriptPart.h \
     src/widget/SpriteArea.h \
     src/widget/SpriteItem.h \
     src/widget/SpriteListItem.h \
@@ -148,7 +149,12 @@ HEADERS += \
     src/widget/costumepart/CostumeListItem.h \
     src/widget/costumepart/CostumeNew.h \
     src/widget/costumepart/CostumePart.h \
-    src/widget/costumepart/CostumeView.h
+    src/widget/costumepart/CostumeView.h \
+    src/widget/scriptpart/ScriptPart.h \
+    src/widget/scriptpart/BlockTabItem.h \
+    src/widget/scriptpart/ScriptPartBlockTab.h \
+    src/widget/scriptpart/ScriptPartBlockView.h \
+    src/widget/scriptpart/ScriptPartEdit.h
 #-------------------------------------------------
 RESOURCES +=
 #-------------------------------------------------

@@ -62,7 +62,7 @@ src/widget/costumepart/CostumeView.cpp
 )
 
 # Tell CMake to create the helloworld executable
-add_executable(zilcheditor WIN32 ${project_source_list})
+add_executable(zilcheditor ${project_source_list})
 
 # Use the Widgets module from Qt 5
 target_link_libraries(zilcheditor Qt5::Widgets DbgHelp)

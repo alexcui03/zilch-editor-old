@@ -3,8 +3,9 @@
 
 #include <QWidget>
 #include <QLabel>
-#include "Widget.h"
-#include "../scratch/ScratchBlockCategory.h"
+
+#include "../Widget.h"
+#include "../../scratch/ScratchBlockCategory.h"
 
 class ScriptPartTab;
 
@@ -16,8 +17,6 @@ public:
 	void setPalette(const QPalette &Paltette);
 public slots:
 	void OnSelect();
-	//void OnMouseEnter();
-	//void OnMouseLeave();
 public:
 	bool Selected;
 	ScratchBlockCategory *CategoryData;
