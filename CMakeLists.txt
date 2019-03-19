@@ -15,54 +15,28 @@ set(CMAKE_AUTOMOC ON)
 # Find the QtWidgets library
 find_package(Qt5Widgets)
 
-add_definitions("-DPLATFORM_WINDOWS -DPLATFORM_X86_64 -D_CRT_SECURE_NO_WARNINGS")
+add_definitions("-DPLATFORM_WINDOWS -DPLATFORM_X86_64 -D_CRT_SECURE_NO_WARNINGS -D_HAS_CXX17 -D_HAS_CXX20 -Wall -Werror")
 
 # Set source files
-set(project_source_list
-src/Main.cpp
-src/logger/CLogger.cpp
-src/logger/Logger.cpp
-src/plugin/PluginBase.cpp
-src/plugin/PluginPrototype.cpp
-src/scratch/Scratch.cpp
-src/scratch/ScratchBlock.cpp
-src/scratch/ScratchBlockCategory.cpp
-src/scratch/ScratchBlockPrototype.cpp
-src/scratch/ScratchCostume.cpp
-src/scratch/ScratchObject.cpp
-src/scratch/ScratchResource.cpp
-src/scratch/ScratchSprite.cpp
-src/scratch/ScratchStage.cpp
-src/stylesheet/StyleSheet.cpp
-src/translator/Translator.cpp
-src/util/Crash.c
-src/util/Resource.cpp
-src/util/Thread.cpp
-src/util/Util.cpp
-src/widget/About.cpp
-src/widget/BlockItem.cpp
-src/widget/BlockTabItem.cpp
-src/widget/EditArea.cpp
-src/widget/LanguageAction.cpp
-src/widget/MainWindow.cpp
-src/widget/ObjectListItem.cpp
-src/widget/ScriptPart.cpp
-src/widget/SpriteArea.cpp
-src/widget/SpriteItem.cpp
-src/widget/SpriteListItem.cpp
-src/widget/StageArea.cpp
-src/widget/StageView.cpp
-src/widget/StageListItem.cpp
-src/widget/Widget.cpp
-src/widget/costumepart/CostumeList.cpp
-src/widget/costumepart/CostumeListItem.cpp
-src/widget/costumepart/CostumeNew.cpp
-src/widget/costumepart/CostumePart.cpp
-src/widget/costumepart/CostumeView.cpp
+set(PROJECT_SRC_DIRS
+    src/
+    src/logger/
+    src/plugin/
+    src/scratch/
+    src/stylesheet/
+    src/translator/
+    src/updater/
+    src/util/
+    src/widget/
 )
 
+foreach(DIR ${PROJECT_SRC_DIRS})
+    aux_source_directory(${DIR} TEMP_VAR)
+    set(PROJECT_SRC_FILES ${PROJECT_SRC_FILES} ${TEMP_VAR})
+endforeach(DIR)
+
 # Tell CMake to create the helloworld executable
-add_executable(zilcheditor ${project_source_list})
+add_executable(zilcheditor ${PROJECT_SRC_FILES})
 
 # Use the Widgets module from Qt 5
 target_link_libraries(zilcheditor Qt5::Widgets DbgHelp)
