@@ -25,9 +25,6 @@ Scratch ScratchMain;
 MainWindow *AppWindow;
 
 int main(int argc, char *argv[]) {
-	srand(static_cast<unsigned>(time(nullptr)));
-	auto TitleList = GetTitleList();
-
 	QApplication App(argc, argv);
 	QApplication::setStyle(QStyleFactory::create("Fusion"));
 	BindCrashHandler();
@@ -44,7 +41,7 @@ int main(int argc, char *argv[]) {
 	AppTranslator.LoadTranslation("./locale/");
 	AppTranslator.SetLanguage();
 
-	AppWindow = new MainWindow("Zilch Editor: " + TitleList[static_cast<size_t>(rand()) % TitleList.size()]);
+	AppWindow = new MainWindow("Zilch Editor");
 	AppWindow->show();
 	Splash.finish(AppWindow);
 

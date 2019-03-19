@@ -1,12 +1,10 @@
 #include "Scratch.h"
-#include <filesystem>
+//#include <filesystem>
 #include <thread>
 #include <deque>
 
 #include "ScratchSprite.h"
 #include "../widget/MainWindow.h"
-#include "../widget/ScriptPart.h"
-#include "../widget/StageView.h"
 #include "../logger/Logger.h"
 #include "../util/Thread.h"
 

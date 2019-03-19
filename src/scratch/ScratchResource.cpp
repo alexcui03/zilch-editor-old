@@ -42,7 +42,7 @@ void ScratchResource::UnloadResource(size_t Index) {
 		Resource.erase(Temp);
 	}
 	else {
-		throw std::exception("Index out of range.");
+		//throw std::exception("Index out of range.");
 	}
 }
 

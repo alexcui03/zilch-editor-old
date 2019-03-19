@@ -1,0 +1,8 @@
+{
+    "select": "Test Server",
+    "list": {
+        "skydrive.live.com": "",
+        "drive.google.com": "",
+        "Test Server": "http://127.0.0.1:32000/"
+    }
+}

@@ -5,7 +5,7 @@
 #include <QTabWidget>
 
 #include "Widget.h"
-#include "ScriptPart.h"
+#include "scriptpart/ScriptPart.h"
 #include "costumepart/CostumePart.h"
 
 class EditArea : public Widget {

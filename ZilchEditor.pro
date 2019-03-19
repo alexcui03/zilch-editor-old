@@ -6,7 +6,7 @@
 
 #=================================================
 # Qt settings.
-QT       += core gui widgets
+QT       += core gui widgets network
 #=================================================
 # Project settings.
 TARGET = zilcheditor
@@ -41,6 +41,8 @@ DEFINES += PLATFORM_WINDOWS
 #-------------------------------------------------
 # Enable C++ 17 Standard library for msvc.
 DEFINES += _HAS_CXX17
+# Enable C++ 20 Standard library for msvc.[MSVC v142]
+DEFINES += _HAS_CXX20
 #=================================================
 # C++ Standard
 #CONFIG += C++11 # use ISO/IEC 14882:2011
@@ -109,7 +111,53 @@ SOURCES += \
     src/widget/scriptpart/BlockTabItem.cpp \
     src/widget/scriptpart/ScriptPartBlockTab.cpp \
     src/widget/scriptpart/ScriptPartBlockView.cpp \
-    src/widget/scriptpart/ScriptPartEdit.cpp
+    src/widget/scriptpart/ScriptPartEdit.cpp \
+    src/logger/CLogger.cpp \
+    src/logger/Logger.cpp \
+    src/plugin/PluginBase.cpp \
+    src/plugin/PluginPrototype.cpp \
+    src/scratch/Scratch.cpp \
+    src/scratch/ScratchBlock.cpp \
+    src/scratch/ScratchBlockCategory.cpp \
+    src/scratch/ScratchBlockPrototype.cpp \
+    src/scratch/ScratchCostume.cpp \
+    src/scratch/ScratchObject.cpp \
+    src/scratch/ScratchResource.cpp \
+    src/scratch/ScratchSprite.cpp \
+    src/scratch/ScratchStage.cpp \
+    src/stylesheet/stylesheet.cpp \
+    src/translator/Translator.cpp \
+    src/updater/Updater.cpp \
+    src/util/Resource.cpp \
+    src/util/Thread.cpp \
+    src/util/Util.cpp \
+    src/util/VersionInfo.cpp \
+    src/widget/costumepart/CostumeList.cpp \
+    src/widget/costumepart/CostumeListItem.cpp \
+    src/widget/costumepart/CostumeNew.cpp \
+    src/widget/costumepart/CostumePart.cpp \
+    src/widget/costumepart/CostumeView.cpp \
+    src/widget/scriptpart/BlockTabItem.cpp \
+    src/widget/scriptpart/ScriptPart.cpp \
+    src/widget/scriptpart/ScriptPartBlockTab.cpp \
+    src/widget/scriptpart/ScriptPartBlockView.cpp \
+    src/widget/scriptpart/ScriptPartEdit.cpp \
+    src/widget/About.cpp \
+    src/widget/BlockItem.cpp \
+    src/widget/EditArea.cpp \
+    src/widget/LanguageAction.cpp \
+    src/widget/MainWindow.cpp \
+    src/widget/ObjectListItem.cpp \
+    src/widget/SpriteArea.cpp \
+    src/widget/SpriteItem.cpp \
+    src/widget/SpriteListItem.cpp \
+    src/widget/StageArea.cpp \
+    src/widget/StageListItem.cpp \
+    src/widget/StageView.cpp \
+    src/widget/Widget.cpp \
+    src/Main.cpp \
+    src/util/Crash.c \
+    src/util/FileDownloader.cpp
 #-------------------------------------------------
 HEADERS += \
     src/Define.h \
@@ -154,7 +202,53 @@ HEADERS += \
     src/widget/scriptpart/BlockTabItem.h \
     src/widget/scriptpart/ScriptPartBlockTab.h \
     src/widget/scriptpart/ScriptPartBlockView.h \
-    src/widget/scriptpart/ScriptPartEdit.h
+    src/widget/scriptpart/ScriptPartEdit.h \
+    src/logger/CLogger.h \
+    src/logger/Logger.h \
+    src/plugin/PluginBase.h \
+    src/plugin/PluginPrototype.h \
+    src/scratch/Scratch.h \
+    src/scratch/ScratchBlock.h \
+    src/scratch/ScratchBlockCategory.h \
+    src/scratch/ScratchBlockPrototype.h \
+    src/scratch/ScratchCostume.h \
+    src/scratch/ScratchObject.h \
+    src/scratch/ScratchResource.h \
+    src/scratch/ScratchSprite.h \
+    src/scratch/ScratchStage.h \
+    src/stylesheet/stylesheet.h \
+    src/translator/Translator.h \
+    src/updater/Updater.h \
+    src/util/Crash.h \
+    src/util/Resource.h \
+    src/util/Thread.h \
+    src/util/Util.h \
+    src/util/VersionInfo.h \
+    src/widget/costumepart/CostumeList.h \
+    src/widget/costumepart/CostumeListItem.h \
+    src/widget/costumepart/CostumeNew.h \
+    src/widget/costumepart/CostumePart.h \
+    src/widget/costumepart/CostumeView.h \
+    src/widget/scriptpart/BlockTabItem.h \
+    src/widget/scriptpart/ScriptPart.h \
+    src/widget/scriptpart/ScriptPartBlockTab.h \
+    src/widget/scriptpart/ScriptPartBlockView.h \
+    src/widget/scriptpart/ScriptPartEdit.h \
+    src/widget/About.h \
+    src/widget/BlockItem.h \
+    src/widget/EditArea.h \
+    src/widget/LanguageAction.h \
+    src/widget/MainWindow.h \
+    src/widget/ObjectListItem.h \
+    src/widget/SpriteArea.h \
+    src/widget/SpriteItem.h \
+    src/widget/SpriteListItem.h \
+    src/widget/StageArea.h \
+    src/widget/StageListItem.h \
+    src/widget/StageView.h \
+    src/widget/Widget.h \
+    src/Define.h \
+    src/util/FileDownloader.h
 #-------------------------------------------------
 RESOURCES +=
 #-------------------------------------------------

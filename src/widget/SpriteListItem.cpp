@@ -5,7 +5,6 @@
 #include <QStyle>
 
 #include "SpriteArea.h"
-#include "ScriptPart.h"
 #include "MainWindow.h"
 
 SpriteListItem::SpriteListItem(ScratchSprite *sprite, QWidget *parent) : ObjectListItem(sprite, parent) {

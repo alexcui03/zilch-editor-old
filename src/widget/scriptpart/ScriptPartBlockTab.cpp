@@ -7,6 +7,14 @@ ScriptPartBlockTab::ScriptPartBlockTab(QWidget *parent) : Widget(parent) {
 	this->Reload();
 }
 
+ScriptPartBlockTab::~ScriptPartBlockTab() {
+
+}
+
+void ScriptPartBlockTab::reloadTranslation() {
+
+}
+
 void ScriptPartBlockTab::Reload() {
 	for (auto &c : this->BlockTab) {
 		delete c;

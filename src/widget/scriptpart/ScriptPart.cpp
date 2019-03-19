@@ -6,12 +6,12 @@
 #include "../../scratch/ScratchStage.h"
 
 ScriptPart::ScriptPart(QWidget *parent) : Widget(parent) {
-	BlockTab = new ScriptPartTab(this);
+	BlockTab = new ScriptPartBlockTab(this);
 	BlockTab->setObjectName("EditArea_ScriptPart_BlockTab");
 	BlockTab->move(0, 0);
 	BlockTab->resize(200, (static_cast<int>(ScratchMain.BlockCategory.size()) + 1) / 2 * 24 + 14);
 
-	BlockView = new ScriptPartView(this);
+	BlockView = new ScriptPartBlockView(this);
 	BlockView->setObjectName("EditArea_ScriptPart_BlockView");
 	BlockView->move(0, BlockTab->rect().bottom() + 5);
 	BlockView->resize(200, this->height() - BlockView->rect().top());

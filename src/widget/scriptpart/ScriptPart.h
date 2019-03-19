@@ -19,8 +19,8 @@ public:
 	void resizeEvent(QResizeEvent* size);
 public:
 	int index;
-	ScriptPartTab *BlockTab;
-	ScriptPartView *BlockView;
+	ScriptPartBlockTab *BlockTab;
+	ScriptPartBlockView *BlockView;
 	ScriptPartEdit *ScriptEdit;
 };
 

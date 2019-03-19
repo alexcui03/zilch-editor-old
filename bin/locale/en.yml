@@ -8,6 +8,7 @@ window_menubar_file_exit: Exit
 window_menubar_lang: Language
 window_menubar_option: Option
 window_menubar_option_settings: Settings
+window_menubar_option_checkupdate: Check Update
 window_menubar_option_about: About
 window_menubar_option_about_qt: About Qt
 window_menubar_option_about_ze: About ZE

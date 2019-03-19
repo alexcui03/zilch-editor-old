@@ -1,6 +1,6 @@
 #include "Logger.h"
 #include <ctime>
-#include <filesystem>
+//#include <filesystem>
 
 LogMsg::LogMsg(std::string From, std::string Message) {
 	this->From = From;
@@ -14,7 +14,7 @@ Logger::Logger() {
 Logger::~Logger() {
 	File.flush();
 	File.close();
-	std::filesystem::copy_file(FileName, "./log/log-latest.log", std::filesystem::copy_options::overwrite_existing);
+	//std::filesystem::copy_file(FileName, "./log/log-latest.log", std::filesystem::copy_options::overwrite_existing);
 }
 
 void Logger::InitLogger(QSplashScreen *Splash) {
