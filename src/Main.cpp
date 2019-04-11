@@ -25,28 +25,28 @@ Scratch ScratchMain;
 MainWindow *AppWindow;
 
 int main(int argc, char *argv[]) {
-	QApplication App(argc, argv);
+	QApplication app(argc, argv);
 	QApplication::setStyle(QStyleFactory::create("Fusion"));
 	BindCrashHandler();
 
-	QSplashScreen Splash(QPixmap("./asset/splash.png"));
-	AppLogger.InitLogger(&Splash);
-	Splash.setDisabled(true);
-	Splash.show();
+	QSplashScreen splash(QPixmap("./asset/splash.png"));
+	AppLogger.InitLogger(&splash);
+	splash.setDisabled(true);
+	splash.show();
 
 	AppLogger.AddSplashLog("Core", "Loading stylesheet...");
-	LoadStyleSheet(&Splash, "./style/");
+	LoadStyleSheet(&splash, "./style/");
 	AppLogger.AddSplashLog("Core", "Loading plugin...");
 	AppLogger.AddSplashLog("Core", "Loading translation...");
 	AppTranslator.LoadTranslation("./locale/");
 	AppTranslator.SetLanguage();
 
-	AppWindow = new MainWindow("Zilch Editor");
+	AppWindow = new MainWindow("Zilch Editor - Alpha Version");
 	AppWindow->show();
-	Splash.finish(AppWindow);
+	splash.finish(AppWindow);
 
-	int Result = App.exec();
+	int result = app.exec();
 	AppLogger.AddLog("Core", "Clean up resources");
-	AppLogger.AddLog("Core", "Program exited with code ", Result);
-	return Result;
+	AppLogger.AddLog("Core", "Program exited with code ", result);
+	return result;
 }

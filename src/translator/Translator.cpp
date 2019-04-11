@@ -5,6 +5,7 @@
 #include <cstring>
 
 #include "../logger/Logger.h"
+#include "../widget/MainWindow.h"
 
 #ifndef _HAS_CXX17
 namespace std::filesystem {
@@ -113,8 +114,11 @@ void Translator::LoadTranslation(std::string Path) {
 }
 
 void Translator::SetLanguage(std::string Lang) {
-	AppLogger.AddLog("Translator", "Change language :", Lang);
-	UsingLanguage = Lang;
+	if (UsingLanguage != Lang) {
+		AppLogger.AddLog("Translator", "Change language: ", Lang);
+		UsingLanguage = Lang;
+		AppWindow->reloadTranslation();
+	}
 }
 
 void Translator::SetLanguage() {

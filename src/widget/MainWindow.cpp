@@ -92,7 +92,6 @@ void MainWindow::about() {
 
 void MainWindow::setLanguage(std::string lang) {
 	AppTranslator.SetLanguage(lang);
-	this->reloadTranslation();
 }
 
 void MainWindow::reloadTranslation() {

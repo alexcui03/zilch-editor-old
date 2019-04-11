@@ -41,9 +41,9 @@ void Updater::loadSourceListFromConfig() {
 void Updater::getServerData() {
 	std::string url = "http://127.0.0.1:32000/win64.json";
 	FileDownloader *downloader = new FileDownloader(url);
-	AppLogger.AddLog("Updater", "Network: GET ", url);
+	AppLogger.AddLog("Updater", "Get information from ", url);
 	while(downloader->Finished());
-	AppLogger.AddLog("Updater", "Network: RESPONSE FROM ", url);
+	AppLogger.AddLog("Updater", "Response from ", url);
 
 	QJsonParseError json_err;
 	QJsonDocument json_doc(QJsonDocument::fromJson(downloader->GetData(), &json_err));
@@ -56,7 +56,7 @@ void Updater::getServerData() {
 	std::string latest_release = json_root.value("latest-release").toString().toStdString();
 	std::string latest_beta = json_root.value("latest-beta").toString().toStdString();
 	std::string latest_alpha = json_root.value("latest-alpha").toString().toStdString();
-
-
+	AppLogger.AddLog("Updater", "Network: RESPONSE FROM ", url);
+	AppLogger.AddLog("Updater", "Network: RESPONSE FROM ", url);
 }
 

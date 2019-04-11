@@ -1,4 +1,20 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.3.0.656
+Date: 2019.4.11
+Features:
+  - Added milliseconds to logger file's name.
+  - Added milliseconds to logger.
+  - Changed translator reload action if there's no language changes.
+Source:
+  - Added FileDownloader.
+  - Added Updater.
+  - Changed CMakeLists.txt.
+---------------------------------------------------------------------------------------------------
+Version: 0.3.0.650
+Date: 2019.3.10
+Source:
+  - Rewrite ScriptPart.
+---------------------------------------------------------------------------------------------------
 Version: 0.3.0.647
 Date: 2019.3.5
 Features:
