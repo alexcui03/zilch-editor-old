@@ -9,7 +9,7 @@ configuration: MinSizeRel
 platform: x64
 
 before_build:
-  - set CMAKE_PREFIX_PATH=C:/Qt/5.12.1/msvc2017_64/lib/cmake
+  - set CMAKE_PREFIX_PATH=C:\Qt\5.12.1\msvc2017_64\lib\cmake
   - mkdir third_party && cd third_party
   - curl -O https://cmake.org/files/v3.14/cmake-3.14.1-win64-x64.zip
   - 7z x cmake-3.14.1-win64-x64.zip
@@ -17,7 +17,7 @@ before_build:
   - mkdir build && cd build
 
 build_script:
-  - ../third_party/cmake-3.14.1-win64-x64/bin/cmake.exe .. -G "Visual Studio 16 2019" -A x64
+  - ..\third_party\cmake-3.14.1-win64-x64\bin\cmake.exe .. -G "Visual Studio 16 2019" -A x64
   - msbuild zilch-editor.sln
 
 notifications:
