@@ -9,6 +9,7 @@
 #include <QNetworkReply>
 
 class FileDownloader : public QObject {
+	Q_OBJECT
 public:
 	FileDownloader(std::string url, QObject *parent = nullptr);
 	~FileDownloader();
