@@ -6,7 +6,7 @@
 #include "Widget.h"
 #include "SpriteItem.h"
 
-class StageView : public QLabel {
+class StageView : public Widget, public QLabel {
 public:
 	explicit StageView(QWidget *parent = nullptr);
 	QPoint ConvertXY(int x, int y);

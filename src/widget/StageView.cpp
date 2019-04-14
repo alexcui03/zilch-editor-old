@@ -5,7 +5,7 @@
 #include <QStyleOption>
 #include <QPainter>
 
-StageView::StageView(QWidget *parent) : QLabel(parent) {
+StageView::StageView(QWidget *parent) : Widget(parent) {
 	this->Reload();
 }
 
@@ -21,7 +21,7 @@ void StageView::Reload() {
 		this->Sprites.clear();
 	}
 	for (auto &c : ScratchMain.Stage.Sprite) {
-		SpriteItem *Item = new SpriteItem(c, this);
+		SpriteItem *Item = new SpriteItem(c, dynamic_cast<Widget*>(this));
 		c->Item = Item;
 		this->Sprites.push_back(Item);
 		Item->show();

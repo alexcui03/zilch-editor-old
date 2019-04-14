@@ -5,9 +5,9 @@
 
 StageArea::StageArea(QWidget *parent):Widget(parent) {
 	StageView = new ::StageView(this);
-	StageView->setObjectName("StageArea_StageView");
-	StageView->move(0, 35);
-	StageView->resize(480, 360);
+	StageView->Widget::setObjectName("StageArea_StageView");
+	StageView->Widget::move(0, 35);
+	StageView->Widget::resize(480, 360);
 
 	StageItem = new ::StageItem(&ScratchMain.Stage, this);
 	StageItem->label = StageView;
@@ -32,6 +32,10 @@ StageArea::~StageArea() {
 
 void StageArea::reloadTranslation() {
 	this->StageView->reloadTranslation();
+	// > Before 0.3.0.656:
+	// >   class StageView : Widget
+	// > After:
+	// >   class StageView : QLabel
 }
 
 void StageArea::RunProgram() {

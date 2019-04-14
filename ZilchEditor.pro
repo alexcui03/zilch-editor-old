@@ -157,11 +157,11 @@ SOURCES += \
     src/widget/Widget.cpp \
     src/Main.cpp \
     src/util/Crash.c \
-    src/util/FileDownloader.cpp
+    src/util/FileDownloader.cpp \
     src/widget/costumepart/CostumeNew.cpp \
     src/widget/About.cpp \
-    src/widget/ObjectItem.cpp \
-    src/widget/StageItem.cpp
+    src/widget/StageItem.cpp \
+    src/widget/ObjectItem.cpp
 #-------------------------------------------------
 HEADERS += \
     src/Define.h \
@@ -252,7 +252,7 @@ HEADERS += \
     src/widget/StageView.h \
     src/widget/Widget.h \
     src/Define.h \
-    src/util/FileDownloader.h
+    src/util/FileDownloader.h \
     src/widget/costumepart/CostumeNew.h \
     src/widget/About.h \
     src/widget/ObjectItem.h \
