@@ -39,15 +39,10 @@ DEFINES += PLATFORM_WINDOWS
 #DEFINES += PLATFORM_ANDROID
 #DEFINES += PLATFORM_IOS
 #-------------------------------------------------
-<<<<<<< HEAD
 # Enable C++ 17 Standard library for msvc.
 DEFINES += _HAS_CXX17
 # Enable C++ 20 Standard library for msvc.[MSVC v142]
 DEFINES += _HAS_CXX20
-=======
-DEFINES += _HAS_CXX17 # enable ISO/IEC 14882:2017 [MSVC++]
-DEFINES += _HAS_CXX20 # enable C++2a [MSVC++ v14.20]
->>>>>>> 0.2
 #=================================================
 # C++ Standard
 #CONFIG += C++11 # use ISO/IEC 14882:2011
@@ -142,7 +137,6 @@ SOURCES += \
     src/widget/costumepart/CostumeNew.cpp \
     src/widget/costumepart/CostumePart.cpp \
     src/widget/costumepart/CostumeView.cpp \
-<<<<<<< HEAD
     src/widget/scriptpart/BlockTabItem.cpp \
     src/widget/scriptpart/ScriptPart.cpp \
     src/widget/scriptpart/ScriptPartBlockTab.cpp \
@@ -164,12 +158,10 @@ SOURCES += \
     src/Main.cpp \
     src/util/Crash.c \
     src/util/FileDownloader.cpp
-=======
     src/widget/costumepart/CostumeNew.cpp \
     src/widget/About.cpp \
     src/widget/ObjectItem.cpp \
     src/widget/StageItem.cpp
->>>>>>> 0.2
 #-------------------------------------------------
 HEADERS += \
     src/Define.h \
@@ -241,7 +233,6 @@ HEADERS += \
     src/widget/costumepart/CostumeNew.h \
     src/widget/costumepart/CostumePart.h \
     src/widget/costumepart/CostumeView.h \
-<<<<<<< HEAD
     src/widget/scriptpart/BlockTabItem.h \
     src/widget/scriptpart/ScriptPart.h \
     src/widget/scriptpart/ScriptPartBlockTab.h \
@@ -262,12 +253,10 @@ HEADERS += \
     src/widget/Widget.h \
     src/Define.h \
     src/util/FileDownloader.h
-=======
     src/widget/costumepart/CostumeNew.h \
     src/widget/About.h \
     src/widget/ObjectItem.h \
     src/widget/StageItem.h
->>>>>>> 0.2
 #-------------------------------------------------
 RESOURCES +=
 #-------------------------------------------------
