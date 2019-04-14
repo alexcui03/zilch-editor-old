@@ -3,26 +3,25 @@
 #include <QPixmap>
 #include "../logger/Logger.h"
 
-SpriteItem::SpriteItem(ScratchSprite *Sprite, QWidget *parent) : Widget(parent) {
-	this->Sprite = Sprite;
+SpriteItem::SpriteItem(ScratchSprite *sprite, QWidget *parent) : ObjectItem(sprite, parent) {
 	this->setObjectName("SpriteItem");
 	this->move(240, 180);
 
-	this->Label = new QLabel(this);
-	this->Label->move(0, 0);
-	this->Label->setPixmap(QPixmap::fromImage(*static_cast<QImage*>(this->Sprite->CostumeList[this->Sprite->CurrentCostume].resource->Data)));
-	this->Label->adjustSize();
+	this->label = new QLabel(this);
+	this->label->move(0, 0);
+	this->label->setPixmap(QPixmap::fromImage(*static_cast<QImage*>(this->object->CostumeList[this->object->CurrentCostume].resource->Data)));
+	this->label->adjustSize();
 
 	this->adjustSize();
 }
 
 SpriteItem::~SpriteItem() {
-
+	delete this->label;
 }
 
 void SpriteItem::reload() {
-	this->Label->setPixmap(QPixmap::fromImage(*static_cast<QImage*>(this->Sprite->CostumeList[this->Sprite->CurrentCostume].resource->Data)));
-	this->Label->adjustSize();
+	this->label->setPixmap(QPixmap::fromImage(*static_cast<QImage*>(this->object->CostumeList[this->object->CurrentCostume].resource->Data)));
+	this->label->adjustSize();
 
 	this->adjustSize();
 }

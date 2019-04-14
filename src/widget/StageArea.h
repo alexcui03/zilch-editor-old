@@ -4,6 +4,7 @@
 #include <QPushButton>
 
 #include "Widget.h"
+#include "StageItem.h"
 #include "StageView.h"
 
 class StageArea : public Widget {
@@ -15,7 +16,9 @@ public slots:
 public:
 	QPushButton *ButtonStart;
 	QPushButton *ButtonStop;
+	StageItem *StageItem;
 	StageView *StageView;
+
 };
 
 #endif // STAGEAREA_H

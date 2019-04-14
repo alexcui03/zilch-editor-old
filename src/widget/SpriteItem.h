@@ -1,18 +1,14 @@
 #ifndef SPRITEITEM_H
 #define SPRITEITEM_H
 
-#include "Widget.h"
-#include <QLabel>
+#include "ObjectItem.h"
 #include "../scratch/ScratchSprite.h"
 
-class SpriteItem : public Widget {
+class SpriteItem : public ObjectItem {
 public:
-	explicit SpriteItem(ScratchSprite *Sprite, QWidget *parent = nullptr);
+	explicit SpriteItem(ScratchSprite *sprite, QWidget *parent = nullptr);
 	~SpriteItem();
 	void reload();
-public:
-	ScratchSprite *Sprite;
-	QLabel *Label;
 };
 
 #endif // SPRITEITEM_H

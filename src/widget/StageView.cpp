@@ -5,7 +5,7 @@
 #include <QStyleOption>
 #include <QPainter>
 
-StageView::StageView(QWidget *parent):Widget(parent) {
+StageView::StageView(QWidget *parent) : QLabel(parent) {
 	this->Reload();
 }
 

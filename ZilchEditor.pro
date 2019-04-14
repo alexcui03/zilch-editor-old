@@ -41,6 +41,7 @@ DEFINES += JAVASCRIPT_GOOGLE # use Google V8 (NOT ALLOWED)
 #DEFINES += JAVASCRIPT_MOZILLA #use Mozilla Spider Monkey (NOT ALLOWED)
 #-------------------------------------------------
 DEFINES += _HAS_CXX17 # enable ISO/IEC 14882:2017 [MSVC++]
+DEFINES += _HAS_CXX20 # enable C++2a [MSVC++ v14.20]
 #=================================================
 # C++ Standard
 #CONFIG += C++11 # use ISO/IEC 14882:2011
@@ -119,7 +120,9 @@ SOURCES += \
     src/widget/costumepart/CostumeList.cpp \
     src/widget/costumepart/CostumeView.cpp \
     src/widget/costumepart/CostumeNew.cpp \
-    src/widget/About.cpp
+    src/widget/About.cpp \
+    src/widget/ObjectItem.cpp \
+    src/widget/StageItem.cpp
 #-------------------------------------------------
 HEADERS += \
     src/stylesheet/StyleSheet.h \
@@ -176,7 +179,9 @@ HEADERS += \
     src/widget/costumepart/CostumeList.h \
     src/widget/costumepart/CostumeView.h \
     src/widget/costumepart/CostumeNew.h \
-    src/widget/About.h
+    src/widget/About.h \
+    src/widget/ObjectItem.h \
+    src/widget/StageItem.h
 #-------------------------------------------------
 RESOURCES +=
 #-------------------------------------------------

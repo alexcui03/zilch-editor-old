@@ -2,6 +2,7 @@
 #define TRANSLATOR_H
 
 #include <map>
+#include <string>
 
 class Translator {
 private:

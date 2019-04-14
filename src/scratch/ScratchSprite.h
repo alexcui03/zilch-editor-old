@@ -17,7 +17,6 @@ public:
 	int gety();
 public:
 	static ScratchStage *Stage;
-	SpriteItem *Item;
 	SpriteRotationStyle RotationStyle;
 	bool Draggable;
 	bool Show;

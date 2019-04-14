@@ -1,4 +1,6 @@
 #include "StageArea.h"
+
+#include "StageView.h"
 #include "../scratch/Scratch.h"
 
 StageArea::StageArea(QWidget *parent):Widget(parent) {
@@ -6,6 +8,10 @@ StageArea::StageArea(QWidget *parent):Widget(parent) {
 	StageView->setObjectName("StageArea_StageView");
 	StageView->move(0, 35);
 	StageView->resize(480, 360);
+
+	StageItem = new ::StageItem(&ScratchMain.Stage, this);
+	StageItem->label = StageView;
+	ScratchMain.Stage.Item = StageItem;
 
 	ButtonStart = new QPushButton(this);
 	ButtonStart->setObjectName("StageArea_ButtonStart");
