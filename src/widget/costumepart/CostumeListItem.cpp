@@ -56,7 +56,7 @@ void CostumeListItem::select() {
 	// Change image in view
 	static_cast<CostumePart*>(this->parent()->parent())->costume_view->setImage(static_cast<QImage*>(this->costume->resource->Data));
 	// Change current costume of sprite
-	auto *t = static_cast<ScratchSprite*>(AppWindow->EditArea->Object);
+	auto *t = AppWindow->EditArea->Object;
 	size_t i = 0;
 	ScratchCostume *p = &t->CostumeList[i];
 	while (p != this->costume) {

@@ -39,6 +39,9 @@ bin/dump/*
 
 # Build path
 build/*
+data/*
+file/*
+.vscode/*
 
 file/*
 data/*

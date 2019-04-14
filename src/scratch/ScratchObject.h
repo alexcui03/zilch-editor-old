@@ -6,12 +6,15 @@
 #include "ScratchBlock.h"
 #include "ScratchCostume.h"
 
+class ObjectItem;
+
 class ScratchObject {
 public:
 	ScratchObject(std::string Name);
 public:
 	std::string Name;
 	size_t CurrentCostume;
+	ObjectItem *Item;
 	std::vector<ScratchCostume> CostumeList;
 	std::vector<size_t> Sounds;
 	std::vector<ScratchBlock*> BlockList;
