@@ -20,6 +20,12 @@ Date: 2019.3.5
 Features:
   - Finished translation.
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.3.638
+Date: 2019.4.14
+Bugfixes:
+  - Fixed the program crash when select backdrops in stage.[bug#31]
+  - Fixed that will be two backdrops in stage if import the first backdrop.[bug#32]
+---------------------------------------------------------------------------------------------------
 Version: 0.2.2.626
 Date: 2019.3.3
 Features:

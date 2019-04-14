@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.2.3
+Date: 2019.4.14
+Bugfixes:
+  - Fixed the program crash when select backdrops in stage.[bug#31][build-638]
+  - Fixed that will be two backdrops in stage if import the first backdrop.[bug#32][build-638]
+---------------------------------------------------------------------------------------------------
 Version: 0.2.2
 Date: 2019.3.3
 Features:
