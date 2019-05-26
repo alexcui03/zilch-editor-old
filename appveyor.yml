@@ -1,7 +1,7 @@
 version: 0.3.0.{build}
 
 skip_commits:
-  message: /\[NB\].*/
+  message: /\[Non-build\].*/
 image: Visual Studio 2019 Preview
 clone_depth: 1
 
