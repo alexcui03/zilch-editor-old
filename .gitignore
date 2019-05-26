@@ -46,4 +46,5 @@ file/*
 file/*
 data/*
 .vscode/*
-
+doc/*
+asset/*

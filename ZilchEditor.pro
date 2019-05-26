@@ -258,7 +258,7 @@ HEADERS += \
     src/widget/ObjectItem.h \
     src/widget/StageItem.h
 #-------------------------------------------------
-RESOURCES +=
+RC_FILE += zilch-editor.rc
 #-------------------------------------------------
 DISTFILES += \
     bin/locale/en.yml \

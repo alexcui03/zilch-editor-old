@@ -9,6 +9,7 @@
 #include <QMessageBox>
 #include <QTime>
 #include <QStyleFactory>
+#include <QIcon>
 
 #include "widget/MainWindow.h"
 #include "logger/Logger.h"
@@ -16,8 +17,6 @@
 #include "scratch/Scratch.h"
 #include "translator/Translator.h"
 #include "util/Crash.h"
-
-#include <QDebug>
 
 Logger AppLogger;
 Translator AppTranslator;
@@ -42,6 +41,7 @@ int main(int argc, char *argv[]) {
 	AppTranslator.SetLanguage();
 
 	AppWindow = new MainWindow("Zilch Editor - Alpha Version");
+	AppWindow->setWindowIcon(QIcon("./asset/icon16.ico"));
 	AppWindow->show();
 	splash.finish(AppWindow);
 
