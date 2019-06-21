@@ -9,6 +9,7 @@
 #include "About.h"
 #include "LanguageAction.h"
 #include "../translator/Translator.h"
+#include "setting/SettingWidget.h"
 
 std::vector<std::string> GetTitleList() {
 	std::vector<std::string> title;
@@ -30,7 +31,7 @@ MainWindow::MainWindow(std::string Title, QWidget *parent):QMainWindow(parent) {
 	resize(800, 600);
 
 	MenuBar = this->menuBar();
-	MenuBar->resize(this->width(), 30);
+	MenuBar->resize(this->width(), 50);
 	MenuBar->setObjectName("Menu");
 
 	MenuFile = new QMenu(AppTranslator["window_menubar_file"]);
@@ -57,7 +58,7 @@ MainWindow::MainWindow(std::string Title, QWidget *parent):QMainWindow(parent) {
 	MenuBar->addMenu(MenuFile);
 	MenuBar->addMenu(MenuLang);
 	MenuBar->addMenu(MenuOption);
-
+	
 	StageArea = new ::StageArea(this);
 	StageArea->setObjectName("StageArea");
 	StageArea->move(10, 40);
@@ -86,8 +87,13 @@ void MainWindow::resizeEvent(QResizeEvent* size) {
 }
 
 void MainWindow::about() {
-	About *about = new About();
+	static About *about = new About();
 	about->show();
+}
+
+void MainWindow::setting() {
+	static SettingWidget *setting = new SettingWidget();
+	setting->show();
 }
 
 void MainWindow::setLanguage(std::string lang) {

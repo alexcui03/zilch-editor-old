@@ -46,6 +46,8 @@ BlockItem::BlockItem(ScratchBlock *Block, ScratchBlock *LastBlock, ScratchBlock 
 	TextLabel->adjustSize();
 
 
+	this->pixmap_temp = QPixmap(width(), height());
+
 	switch(this->BlockData->Block->Type) {
 	case ScratchBlockType::HEAD_BLOCK: {
 		TextLabel->move(5, 13);
@@ -127,10 +129,15 @@ BlockItem::BlockItem(ScratchBlock *Block, ScratchBlock *LastBlock, ScratchBlock 
 }
 
 void BlockItem::paintEvent(QPaintEvent *) {
-	QPainter Painter(this);
-	Painter.setBrush(QBrush(FillColor));
-	Painter.setPen(QPen(FrameColor));
-	Painter.drawPolygon(Polygon);
+	QPainter painter;
+	painter.begin(&this->pixmap_temp);
+	painter.setBrush(QBrush(FillColor));
+	painter.setPen(QPen(FrameColor));
+	painter.drawPolygon(Polygon);
+	painter.end();
+	painter.begin(this);
+	painter.drawPixmap(0, 0, this->pixmap_temp);
+	painter.end();
 }
 
 void BlockItem::mousePressEvent(QMouseEvent *e) {

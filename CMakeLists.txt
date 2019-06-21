@@ -14,6 +14,7 @@ set(PROJECT_SRC_DIRS
     src/widget
     src/widget/scriptpart
     src/widget/costumepart
+    src/widget/setting
 )
 
 set(CMAKE_CXX_STANDARD 17)

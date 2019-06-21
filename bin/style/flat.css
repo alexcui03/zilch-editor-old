@@ -1,0 +1,188 @@
+* {
+    font-family: 'microsoft yahei';
+}
+
+#MainWindow {
+    background-color: #FFFFFF;
+}
+
+#Menu {
+    background-color: #4C97FF;
+}
+
+#StageArea {
+    background-color: #FFFFFF;
+	border: 1px solid #E0E0E0;
+}
+
+#StageArea_StageView {
+    background-color: #FFFFFF;
+	border: 1px solid #E0E0E0;
+}
+
+#StageArea_ButtonStart {
+    background-color: #90EE90;
+	border-style: none;
+	border-radius: 8px;
+}
+
+#StageArea_ButtonStart:hover {
+    background-color: #609E60;
+}
+
+#StageArea_ButtonStop {
+    background-color: #FF0000;
+	border-style: none;
+	border-radius: 8px;
+}
+
+#StageArea_ButtonStop:hover {
+    background-color: #AA0000;
+}
+
+#SpriteArea {
+    border: 1px solid #E0E0E0;
+}
+
+#SpriteArea_Sprite {
+    border-color: #E0E0E0;
+	border-left-style: solid;
+	border-left-width: 1px;
+}
+
+#SpriteArea_SpriteArea_TopBar {
+    border-color: #E0E0E0;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+
+#SpriteArea_SpriteArea_TopBar_TextSprite {
+    font-size: 15px;
+}
+
+#SpriteArea_SpriteArea_TopBar_TextNewSprite {
+    font-size: 15px;
+}
+
+#SpriteArea_SpriteArea_TopBar_ButtonNewSprite {
+    background-color: #FFB11B;
+	border-radius: 8px;
+}
+
+#SpriteArea_SpriteArea_TopBar_ButtonNewSprite:hover {
+    background-color: #AA7612;
+}
+
+#SpriteArea_SpriteArea_ButtonBack {
+    background-color: #FFB11B;
+	border-radius: 8px;
+}
+
+#SpriteArea_SpriteArea_ButtonBack:hover {
+    background-color: #AA7612;
+}
+
+#ObjectListItem {
+
+}
+
+#ObjectListItem-Select {
+    border: 3px solid #4C97FF;
+	border-radius: 5px;
+}
+
+#ObjectListItem_Text {
+    font-size: 12px;
+}
+
+#SpriteListItem_Info {
+    background-color: #4C97FF;
+	border-radius: 8px;
+}
+
+#SpriteListItem_Info:hover {
+    background-color: #2D5A99;
+}
+
+#EditArea {
+    background-color: #FFFFFF;
+}
+
+#EditArea_TabWidget::pane {
+    border: 1px solid #E0E0E0;
+	outline-style: none;
+}
+
+#EditArea_TabWidget_TabBar::tab {
+    font-size: 13px;
+	min-width: 75px;
+	max-width: 150px;
+	height: 26px;
+	background-color: #F2F2F2;
+	border: 1px solid #E0E0E0;
+	border-bottom-style: none;
+}
+
+#EditArea_TabWidget_TabBar::tab:hover {
+    background-color: #F8F8F8;
+}
+
+#EditArea_TabWidget_TabBar::tab:selected {
+    background-color: #FFFFFF;
+}
+
+#EditArea_ScriptPart {
+    background-color: #F9F9F9;
+}
+
+#EditArea_ScriptPart_BlockTab {
+    background-color: transparent;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+#EditArea_ScriptPart_ScriptEdit {
+    background-color: #E0E0E0;
+	border: 1px solid #CCCCCC;
+}
+
+#EditArea_CostumePart {
+    background-color: #F9F9F9;
+}
+
+#EditArea_CostumePart_New {
+
+}
+
+#EditArea_CostumePart_List {
+
+}
+
+#EditArea-CostumePart-List-Item {
+    padding: 3px;
+}
+
+#EditArea-CostumePart-List-Item_selected {
+    padding: 3px;
+    border: 3px solid #4C97FF;
+	border-radius: 5px;
+}
+
+#EditArea_CostumePart_View {
+    background-color: #F7FAFC;
+	border: 1px solid #CCCCCC;
+}
+
+#BlockItem {
+    background-color: transparent;
+	outline: none;
+}
+
+#BlockItem > QLabel {
+    font-size: 15px;
+	color: #FFFFFF;
+}
+
+
+
+
+

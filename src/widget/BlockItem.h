@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QMouseEvent>
 #include <QEvent>
+#include <QPixmap>
 #include "Widget.h"
 #include "../scratch/ScratchBlock.h"
 #include "../scratch/ScratchObject.h"
@@ -32,6 +33,7 @@ private:
 	QPolygonF Polygon;
 	QColor FillColor;
 	QColor FrameColor;
+	QPixmap pixmap_temp;
 };
 
 #endif // BLOCKITEM_H

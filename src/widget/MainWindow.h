@@ -23,6 +23,7 @@ public:
 	void reloadTranslation();
 public slots:
 	void about();
+	void setting();
 	void setLanguage(std::string lang);
 public:
 	QMenuBar *MenuBar;
