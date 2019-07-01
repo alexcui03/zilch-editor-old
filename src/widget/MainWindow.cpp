@@ -51,9 +51,9 @@ MainWindow::MainWindow(std::string Title, QWidget *parent):QMainWindow(parent) {
 
 	MenuOption = new QMenu(AppTranslator["window_menubar_option"]);
 	MenuOption->setObjectName("Menu_Option");
-	MenuOption->addAction(AppTranslator["window_menubar_option_settings"]);
-	MenuOption->addAction(AppTranslator["window_menubar_option_about_qt"], qApp, SLOT(aboutQt()));
-	MenuOption->addAction(AppTranslator["window_menubar_option_about_ze"], this, SLOT(about()));
+	MenuOption->addAction(AppTranslator["window_menubar_option_settings"], this, &MainWindow::setting);
+	MenuOption->addAction(AppTranslator["window_menubar_option_about_qt"], qApp, &QApplication::aboutQt);
+	MenuOption->addAction(AppTranslator["window_menubar_option_about_ze"], this, &MainWindow::about);
 
 	MenuBar->addMenu(MenuFile);
 	MenuBar->addMenu(MenuLang);
