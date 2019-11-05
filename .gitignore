@@ -30,6 +30,8 @@
 *.exe
 *.out
 *.app
+*.ilk
+*.pdb
 
 # Log path
 bin/log/*
@@ -48,3 +50,6 @@ data/*
 .vscode/*
 doc/*
 asset/*
+
+test/*/build
+env/

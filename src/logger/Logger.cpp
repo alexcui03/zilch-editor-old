@@ -17,10 +17,9 @@ Logger::Logger() {
 	std::strftime(log_file_head, 64, "./log/log-%Y%m%d_%H%M%S", localtime(&ti));
 	std::snprintf(log_file_name, 64, "%s.%03lld.log", log_file_head, std::chrono::time_point_cast<std::chrono::milliseconds>(now).time_since_epoch().count() % 1000);
 	file_name = log_file_name;
-	std::freopen(log_file_name, "w", stdout);
-	std::freopen(log_file_name, "w", stderr);
+	//std::freopen(log_file_name, "w", stdout);
+	//std::freopen(log_file_name, "w", stderr);
 	file.open(file_name, std::ios::out);
-
 }
 
 Logger::~Logger() {

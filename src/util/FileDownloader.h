@@ -11,7 +11,7 @@
 class FileDownloader : public QObject {
 	Q_OBJECT
 public:
-	FileDownloader(std::string url, QObject *parent = nullptr);
+	FileDownloader(std::string url, std::string save_path, QObject *parent = nullptr);
 	~FileDownloader();
 	bool Finished();
 	QByteArray GetData();
@@ -24,6 +24,7 @@ private slots:
 private:
 	QNetworkAccessManager access_manager;
 	QByteArray data;
+	std::string save_path;
 	bool finished;
 };
 

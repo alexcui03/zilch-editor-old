@@ -2,10 +2,13 @@
 
 #include <QNetworkRequest>
 #include <QUrl>
+#include <QFile>
 
 #include "../logger/Logger.h"
 
-FileDownloader::FileDownloader(std::string url, QObject *parent) : QObject(parent) {
+FileDownloader::FileDownloader(std::string url, std::string save_path, QObject *parent) : QObject(parent) {
+	this->finished = false;
+	this->save_path = save_path;
 	this->CreateRequest(url);
 }
 
@@ -28,7 +31,13 @@ void FileDownloader::CreateRequest(std::string url) {
 void FileDownloader::FileDownloaded(QNetworkReply *reply) {
 	AppLogger.AddLog("Network", "RESPONSE ", reply->url().toString().toStdString());
 	this->data = reply->readAll();
-	reply->deleteLater();
+	AppLogger.AddLog("Network", this->data.size());
+	AppLogger.AddLog("Network", this->data.toStdString());
+	QFile file(save_path.c_str());
+	file.open(QIODevice::OpenModeFlag::WriteOnly);
+	file.write(this->data);
+	file.close();
+	//reply->deleteLater();
 	this->finished = true;
 	AppLogger.AddLog("Network", "CLEAN ", reply->url().toString().toStdString());
 	emit downloaded();
