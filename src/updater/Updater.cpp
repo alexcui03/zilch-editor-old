@@ -40,7 +40,7 @@ void Updater::loadSourceListFromConfig() {
 
 void Updater::getServerData() {
 	std::string url = "http://127.0.0.1:32000/win64.json";
-	FileDownloader *downloader = new FileDownloader(url);
+	FileDownloader *downloader = new FileDownloader(url, "win64.json");
 	AppLogger.AddLog("Updater", "Get information from ", url);
 	while(downloader->Finished());
 	AppLogger.AddLog("Updater", "Response from ", url);

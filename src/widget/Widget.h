@@ -13,8 +13,8 @@ public:
 	virtual void mousePressEvent(QMouseEvent *e) override;
 	virtual void mouseReleaseEvent(QMouseEvent *e) override;
 	virtual void mouseMoveEvent(QMouseEvent *e) override;
-	virtual void enterEvent(QEvent *e) override;
-	virtual void leaveEvent(QEvent *e) override;
+	virtual void enterEvent(QEvent *e);
+	virtual void leaveEvent(QEvent *e);
 	virtual void reloadTranslation();
 private slots:
 	void DefMouseProc();

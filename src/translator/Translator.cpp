@@ -7,12 +7,6 @@
 #include "../logger/Logger.h"
 #include "../widget/MainWindow.h"
 
-#ifndef _HAS_CXX17
-namespace std::filesystem {
-using namespace std::experimental::filesystem;
-}
-#endif
-
 constexpr unsigned int BUFSIZE = 1024;
 
 Translator::Translator() {

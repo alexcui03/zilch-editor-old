@@ -8,7 +8,7 @@
 
 #include "../logger/Logger.h"
 
-namespace fs = std::experimental::filesystem;
+namespace fs = std::filesystem;
 
 /**
  * @brief LoadStyleSheetString - Loading style sheet from file(function for repeating).

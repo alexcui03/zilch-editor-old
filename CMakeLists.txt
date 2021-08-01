@@ -17,12 +17,12 @@ set(PROJECT_SRC_DIRS
     src/widget/setting
 )
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 
-find_package(Qt5 COMPONENTS Widgets Network REQUIRED)
+find_package(Qt6 COMPONENTS Widgets Network REQUIRED)
 
 foreach(DIR ${PROJECT_SRC_DIRS})
     aux_source_directory(${DIR} PROJECT_SRC_FILES)
@@ -37,7 +37,7 @@ message(CMAKE_SYSTEM_VERSION: ${CMAKE_SYSTEM_VERSION})
 if(MSVC)
     message(MSVC_TOOLSET_VERSION: ${MSVC_TOOLSET_VERSION})
     message(MSVC_VERSION: ${MSVC_VERSION})
-    add_compile_options(/W4 /WX /wd4458)
+    add_compile_options(/W4 /wd4458)
     add_definitions(-D_CRT_SECURE_NO_WARNINGS -D_HAS_CXX17)
     if(MSVC_VERSION GREATER_EQUAL 1920)
         add_definitions(-D_HAS_CXX20)
@@ -71,7 +71,7 @@ endif()
 add_executable(zilcheditor ${PROJECT_SRC_FILES})
 
 if(WIN32)
-    target_link_libraries(zilcheditor Qt5::Widgets Qt5::Network DbgHelp)
+    target_link_libraries(zilcheditor Qt6::Widgets Qt6::Network DbgHelp)
 else()
-    target_link_libraries(zilcheditor Qt5::Widgets Qt5::Network)
+    target_link_libraries(zilcheditor Qt6::Widgets Qt6::Network)
 endif()
